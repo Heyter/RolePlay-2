@@ -1,0 +1,6 @@
+"eyes"
+{
+	"$basetexture" "models/player/uk_police/dark_eyeball_r"
+	"$iris" "models/player/uk_police/pupil_r"
+	"$halflambert" 1
+}
