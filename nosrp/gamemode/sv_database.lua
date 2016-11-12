@@ -70,12 +70,7 @@ function Query(sql, callback, errcallback)
     local q = db:query(sql)
     
     errcallback = errcallback or nil
-    
-    if db:status() == mysqloo.DATABASE_NOT_CONNECTED then
-        table.insert(queue, {sql, callback})
-        db:connect()
-        return
-    end
+  
     
     print( sql )
     
@@ -84,7 +79,6 @@ function Query(sql, callback, errcallback)
     end
 
     function q:onError(err)
-        
         
         
         if errcallback != nil then
