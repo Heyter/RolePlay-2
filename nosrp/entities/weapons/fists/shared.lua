@@ -5,40 +5,42 @@
 
 AddCSLuaFile( )
 
-SWEP.PrintName = "Fäuste"
-SWEP.Slot = 1
-SWEP.SlotPos = 1
-SWEP.DrawAmmo = false
-SWEP.DrawCrosshair = false
-SWEP.WepSelectIcon = surface.GetTextureID("weapons/gtfists")
+if CLIENT then
+    SWEP.PrintName = "Fäuste"
+    SWEP.Slot = 1
+    SWEP.SlotPos = 1
+    SWEP.DrawAmmo = false
+    SWEP.DrawCrosshair = false
+    SWEP.WepSelectIcon = surface.GetTextureID("weapons/gtfists")
 
-SWEP.Author = ""
-SWEP.Instructions = "Linksklick: Boxen, Rechtsklick: Schlagen\nBENUTZE DIE SCHLUESSEL FUER NORMALES RP"
-SWEP.Contact = ""
-SWEP.Purpose = ""
+    SWEP.Author = ""
+    SWEP.Instructions = "Linksklick: Boxen, Rechtsklick: Schlagen\nBENUTZE DIE SCHLUESSEL FUER NORMALES RP"
+    SWEP.Contact = ""
+    SWEP.Purpose = ""
 
-SWEP.ViewModelFOV = 62
-SWEP.ViewModelFlip = false
-SWEP.AnimPrefix  = "rpg"
+    SWEP.ViewModelFOV = 62
+    SWEP.ViewModelFlip = false
+    SWEP.AnimPrefix  = "rpg"
 
-SWEP.LockSound = "doors/door_latch1.wav"
-SWEP.UnlockSound = "doors/door_latch3.wav"
+    SWEP.LockSound = "doors/door_latch1.wav"
+    SWEP.UnlockSound = "doors/door_latch3.wav"
 
-SWEP.Spawnable = false
-SWEP.AdminSpawnable = true
+    SWEP.Spawnable = false
+    SWEP.AdminSpawnable = true
 
-SWEP.Primary.ClipSize = -1
-SWEP.Primary.DefaultClip = 0
-SWEP.Primary.Automatic = false
-SWEP.Primary.Ammo = ""
+    SWEP.Primary.ClipSize = -1
+    SWEP.Primary.DefaultClip = 0
+    SWEP.Primary.Automatic = false
+    SWEP.Primary.Ammo = ""
 
-SWEP.Secondary.ClipSize = -1
-SWEP.Secondary.DefaultClip = 0
-SWEP.Secondary.Automatic = false
-SWEP.Secondary.Ammo = ""
+    SWEP.Secondary.ClipSize = -1
+    SWEP.Secondary.DefaultClip = 0
+    SWEP.Secondary.Automatic = false
+    SWEP.Secondary.Ammo = ""
 
-SWEP.ViewModel = "models/gtrp/fists/v_fists.mdl";
-SWEP.WorldModel = "models/gtrp/fists/w_fists.mdl";
+    SWEP.ViewModel = "models/gtrp/fists/v_fists.mdl";
+    SWEP.WorldModel = "models/gtrp/fists/w_fists.mdl";
+end
 
 function SWEP:Initialize()
     self:SetWeaponHoldType("fist")
