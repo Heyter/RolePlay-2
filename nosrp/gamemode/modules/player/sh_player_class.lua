@@ -25,8 +25,10 @@ function PLAYER:Loadout()
     
     local t = self.Player:Team()
     if t >= 1 then
-        for k, v in pairs( GAMEMODE.TEAMS[t].Weapons ) do 
-            self.Player:Give( v ) 
+        if GAMEMODE.TEAMS[t] and GAMEMODE.TEAMS[t].Weapons then
+            for k, v in pairs( GAMEMODE.TEAMS[t].Weapons ) do 
+                self.Player:Give( v ) 
+            end
         end
     end
     
