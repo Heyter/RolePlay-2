@@ -17,10 +17,9 @@ LCONFIG.DBUser = "gmod"
 LCONFIG.DBHost = "62.75.253.86"
 LCONFIG.DBPassword = "lachen12"
 LCONFIG.DBPort = 3306
-LCONFIG.DBSocket = "/var/run/mysqld/mysqld.sock"
 
 
-local db = db or mysqloo.connect(LCONFIG.DBHost, LCONFIG.DBUser, LCONFIG.DBPassword, LCONFIG.DBName, LCONFIG.DBPort, LCONFIG.DBSocket)
+local db = db or mysqloo.connect(LCONFIG.DBHost, LCONFIG.DBUser, LCONFIG.DBPassword, LCONFIG.DBName, LCONFIG.DBPort)
 local queue = {} 
 
 --[[---------------------------------------------------------
