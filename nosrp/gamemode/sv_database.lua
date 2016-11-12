@@ -56,10 +56,10 @@ end
         callback: Function called on success; with data as parameter
 -----------------------------------------------------------]]
 function Query(sql, callback, errcallback)
+    print("[RP][DEBUG] " .. sql)
+
     RP.db:Query(sql, function(results)
       if results[1].status then
-        self:SQLDebug(query, results[1]["data"])
-
         if callback and isfunction(callback) then
           callback(results[1]["data"])
         end
