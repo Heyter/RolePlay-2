@@ -425,8 +425,10 @@ function xgui.getChunk( flag, datatype, data )
 			if not xgui.mergeData then --A full data table is coming in
 				if not data then data = {} end --Failsafe for no table being sent
 				xgui.flushQueue( datatype )
-				table.Empty( xgui.data[datatype] )
-				table.Merge( xgui.data[datatype], data )
+				if xgui.data[datatype] then
+					table.Empty( xgui.data[datatype] )
+					table.Merge( xgui.data[datatype], data )
+				end
 				xgui.callUpdate( datatype, "clear" )
 				xgui.callUpdate( datatype, "process", data )
 				xgui.callUpdate( datatype, "done" )
