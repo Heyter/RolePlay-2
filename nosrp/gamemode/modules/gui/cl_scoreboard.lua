@@ -1,3 +1,47 @@
+local function OpenContextMenu( tab )
+	local ply = tab.ply
+	local context = DermaMenu()
+	
+	context:AddOption("Name Kopieren", function() SetClipboardText(ply:Nick()) end):SetImage("icon16/user_edit.png")
+	context:AddOption("SteamID Kopieren", function() SetClipboardText(ply:SteamID()) end):SetImage("icon16/tag_blue.png")
+	context:AddOption("Steam Community Profil", function() ply:ShowProfile() end):SetImage("icon16/world.png")
+	context:AddOption("GMODWeb Profil", function() gui.OpenURL( "http://gextension.epic-gaming.de/?t=user&id=" .. ply:SteamID64()) end):SetImage("icon16/vcard.png")
+
+	if LocalPlayer():IsUserGroup("operator") or LocalPlayer():IsUserGroup("moderator") or LocalPlayer():IsUserGroup("superadmin") or LocalPlayer():IsUserGroup("supporter") then  
+		local admintools,menuimg = context:AddSubMenu("Admin")
+		menuimg:SetImage("icon16/shield.png")
+		admintools:AddOption("Kick", function() Derma_StringRequest( "Kick Grund", "Grund des kicks", "", function(r) RunConsoleCommand("ulx","kick",ply:Nick(),r) end, nil, "Kick", "Abbechen" ) end):SetImage("icon16/door_out.png")
+		admintools:AddOption("Ban", function() Derma_StringRequest( "Ban Grund", "Grund des Banns", "", function(r)  
+			Derma_StringRequest("Ban Länge", "Gib die Länge des Banns an", ScoreboardConfig.BanTime, function(t)
+				RunConsoleCommand("ulx","ban",ply:Nick(),t,r) end , nil, "Okay", "Cancel") end, nil, "Ban", "Abbechen" ) end):SetImage("icon16/door_out.png")
+
+		--admintools:AddSpacer()
+
+		admintools:AddOption("Slay", function() RunConsoleCommand("ulx","slay",ply:Nick()) end):SetImage("icon16/bomb.png")
+		--if ScoreboardConfig.SlayNR then
+		--  admintools:AddOption("Slay Next Round", function () RunConsoleCommand("ulx", "slaynr", ply:Nick(), 1) end):SetImage("icon16/controller_delete.png")
+		--end
+
+		admintools:AddSpacer()
+
+		admintools:AddOption("Mute", function() RunConsoleCommand("ulx","mute",ply:Nick()) end):SetImage("icon16/box.png")
+		admintools:AddOption("Gag", function() RunConsoleCommand("ulx","gag",ply:Nick()) end):SetImage("icon16/bell_delete.png")
+
+		admintools:AddSpacer()
+	   
+		admintools:AddOption("AFK", function() RunConsoleCommand("ulx","afk",ply:Nick()) end):SetImage("icon16/zoom.png")
+		admintools:AddOption("Verwarnen", function() Derma_StringRequest( "Verwarn Grund", "Was soll in der Verwarnung stehen", "", function(r) RunConsoleCommand("gex_warn",ply:SteamID64(),r) end, nil, "Verwarnen", "Abbechen" ) end):SetImage("icon16/exclamation.png")
+
+		admintools:AddSpacer()
+
+		admintools:AddOption("Spectate", function() RunConsoleCommand("ulx","spectate",ply:Nick()) end):SetImage("icon16/zoom.png")
+
+		admintools:AddSpacer()
+	end
+end
+
+
+
 function OpenScroeboard()
     local score_w = ScrW()/1.6
     local score_h = ScrH()/1.2
@@ -78,9 +122,11 @@ function OpenScroeboard()
     for k, v in pairs( player.GetAll() ) do
         i = i + 1
         if i > 2 then i = 1 end
-        local raw = vgui.Create( "DPanel", raw_list )
+        local raw = vgui.Create( "DButton", raw_list )
+		raw.ply = v
         raw.i = i
         raw.ping = v:Ping()
+		raw:SetText( "" )
         raw:SetSize( score_w, 30 )
         raw:SetPos( 0, 0 )
         raw.Paint = function()
@@ -128,6 +174,10 @@ function OpenScroeboard()
         raw.Think = function()
             raw.ping = v:Ping()
         end
+		raw:DoClick = function( self)
+			OpenContextMenu( self )
+		end
+		
         raw_list:AddItem( raw )
         
     end
