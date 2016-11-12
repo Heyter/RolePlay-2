@@ -1,0 +1,17 @@
+"nosrp"
+{
+	"base"		"sandbox"
+    "title"  "NOS RolePlay"
+    "version"   "1.1"
+    "menusystem"	"1"
+
+    "author_name"   "ThaRealCamotrax"
+    "maps"          "^rp_"
+    "author_email"  ""
+    "author_url"    ""
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
+

@@ -1,0 +1,442 @@
+CRAFT_TABLE = {
+    //  Erstmals die Waffen
+    bandage = {
+		name = "Bandage",
+		desc = "Heilt deine Wunden und stoppt Blutungen.",
+		vip = false,
+		cat = "Misc",
+		model = "models/Items/BoxFlares.mdl",
+		items = {
+            metal_polish = 1,
+            lodine = 2
+		},
+        skills = {
+            ["Intelligenz"] = 2
+        }
+	},
+    weapon_physgun = {
+		name = "Physic Gun",
+		desc = "Wird benutzt um Objekte zu Fixieren",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_physics.mdl",
+		items = {
+			metal_rod = 1,
+			chunk_of_plastic = 2,
+			piece_of_metal = 2,
+            metal_polish = 1,
+            lodine = 5
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 4
+        }
+	},
+    m9k_knife = {
+		name = "Messer",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_extreme_ratio.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 2,
+			chunk_of_plastic = 1,
+			piece_of_metal = 2,
+            metal_polish = 1,
+		},
+        skills = {
+            ["Kraft"] =2,
+            ["Intelligenz"] =2,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+    m9k_machete = {
+		name = "Machete",
+		desc = "",
+		vip = true,
+		cat = "Weapon",
+		model = "models/weapons/w_fc2_machete.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 2,
+			chunk_of_plastic = 1,
+			piece_of_metal = 2,
+            metal_polish = 1,
+            wooden_board = 1,
+            glue = 1
+		},
+        skills = {
+            ["Kraft"] =2,
+            ["Intelligenz"] =2,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+    m9k_colt1911 = {
+		name = "Colt",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/s_dmgf_co1911.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 5,
+			chunk_of_plastic = 2,
+			piece_of_metal = 3,
+            metal_polish = 1,
+            wooden_board = 1,
+			glue = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 3
+        }
+	},
+    m9k_m92beretta = {
+		name = "M92 - Baretta",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_beretta_m92.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 5,
+			chunk_of_plastic = 2,
+			piece_of_metal = 5,
+            metal_polish = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 4
+        }
+	},
+    m9k_deagle = {
+		name = "Deagle",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_tcom_deagle.mdl",
+		items = {
+			metal_rod = 2,
+			wooden_nail = 5,
+			chunk_of_plastic = 4,
+			piece_of_metal = 5,
+            paint_bucket = 1,
+            metal_polish = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 4
+        }
+	},
+    m9k_winchester73 = {
+		name = "Winchester",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_winchester_1873.mdl",
+		items = {
+			metal_rod = 2,
+			wooden_nail = 5,
+			chunk_of_plastic = 1,
+			piece_of_metal = 5,
+            metal_polish = 1,
+            wooden_board = 2,
+			glue = 2
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =4,
+            ["Handwerks Geschick"] = 5
+        }
+	},
+    m9k_uzi = {
+		name = "UZI",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_uzi_imi.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 4,
+			piece_of_metal = 3,
+            metal_polish = 1,
+            paint_bucket = 1,
+			glue = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 4
+        }
+	},
+    molotov = {
+		name = "Molotov",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_grenade.mdl",
+		items = {
+            fuel_can = 1,
+            propane_tank = 1,
+            
+			glue = 1
+		},
+        skills = {
+            ["Kraft"] =1,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+    m9k_val = {
+		name = "AS Val",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_dmg_vally.mdl",
+		items = {
+			metal_rod = 3,
+			wooden_nail = 7,
+			chunk_of_plastic = 3,
+			piece_of_metal = 7,
+            metal_polish = 3
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 5
+        }
+	},
+    m9k_m416 = {
+		name = "M4",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_hk_416.mdl",
+		items = {
+			metal_rod = 3,
+			wooden_nail = 7,
+			chunk_of_plastic = 3,
+			piece_of_metal = 7,
+            metal_polish = 3
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 6
+        }
+	},
+    m9k_ak74 = {
+		name = "Ak 47",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_tct_ak47.mdl",
+		items = {
+			metal_rod = 2,
+			wooden_nail = 7,
+            wooden_board = 3,
+			chunk_of_plastic = 2,
+			piece_of_metal = 5,
+            metal_polish = 2,
+            glue = 3
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 5
+        }
+	},
+    m9k_m24 = {
+		name = "M24",
+		desc = "",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_snip_m24_6.mdl",
+		items = {
+			metal_rod = 3,
+			wooden_nail = 7,
+			chunk_of_plastic = 4,
+			piece_of_metal = 6,
+            metal_polish = 3,
+            paint_bucket = 1,
+            cardboard_box = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =5,
+            ["Handwerks Geschick"] = 5
+        }
+	},
+    //  Waffen Ende
+	door_welder = {
+		name = "Door Welder",
+		desc = "Wird benutzt um Tueren zu verschweiﬂen.",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_rif_ak47.mdl",
+		items = {
+			metal_rod = 1,
+			wooden_nail = 4,
+			propane_tank = 1,
+			piece_of_metal = 2,
+			rope_roll = 1
+		},
+        skills = {
+            ["Kraft"] =2,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+    item_doorbuster = {
+		name = "Sprengsatz",
+		desc = "Wird benutzt um Tueren zu sprengen",
+		vip = false,
+		cat = "Misc",
+		model = "models/Items/car_battery01.mdl",
+		items = {
+			propane_tank = 2,
+            fuel_can = 4,
+			piece_of_metal = 2,
+            normal_batterie = 1
+		},
+        skills = {
+            ["Kraft"] =2,
+            ["Intelligenz"] =3,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+	lockpick = {
+		name = "Lockpick",
+		desc = "Wird benutzt um Tueren zu aufzubrechen.",
+		vip = false,
+		cat = "Weapon",
+		model = "models/weapons/w_crowbar.mdl",
+		items = {
+			metal_rod = 1,
+			piece_of_metal = 4,
+		},
+        skills = {
+            ["Kraft"] =4,
+            ["Intelligenz"] =2,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+	item_weaponfinder = {
+		name = "Waffen Detector",
+		desc = "Piept falls ein Spieler mit Waffe passiert.",
+		vip = true,
+		cat = "Items",
+		model = "models/props_wasteland/interior_fence002e.mdl",
+		items = {
+			piece_of_metal = 4,
+			metal_rod = 4,
+			wooden_nail = 4,
+			normal_batterie = 1
+		},
+        skills = {
+            ["Kraft"] =3,
+            ["Intelligenz"] =4,
+            ["Handwerks Geschick"] = 2
+        }
+	},
+	bullet_casing = {
+		name = "Bullet Casing",
+		desc = "Eine leere Patronenhuelle.",
+		vip = false,
+		cat = "Misc",
+		model = "models/Items/AR2_Grenade.mdl",
+		items = {
+			piece_of_metal = 1,
+			chunk_of_plastic = 1,
+			metal_rod = 1,
+		},
+        skills = {
+        ["Kraft"] =1,
+        ["Intelligenz"] =2,
+        ["Handwerks Geschick"] = 3
+        }
+	},
+    ent_pistol_ammo = {
+		name = "Pistolen Munition",
+		desc = "Inhalt 15 Patronen",
+		vip = false,
+		cat = "Misc",
+		model = "models/Items/357ammobox.mdl",
+		items = {
+            lodine = 2,
+			chunk_of_plastic = 1,
+			metal_rod = 1,
+            cardboard_box = 1,
+            bullet_casing = 1
+		},
+        skills = {
+        ["Kraft"] =2,
+        ["Intelligenz"] =3,
+        ["Handwerks Geschick"] = 3
+        }
+	},
+    ent_rifle_ammo = {
+		name = "Gewehr Munition",
+		desc = "Inhalt 30 Patronen",
+		vip = false,
+		cat = "Misc",
+		model = "models/Items/BoxSRounds.mdl",
+		items = {
+			lodine = 2,
+			chunk_of_plastic = 1,
+			metal_rod = 1,
+            cardboard_box = 1,
+            bullet_casing = 1
+		},
+        skills = {
+        ["Kraft"] =2,
+        ["Intelligenz"] =5,
+        ["Handwerks Geschick"] = 3
+        }
+	},
+    ent_buckshot_ammo = {
+		name = "Shotgun Munition",
+		desc = "Inhalt 25 Patronen",
+		vip = false,
+		cat = "Misc",
+		model = "models/items/boxbuckshot.mdl",
+		items = {
+			lodine = 2,
+			chunk_of_plastic = 1,
+			metal_rod = 1,
+            cardboard_box = 1,
+            bullet_casing = 1
+		},
+        skills = {
+        ["Kraft"] =2,
+        ["Intelligenz"] =4,
+        ["Handwerks Geschick"] = 3
+        }
+	}
+}
+
+CRAFT_LANG = {
+	drug_pot = "Blumentopf",
+	beer = "Bier",
+	beer_box = "Bier Kasten ( 15x Bier )",
+	bullet_casing = "Patronen Huelle",
+	cardboard_box = "Karton",
+	chunk_of_plastic = "Stueck Plastik",
+	fuel_can = "Benzinkanister",
+	glue = "Kleber",
+	kitty_litter = "Katzenstreu",
+	metal_polish = "Metall Lackierung",
+	metal_rod = "Metallstange",
+	paint_bucket = "Farbeimer",
+	piece_of_metal = "Stueck Metall",
+	propane_tank = "Propan Tank",
+	wooden_board = "Holzbrett",
+	wooden_nail = "Nagel",
+	normal_batterie = "Batterie",
+	rope_roll = "Kabelrolle"
+}

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1020/trunk/entities/entities/money_printer
+END
+cl_init.lua
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/574/trunk/entities/entities/money_printer/cl_init.lua
+END
+init.lua
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1020/trunk/entities/entities/money_printer/init.lua
+END
+shared.lua
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/571/trunk/entities/entities/money_printer/shared.lua
+END

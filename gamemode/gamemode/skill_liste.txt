@@ -1,0 +1,18 @@
+-- Skillebar mit Punkte --
+Kraft			- MAX: 25
+Intelligenz			- MAX: 25
+Einfluss			- MAX: 25
+Vertrauen
+Handwerks Geschick			- MAX: 25
+
+
+-- Nicht skillbare --
+Ausdauer			- MAX: 10
+Erste Hilfe			- MAX: 10
+Ruf
+Handels Fähigkeit			- MAX: 100
+Management
+Weed Erfahrung			- MAX: 10
+Cocaine Erfahrung			- MAX: 10
+Schloss Knacken			- MAX: 15
+Abhärtung			- MAX: 10

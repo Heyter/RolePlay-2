@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/blitzer/blitzer"
+	"$surfaceprop" "Metal"
+}

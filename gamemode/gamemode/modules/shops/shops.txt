@@ -1,0 +1,79 @@
+RP.Shops["Moebel"] = {
+    shipping_time = 600,
+    Spawninfo = {
+        pos = Vector( -6894, -9946, 73 ),
+        ang = Angle( 0, 0, 0 ),
+        model = "models/Humans/Group02/Female_07.mdl",
+        size = 0.8
+    },
+    Itemlist = {
+        {name = "Eisentor", type = "nosrp_prop", model = "models/props_lab/blastdoor001c.mdl", price = 1500, min_stock = 10, max_stock = 50},
+        {name = "Eisentor klein", type = "nosrp_prop", model = "models/props_lab/blastdoor001b.mdl", price = 750, min_stock = 10, max_stock = 50},
+        {name = "Kleiderschrank", type = "nosrp_prop", model = "models/props_c17/FurnitureDresser001a.mdl", price = 500, min_stock = 10, max_stock = 50},
+        {name = "Backofen", type = "nosrp_prop", model = "models/props_c17/furnitureStove001a.mdl", price = 1500, min_stock = 10, max_stock = 50},
+        {name = "Trockner", type = "nosrp_prop", model = "models/props_c17/FurnitureWashingmachine001a.mdl", price = 1500, min_stock = 10, max_stock = 50},
+        {name = "Bücher Regal", type = "nosrp_prop", model = "models/props_interiors/Furniture_shelf01a.mdl", price = 250, min_stock = 10, max_stock = 50},
+        {name = "Mülleimer", type = "nosrp_prop", model = "models/props_trainstation/trashcan_indoor001b.mdl", price = 200, min_stock = 10, max_stock = 50},
+        {name = "Eisentisch klein", type = "nosrp_prop", model = "models/props_wasteland/kitchen_counter001b.mdl", price = 650, min_stock = 10, max_stock = 50},
+        {name = "Rotes Sofa", type = "nosrp_prop", model = "models/props_c17/FurnitureCouch001a.mdl", price = 325, min_stock = 10, max_stock = 50},
+        {name = "Grünes Sofa", type = "nosrp_prop", model = "models/props_c17/FurnitureCouch002a.mdl", price = 325, min_stock = 10, max_stock = 50},
+        {name = "Holz Stuhl", type = "nosrp_prop", model = "models/props_c17/FurnitureChair001a.mdl", price = 150, min_stock = 10, max_stock = 50},
+        {name = "Metall Stuhl", type = "nosrp_prop", model = "models/props_c17/chair02a.mdl", price = 150, min_stock = 10, max_stock = 50},
+        {name = "Wassertonne", type = "nosrp_prop", model = "models/props_borealis/bluebarrel001.mdl", price = 225, min_stock = 10, max_stock = 50},
+        {name = "Lampenschirm", type = "nosrp_prop", model = "models/props_c17/lampShade001a.mdl", price = 50, min_stock = 10, max_stock = 50},
+        {name = "Holztisch", type = "nosrp_prop", model = "models/props_combine/breendesk.mdl", price = 650, min_stock = 10, max_stock = 50},
+        {name = "Nobler Sessel", type = "nosrp_prop", model = "models/props_combine/breenchair.mdl", price = 250, min_stock = 10, max_stock = 50},
+        {name = "Verkehrshütchen", type = "nosrp_prop", model = "models/props_junk/TrafficCone001a.mdl", price = 150, min_stock = 10, max_stock = 50},
+        {name = "Barrikate doppelseitig", type = "nosrp_prop", model = "models/props_wasteland/barricade001a.mdl", price = 400, min_stock = 10, max_stock = 50},
+        {name = "Barrikate einseitig", type = "nosrp_prop", model = "models/props_wasteland/barricade002a.mdl", price = 300, min_stock = 10, max_stock = 50},
+        {name = "Eisenplatte", type = "nosrp_prop", model = "models/props_junk/TrashDumpster02b.mdl", price = 925, min_stock = 10, max_stock = 50},
+        {name = "Eisentisch Lang", type = "nosrp_prop", model = "models/props_wasteland/controlroom_desk001a.mdl", price = 1025, min_stock = 10, max_stock = 50},
+        {name = "Eisentisch Kurz", type = "nosrp_prop", model = "models/props_wasteland/controlroom_desk001b.mdl", price = 975, min_stock = 10, max_stock = 50}
+    }
+}
+
+RP.Shops["Bauladen"] = {
+    shipping_time = 600,
+    Spawninfo = {
+        pos = Vector( -6894, -10477, 73 ),
+        ang = Angle( 0, 0, 0 ),
+        model = "models/Humans/Group02/Female_02.mdl",
+        size = 1
+    },
+    Itemlist = {
+        {name = "Karton", type = "cardboard_box", model = "models/props_junk/cardboard_box004a.mdl", price = 100, min_stock = 10, max_stock = 50},
+        {name = "Stueck Plastik", type = "chunk_of_plastic", model = "models/props_c17/canisterchunk01a.mdl", price = 250, min_stock = 10, max_stock = 50},
+        {name = "Blumentopf", type = "drug_pot", model = "models/props_c17/pottery06a.mdl", price = 1000, min_stock = 10, max_stock = 50},
+        {name = "Kleber", type = "glue", model = "models/props_lab/jar01b.mdl", price = 300, min_stock = 10, max_stock = 50},
+        {name = "Lodine", type = "lodine", model = "models/props_lab/jar01a.mdl", price = 125, min_stock = 10, max_stock = 50},
+        {name = "Poliermittel", type = "metal_polish", model = "models/props_junk/plasticbucket001a.mdl", price = 250, min_stock = 10, max_stock = 50},
+        {name = "Metallstange", type = "metal_rod", model = "models/props_c17/signpole001.mdl", price = 450, min_stock = 10, max_stock = 50},
+        {name = "Farbeimer", type = "paint_bucket", model = "models/props_junk/metal_paintcan001a.mdl", price = 225, min_stock = 10, max_stock = 50},
+        {name = "Stück Metall", type = "piece_of_metal", model = "models/gibs/metal_gib4.mdl", price = 500, min_stock = 10, max_stock = 50},
+        {name = "Kabelrolle", type = "rope_roll", model = "models/props_c17/pulleywheels_small01.mdl", price = 250, min_stock = 10, max_stock = 50},
+        {name = "Holzregal", type = "wooden_board", model = "models/props_c17/FurnitureShelf001b.mdl", price = 225, min_stock = 10, max_stock = 50},
+        {name = "Nagel", type = "wooden_nail", model = "models/props_c17/TrapPropeller_Lever.mdl", price = 150, min_stock = 10, max_stock = 50}
+    }
+}
+
+RP.Shops["Tankstelle"] = {
+    shipping_time = 600,
+    Spawninfo = {
+        pos = Vector( -7490, -6604, 73 ),
+        ang = Angle( 0, 90, 0 ),
+        model = "models/Humans/Group02/male_09.mdl",
+        size = 1.1
+    },
+    Itemlist = {
+        {name = "Bionade", type = "bionade", model = "models/props_junk/garbage_glassbottle003a.mdl", price = 25, min_stock = 10, max_stock = 50},
+        {name = "Radio", type = "radio", model = "models/props/cs_office/radio.mdl", price = 1500, min_stock = 1, max_stock = 5},
+        {name = "Alarmanlage", type = "door_alarm", model = "models/props_lab/reciever01d.mdl", price = 500, min_stock = 1, max_stock = 5},
+        {name = "Kasse", type = "ent_kasse", model = "models/props_c17/cashregister01a.mdl", price = 1500, min_stock = 5, max_stock = 15},
+        {name = "Volle Autobatterie", type = "normal_batterie", model = "models/Items/car_battery01.mdl", price = 250, min_stock = 5, max_stock = 15},
+        {name = "Herzschlagmessgerät", type = "item_lifealert", model = "models/props_c17/FurnitureDresser001a.mdl", price = 5000, min_stock = 5, max_stock = 15},
+        {name = "Katzenstreu", type = "kitty_litter", model = "models/props_junk/cardboard_box001a.mdl", price = 250, min_stock = 10, max_stock = 30},
+        {name = "Propan Tank", type = "propane_tank", model = "models/props_junk/PropaneCanister001a.mdl", price = 1000, min_stock = 10, max_stock = 20},
+        {name = "Benzin Kanister", type = "fuel_can", model = "models/props_junk/gascan001a.mdl", price = 1000, min_stock = 5, max_stock = 20},
+        {name = "Feuerlöscher", type = "fire_extinguisher", model = "models/props/cs_office/Fire_Extinguisher.mdl", price = 1500, min_stock = 5, max_stock = 15}
+    }
+}
