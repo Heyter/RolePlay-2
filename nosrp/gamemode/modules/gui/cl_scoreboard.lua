@@ -40,6 +40,8 @@ local function OpenContextMenu( tab )
 
 		admintools:AddSpacer()
 	end
+	
+	context:Open()
 end
 
 
