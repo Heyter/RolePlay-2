@@ -21,7 +21,7 @@ function ENT:Initialize()
 end
 
 function ENT:Use( ply )
-	if !(ply:Team() == TEAM_TRASH then return end
+	if not (ply:Team() == TEAM_TRASH) then return end
 	if table.Count( self.trash ) < 1 then return end
 	
 	local cnt = table.Count( self.trash )
