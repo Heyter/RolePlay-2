@@ -80,27 +80,29 @@ end
 
 if CLIENT then
 	function Stamina.PlayExhaustSound()
-		   local stamina = LocalPlayer():GetNWInt( "stamina" )
-		   if stamina <= 40 then
-		if !Stamina.Sound then
-			Stamina.Sound = CreateSound(LocalPlayer(), Sound( SETTINGS.STAMINA_SOUND ))
-		end
-		
-		local rech = 2/stamina
-		
-		Stamina.LastSound = Stamina.LastSound or 0;
-		
-		if Stamina.LastSound + SETTINGS.STAMINA_REPLAY <= CurTime() then
-			Stamina.LastSound = CurTime();
-			if not Stamina.Sound:IsPlaying() then
+		if Stamina then
+			local stamina = LocalPlayer():GetNWInt( "stamina" )
+			if stamina <= 40 then
+				if !Stamina.Sound then
+					Stamina.Sound = CreateSound(LocalPlayer(), Sound( SETTINGS.STAMINA_SOUND ))
+				end
+				
+				local rech = 2/stamina
+				
+				Stamina.LastSound = Stamina.LastSound or 0;
+				
+				if Stamina.LastSound + SETTINGS.STAMINA_REPLAY <= CurTime() then
+					Stamina.LastSound = CurTime();
+					if not Stamina.Sound:IsPlaying() then
+						Stamina.Sound:Stop();
+						Stamina.Sound:Play();
+					end
+					Stamina.Sound:ChangeVolume( math.Clamp(rech, 0, 0.8), 0 )
+				end
+			elseif Stamina.Sound then
 				Stamina.Sound:Stop();
-				Stamina.Sound:Play();
+				Stamina.Sound = nil;
 			end
-			Stamina.Sound:ChangeVolume( math.Clamp(rech, 0, 0.8), 0 )
-		end
-		elseif Stamina.Sound then
-			Stamina.Sound:Stop();
-			Stamina.Sound = nil;
 		end
 	end
 	
