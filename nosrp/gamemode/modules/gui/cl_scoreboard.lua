@@ -2,12 +2,14 @@ local function OpenContextMenu( tab )
 	local ply = tab.ply
 	local context = DermaMenu()
 	
+	if !(IsValid( ply )) then return end
+	
 	context:SetPos( gui.MouseX(), gui.MouseY() )
 	
 	context:AddOption("Name Kopieren", function() SetClipboardText(ply:Nick()) end):SetImage("icon16/user_edit.png")
 	context:AddOption("SteamID Kopieren", function() SetClipboardText(ply:SteamID()) end):SetImage("icon16/tag_blue.png")
 	context:AddOption("Steam Community Profil", function() ply:ShowProfile() end):SetImage("icon16/world.png")
-	context:AddOption("GMODWeb Profil", function() gui.OpenURL( "http://gextension.epic-gaming.de/?t=user&id=" .. ply:SteamID64()) end):SetImage("icon16/vcard.png")
+	context:AddOption("GExtension Profil", function() gui.OpenURL( "http://gmodweb.epic-gaming.de/?t=user&id=" .. ply:SteamID64()) end):SetImage("icon16/vcard.png")
 
 	if LocalPlayer():IsUserGroup("operator") or LocalPlayer():IsUserGroup("moderator") or LocalPlayer():IsUserGroup("superadmin") or LocalPlayer():IsUserGroup("supporter") then  
 		local admintools,menuimg = context:AddSubMenu("Admin")
@@ -25,7 +27,10 @@ local function OpenContextMenu( tab )
 		--end
 
 		admintools:AddSpacer()
-
+		admintools:AddOption("Goto", function() RunConsoleCommand("ulx","goto",ply:Nick()) end):SetImage("icon16/arrow_right.png")
+		admintools:AddOption("Bring", function() RunConsoleCommand("ulx","bring",ply:Nick()) end):SetImage("icon16/arrow_left.png")
+		admintools:AddSpacer()
+		
 		admintools:AddOption("Mute", function() RunConsoleCommand("ulx","mute",ply:Nick()) end):SetImage("icon16/box.png")
 		admintools:AddOption("Gag", function() RunConsoleCommand("ulx","gag",ply:Nick()) end):SetImage("icon16/bell_delete.png")
 
