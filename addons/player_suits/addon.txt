@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"Player Suits"
+	"version"			"1.0"
+	"up_date"			"00/00/00"
+	"author_name"			"CaMoTraX"
+	"author_email"			""
+	"author_url"			""
+	"info"				"Player saveable Suits"
+	"override"			"0"
+}

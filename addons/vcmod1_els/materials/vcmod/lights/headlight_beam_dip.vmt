@@ -1,0 +1,9 @@
+"Sprite"
+{
+	$nosrgb 1
+	"$spriteorientation" "vp_parallel_oriented"
+	"$spriteorigin" "[ 0.50 0.50 ]"
+	"$basetexture" "vcmod/lights/headlight_beam_dip"
+	"$vertexalpha" 		1 
+	"$vertexcolor" 		1 
+}

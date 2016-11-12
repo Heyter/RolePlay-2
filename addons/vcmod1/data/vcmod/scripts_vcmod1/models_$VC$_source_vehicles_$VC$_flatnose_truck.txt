@@ -1,0 +1,1 @@
+{"Date":"01/22/15 20:02:50","Copyright":"Copyright © 2015 VCMod (freemmaann). All Rights Reserved.","ExtraSeats":{"1":{"Pos":"[26.67 108 83.07]","DoorSounds":true,"Ang":"{0 0 0}","EnterRange":80,"RadioControl":true}},"Author":"freemmaann"}

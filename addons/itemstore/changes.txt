@@ -1,0 +1,95 @@
+DISCLAIMER: This file may not accurately detail every change.
+
+ItemStore 3.0b r17:
+	+ New tooltip design for items
+	* Fixed being able to merge items into themselves
+
+ItemStore 3.0b r16:
+	* Fixed inventories sometimes not saving on disconnect
+
+ItemStore 3.0b r15:
+	- Minimize and maximize buttons no longer render on the flat skin
+	* Fixed empty death loot boxes spawning
+	* Fixed banksaves in singleplayer
+
+ItemStore 3.0b r14:
+	* Fixed money stacking
+
+ItemStore 3.0b r13:
+	* Fixed PickupKey not working right when disabled
+	* Fixed a small bug in the slot vgui code
+
+ItemStore 3.0b r12:
+	* More error checking on spawned_weapons
+
+ItemStore 3.0b r11:
+	* Spawned_weapons that are not actual weapons can't be used from the inventory
+
+ItemStore 3.0b r10:
+	* Fixed shop entities
+
+ItemStore 3.0b r9+:
+	* Fixed slots in new GMod update
+
+ItemStore 3.0b r9:
+	+ Added generic item entity for items that do not have their own entity
+	+ Added support for colors and materials in slots
+	
+	* Fixed a small inconsistency with the admin tools
+
+ItemStore 3.0b r8:
+	* Fixed errors with base_entity
+	* Fixed /trade being broken
+
+ItemStore 3.0b r7:
+	* Items try to keep track of the current container and slot they're in
+	* Okay weapons are fixed. For real. ARghargah.
+
+ItemStore 3.0b r6:
+	* Fixed a bug with weapons, again
+	* Fixed a bug with custom items
+
+ItemStore 3.0b r5:
+	* Documentation has moved to bitbucket
+	* Fixed a bug with weapons
+
+ItemStore 3.0b r4:
+	+ "Use with" functionality added for developers
+	* Fixed an error for certain items
+
+ItemStore 3.0b r3:
+	+ Food now supports being eaten directly from the inventory
+
+	* Code cleanup
+	* MySQL data provider uses BLOB instead of TEXT for item data
+	* Non-vanilla item support moved to seperate addon folder
+	* Fixed config.lua's DisabledItems not working
+
+ItemStore 3.0b r2:
+	* Shipments and weapons over the stack limit can no longer be picked up
+	* Fixed DataProvider being set to mysql by default
+
+	- Removed SQL debugging code, whoops!
+
+ItemStore 3.0b:
+	* About 80% of the code has been completely rewritten.
+	* This version is NOT BACKWARDS COMPATIBLE, sorry!
+
+	+ Containers can now have pages.
+	+ Configuration has been revamped. All cvars are moved to config.lua.
+		and config.lua is also verified for errors.
+	+ Config.lua falls back to defaults if an error is detected.
+	+ Custom item support has been moved into config.lua.
+	+ Multi-language support, see languages/ for information.
+	+ Data import and export: itemstore_import / itemstore_export commands.
+	+ Containers now control their width and height instead of a fixed number.
+	+ Developer documentation can be found in developers.txt.
+	+ Networking code has been rewritten and is over 50% more effecient
+	+ Skin system allows for easy to add, modular skins
+	+ "Flat" skin. Original ItemStore skin is available as "classic".
+
+	- Many config.lua options have been removed in favor of less hacky
+		solutions. More details inside of config.lua.
+	- No longer automatically adds the box entities to DarkRP's shop. You
+		must now do this yourself.
+	- mysqloo support has been removed. The mysql data provider uses tmysql4 now.
