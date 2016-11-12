@@ -10,6 +10,8 @@ require("mysqloo")
    Desc: LCONFIG template
 -----------------------------------------------------------]]
 
+print("DB: CONNECT")
+
 local LCONFIG = {}
 
 LCONFIG.DBName = "crp"
