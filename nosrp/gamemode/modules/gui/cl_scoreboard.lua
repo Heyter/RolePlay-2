@@ -174,7 +174,7 @@ function OpenScroeboard()
         raw.Think = function()
             raw.ping = v:Ping()
         end
-		raw:DoClick = function( self)
+		raw.DoClick = function( self)
 			OpenContextMenu( self )
 		end
 		
