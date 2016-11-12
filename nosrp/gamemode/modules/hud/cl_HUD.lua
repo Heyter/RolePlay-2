@@ -53,7 +53,7 @@ end
 local pl_health = 0
 local pl_stamina = 0
 
-hook.Add( "Initialize", "LoadPLHealth", function()
+hook.Add( "InitPostEntity", "LoadPLHealth", function()
 	pl_health = (LocalPlayer():Health() or 0)
 	pl_stamina = 0--(LocalPlayer():GetRPVar( "stamina" ) or 0)
 end)

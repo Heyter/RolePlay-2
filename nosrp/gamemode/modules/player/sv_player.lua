@@ -276,7 +276,9 @@ net.Receive( "NPC_LeaveJob", function( data, ply )
     if calc >= 60 then 
         ply:SwapTeam( TEAM_CITIZEN, true )
         ply.car = ply.car or nil
-        ply.car:Remove()
+
+        if ply.car then ply.car:Remove() end
+        
         return true 
     end
     ply:RPNotify( "Du musst noch " .. tostring( 60 - calc ) .. " Sekunden warten!", 5 )

@@ -266,7 +266,7 @@ function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
     local cartbl = FindCarTableByClassName( vehname )
 
 	if not VehData then
-		GAMEMODE:Log( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. vehname .. " geladen!" )
+		--GAMEMODE:Log( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. vehname .. " geladen!" )
 		return
 	end
 	local CarCreate = ents.Create(VehData.Class)

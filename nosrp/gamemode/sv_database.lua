@@ -64,7 +64,7 @@ function Query(sql, callback, errcallback)
           callback(results[1]["data"])
         end
       else
-        print("[RP] Error while executing Query:\n"..results[1].error.."\n\nQuery:\n"..query)
+        print("[RP] Error while executing Query:\n"..results[1].error.."\n\nQuery:\n"..sql)
         if errcallback and isfunction(errcallback) then
           errcallback(results[1]["error"])
         end
