@@ -1,4 +1,4 @@
---function Load_Plugins()
+function Load_Plugins()
 GM.RPPluginLoad = GM.RPPluginLoad or true
 
     if SERVER then
@@ -111,4 +111,11 @@ GM.RPPluginLoad = GM.RPPluginLoad or true
             GM.RPPluginLoad = false
         end
     end
---end
+end
+Load_Plugins()
+
+concommand.Add( "rp_reloadmodules", function( ply )
+	if !(ply:IsSuperAdmin()) then return false end
+	print( tostring( ply:Nick() ) .. " refreshed the RP MODULES!" )
+	Load_Plugins()
+end)
