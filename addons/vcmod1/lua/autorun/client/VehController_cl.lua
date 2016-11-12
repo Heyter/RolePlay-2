@@ -34,7 +34,7 @@ function VC_EaseInOut(num) return (math.sin(math.pi*(num-0.5))+1)/2 end
 function VC_FTm() local FTm = FrameTime()*100 return FTm end 
 
 concommand.Add("vc_getparticles", function(ply, cmd, arg) ply:ChatPrint('VCMod: Particle effects are not bundled with VCMod for legal matters.\nYou can still get particle effects from here: "http://www.filedropper.com/vcmodparticles".') end)
-local function CheckForEffects() if !file.Exists("models/vehicle.mdl", "GAME") and !file.Exists("particles/vehicle.pcf", "GAME") then GAMEMODE:AddNotify('VCMod: you appear to be missing particle effects, enter "vc_getparticles" in console to get them.', 1, 6) end end //local xcgsd = 76561252654015101
+local function CheckForEffects() if !file.Exists("models/vehicle.mdl", "GAME") and !file.Exists("particles/vehicle.pcf", "GAME") then if isfunction(GAMEMODE.AddNotify) then GAMEMODE:AddNotify('VCMod: you appear to be missing particle effects, enter "vc_getparticles" in console to get them.', 1, 6) end end end //local xcgsd = 76561252654015101
 timer.Create("vcmod_pcheck", 30, 4, function() CheckForEffects() end) timer.Simple(10, function() CheckForEffects() end)
 
 game.AddParticles("particles/vehicle.pcf") game.AddParticles("particles/weapon_fx.pcf")
