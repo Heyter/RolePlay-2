@@ -72,7 +72,10 @@ if SERVER then
 			   	end
 		   	end
 	   	else
-		   	timer.Destroy( ply:UniqueID() .. "_staminacheck" )
+	   		if IsValid(ply) and timer.Exists(ply:UniqueID() .. "_staminacheck") then
+		   		timer.Destroy( ply:UniqueID() .. "_staminacheck" )
+		   	end
+		   	
 		   	return
 	   	end
 	end
