@@ -1,7 +1,7 @@
 HUD_SKIN = {}
 
 //  Centered Top Text
-HUD_SKIN.TOP_TEXT = "IGRP ( PreAlpha ) - immortal-gaming.de"
+HUD_SKIN.TOP_TEXT = "EGRP ( PreAlpha ) - epic-gaming.de"
 HUD_SKIN.TOP_TEXT_RED = "Dies ist eine Alpha version. Es sind noch nicht alle Jobs -/ Features Verfügbar!"
 
 HUD_SKIN.THEME_COLOR = Color( 0, 153, 204, 255 )

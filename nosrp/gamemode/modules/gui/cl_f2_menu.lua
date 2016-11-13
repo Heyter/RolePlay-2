@@ -151,7 +151,7 @@ net.Receive("SCShowHelp", function(length, player)
     if !(f2_menu.visible) then 
        -- OpenF2Menu()
     else 
-        --CloseF2Menu() 
+        --CloseF2Menu()
     end
 end)
 
