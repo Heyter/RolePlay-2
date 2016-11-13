@@ -77,6 +77,8 @@ local function DrawName(ply, opacityScale)
     if LocalPlayer():InVehicle() then
         pos = ply:GetPos()
         ang = ply:GetAngles( ply:GetAngles().p, ply:GetAngles().y, ply:GetAngles().r )
+		
+		draw.SimpleText( "Tank: " .. tostring(LocalPlayer():GetVehicle():GetNWInt("fuel")), "RPNormal_24", ScrW()/2, ScrH() - 50, Color( 255, 255, 255, 100), 1, 1 )
     end
 
     cam.Start3D2D( pos, Angle( 0, ang.y, 90 ), 0.15 )

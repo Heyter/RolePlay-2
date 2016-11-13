@@ -17,7 +17,7 @@ hook.Add( "CanPlayerEnterVehicle", "CARS_CanEnterCar",  function( ply, veh, role
 end)
 
 hook.Add( "KeyPress", "CARS_KeyPress", function( ply, key )
-	if !(key == IN_JUMP) then return end
+	if !(key == IN_WALK) then return end
 	if !(ply:InVehicle()) or !(ply:GetVehicle():GetClass() == "prop_vehicle_jeep" or ply:GetVehicle():GetClass() == "prop_vehicle_jeep_old") then return end
 	local veh = ply:GetVehicle()
 	local fuel = veh:GetNWInt( "fuel" )
