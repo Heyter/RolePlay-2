@@ -13,7 +13,7 @@ SETTINGS = {}
 ///////////////////////////////////////////////////////
 
 SETTINGS.LANGUAGE = "GER"
-SETTINGS.SCOREBOARD_TITLE = "IGRP - RolePlay"
+SETTINGS.SCOREBOARD_TITLE = "EPG - RolePlay"
 SETTINGS.SCOREBOARD_SUBTITLE = "- PreAlpha -"
 
 // Stamina Settings
