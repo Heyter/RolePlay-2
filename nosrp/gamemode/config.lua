@@ -12,7 +12,7 @@ SETTINGS = {}
 // GAMEMEMODE BY: ThaRealCamotrax                    //
 ///////////////////////////////////////////////////////
 
-SETTINGS.LANGUAGE = "GER"
+SETTINGS.LANGUAGE = "GER" 
 SETTINGS.SCOREBOARD_TITLE = "EPG - RolePlay"
 SETTINGS.SCOREBOARD_SUBTITLE = "- PreAlpha -"
 

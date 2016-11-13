@@ -1,0 +1,272 @@
+"Vehicle"
+{
+	"WheelsPerAxle"		"2"
+	"Body"
+	{
+		"CounterTorqueFactor"	"1.5"
+		"MassCenterOverride"	"0 0 10"
+		"MassOverride"			"2699"
+		"AddGravity"			"1.33"
+		"MaxAngularVelocity"	"120"
+	}
+	"Engine"
+	{
+		"HorsePower""600"
+		"MaxRPM""5250"
+		"MaxSpeed""250"
+		"MaxReverseSpeed""35"
+		"AutobrakeSpeedGain""1.1"
+		"AutobrakeSpeedFactor""3"
+		"Autotransmission""0"
+		"AxleRatio""3.3"
+		"Gear""4.0"
+		"Gear""2.6"
+		"Gear""1.0"
+		"Gear""1.5"
+		"Gear""1.2"
+
+		"ShiftUpRPM""4750"
+		"ShiftDownRPM""4500"
+
+
+
+	}
+	"Steering"
+	{
+		"DegreesSlow"						"35"
+		"DegreesFast"						"25"
+		"DegreesBoost"						"5"
+		"FastDampen"						"0"
+		"SteeringExponent"					"0"
+		"SlowCarSpeed"						"45"
+		"FastCarSpeed"						"60"
+		"SlowSteeringRate"					"2"
+		"FastSteeringRate"					"1"
+		"SteeringRestRateSlow"				"3"
+		"SteeringRestRateFast"				"2"
+		"TurnThrottleReduceSlow"			"0"
+		"TurnThrottleReduceFast"			"0"
+		"BrakeSteeringRateFactor"			"3"
+		"ThrottleSteeringRestRateFactor"	"2"
+		"BoostSteeringRestRateFactor"		"1"
+		"BoostSteeringRateFactor"			"1"
+
+		"PowerSlideAccel"					"250"
+
+		"SkidAllowed"						"1"
+		"DustCloud"							"1"
+	}
+	"Axle"
+	{
+		"Wheel"
+		{
+			"Radius"						"16.2"
+			"Mass"							"450"
+			"Damping"					"0"
+			"RotDamping"					"0"
+			"Material"					"phx_rubbertire2"
+			"SkidMaterial"					"rubbertire"
+			"BrakeMaterial"					"jeeptire"
+		}
+		"Suspension"
+		{
+			"SpringConstant"				"95"
+			"SpringDamping"					"0.7"
+			"StabilizerConstant"			"2.5"
+			"SpringDampingCompression"		"4.5"
+			"MaxBodyForce"					"1050"
+		}
+		"TorqueFactor"						"0.5"
+		"BrakeFactor"						"0.50"
+	}
+	"Axle"
+	{
+		"Wheel"
+		{
+			"Radius"						"16.2"
+			"Mass"							"450"
+			"Damping"					"0"
+			"RotDamping"					"0"
+			"Material"					"phx_rubbertire2"
+			"SkidMaterial"					"rubbertire"
+			"BrakeMaterial"					"jeeptire"
+		}
+		"Suspension"
+		{
+			"SpringConstant"				"95"
+			"SpringDamping"					"0.7"
+			"StabilizerConstant"			"2.5"
+			"SpringDampingCompression"		"4.5"
+			"MaxBodyForce"					"1050"
+		}
+		"TorqueFactor"						"1.80"
+		"BrakeFactor"						"0.8"
+	}
+}
+
+
+"Vehicle_Sounds"
+{
+	"Gear"
+	{
+		"Max_Speed"				"0.05"
+		"Speed_Approach_Factor"	"1"
+	}
+	"Gear"
+	{
+		"Max_Speed"				"0.11"
+		"Speed_Approach_Factor"	"0.07"
+	}
+	"Gear"
+	{
+		"Max_Speed"				"0.25"
+		"Speed_Approach_Factor"	"0.07"
+	}
+	"Gear"
+	{
+		"Max_Speed"				"0.5"
+		"Speed_Approach_Factor"	"0.07"
+	}
+	"Gear"
+	{
+		"Max_Speed"				"0.8"
+		"Speed_Approach_Factor"	"0.07"
+	}
+	"Gear"
+	{
+		"Max_Speed"				"0.9"
+		"Speed_Approach_Factor"	"0.03"
+	}
+	"State"
+	{
+		"Name"		"SS_START_IDLE"
+		"Sound"		"vehicles/SGMCars/aventador/start.wav"
+		"Min_Time"	"1.00"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_0"
+		"Sound"		"vehicles/SGMCars/aventador/first.wav"
+		"Min_Time"	"0.75"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_1_RESUME"
+		"Sound"		"vehicles/SGMCars/aventador/first.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_3_RESUME"
+		"Sound"		"vehicles/SGMCars/aventador/third.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_3"
+		"Sound"		"vehicles/SGMCars/aventador/third.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_2"
+		"Sound"		"vehicles/SGMCars/aventador/second.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_1"
+		"Sound"		"vehicles/SGMCars/aventador/first.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_SHUTDOWN"
+		"Sound"		"vehicles/SGMCars/aventador/stop.wav"
+		"Min_Time"	"0"
+	}
+	"State"
+	{
+		"Name"		"SS_IDLE"
+		"Sound"		"vehicles/SGMCars/aventador/idle.wav"
+		"Min_Time"	"0"
+	}
+	"State"
+	{
+		"Name"		"SS_REVERSE"
+		"Sound"		"vehicles/SGMCars/aventador/rev.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_SHUTDOWN_WATER"
+		"Sound"		"atv_stall_in_water"
+		"Min_Time"	"0"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_4_RESUME"
+		"Sound"		"vehicles/SGMCars/aventador/fourth_cruise.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_SLOWDOWN"
+		"Sound"		"vehicles/SGMCars/aventador/throttle_off.wav"
+		"Min_Time"	"0"
+	}
+	"State"
+	{
+		"Name"		"SS_TURBO"
+		"Sound"		"vehicles/SGMCars/aventador/fourth_cruise.wav"
+		"Min_Time"	"2.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_0_RESUME"
+		"Sound"		"vehicles/SGMCars/aventador/first.wav"
+		"Min_Time"	"0.75"
+	}
+	"State"
+	{
+		"Name"		"SS_START_WATER"
+		"Sound"		"atv_start_in_water"
+		"Min_Time"	"0"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_2_RESUME"
+		"Sound"		"vehicles/SGMCars/aventador/second.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_GEAR_4"
+		"Sound"		"vehicles/SGMCars/aventador/fourth_cruise.wav"
+		"Min_Time"	"0.5"
+	}
+	"State"
+	{
+		"Name"		"SS_SLOWDOWN_HIGHSPEED"
+		"Sound"		"vehicles/SGMCars/aventador/throttle_off.wav"
+		"Min_Time"	"0"
+	}
+	"CrashSound"
+	{
+		"Min_Speed"			"350"
+		"Min_Speed_Change"	"250"
+		"Sound"				"atv_impact_medium"
+		"Gear_Limit"		"1"
+	}
+	"CrashSound"
+	{
+		"Min_Speed"			"450"
+		"Min_Speed_Change"	"350"
+		"Sound"				"atv_impact_heavy"
+		"Gear_Limit"		"0"
+	}
+
+	"Skid_LowFriction"		"common/null.wav"
+	"Skid_NormalFriction"	"common/null.wav"
+	"Skid_HighFriction"		"common/null.wav"
+}

@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "sentry/aventador/grille2"
+	"$bumpmap" "sentry/aventador/grille2_bump"
+	"$blendtintbybasealpha" 1
+	"$halflambert" 1
+	"$phong" "1"
+	"$phongboost" "25" 
+	"$phongfresnelranges" "[.5 .8 1]"
+	"$phongexponent" 50
+
+
+
+
+}

@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"name" "[Photon] SWAT Truck"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "vehicle",
+	"tags": 
+	[
+		"realism",
+		"roleplay"
+	]
+}"
+}

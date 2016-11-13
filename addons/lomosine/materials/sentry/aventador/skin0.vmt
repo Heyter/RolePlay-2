@@ -1,0 +1,37 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "sentry/aventador/skin"
+	"$bumpmap" "sentry/aventador/skin_nm"
+    $surfaceprop "metal"
+    $blendtintbybasealpha "1"
+    $envmap "env_cubemap"
+    $envmaptint "[0.5 0.5 0.5]"
+    $envmapcontrast "1"
+    $envmapsaturation ".5"
+    $envmapfresnel "1"
+    $phong "1"
+    $phongexponent "7"
+    $phongboost "10"
+    $phongfresnelranges "[.05 .3 1]"
+    $deftint "[.25 0.25 0.3]"
+"Proxies"
+{
+    "Add"
+    {
+        srcVar1 "$color"
+        srcVar2 "$deftint"
+        resultVar "$phongtint"
+    }
+    "Add"
+    {
+        srcVar1 "$color"
+        srcVar2 "$deftint"
+        resultVar "$envmaptint"
+    }
+}
+	$detail "sentry/aventador/paint"
+	$detailscale "100"
+	$detailblendfactor "0.18"
+	$detailblendmode "1"
+
+}

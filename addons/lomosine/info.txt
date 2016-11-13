@@ -1,0 +1,12 @@
+"AddonInfo"
+{
+	"name" "2012 Lamborghini Aventador Lambosine"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "vehicle",
+	"tags": 
+	[]
+}"
+}

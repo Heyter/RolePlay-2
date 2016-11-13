@@ -1,0 +1,15 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "sentry/aventador/interior"
+	"$bumpmap" "sentry/aventador/interior_bump"
+    $phong "1"
+    $phongexponent "7"
+    $phongboost "6"
+    $phongfresnelranges "[.05 .3 1]"
+	"$blendtintbybasealpha" 1
+	"$nocull" "1"
+	$detail "sentry/aventador/interior_illummask"
+	$detailscale "1"
+	$detailblendfactor "10"
+	$detailblendmode "1"
+}
