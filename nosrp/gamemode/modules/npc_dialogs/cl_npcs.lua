@@ -51,16 +51,8 @@ local function openDialog( dialog, npc )
 	modelPanel:SetModel( npc:GetModel( ) )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
+	modelPanel:SetFOV( 120 )
 
-	local mn, mx = modelPanel.Entity:GetRenderBounds()
-	local size = 0
-	size = math.max( size, math.abs( mn.x ) + math.abs( mx.x ) )
-	size = math.max( size, math.abs( mn.y ) + math.abs( mx.y ) )
-	size = math.max( size, math.abs( mn.z ) + math.abs( mx.z ) )
-
-	modelPanel:SetFOV( 14 )
-	modelPanel:SetCamPos( Vector( size, size, size ) )
-	modelPanel:SetLookAt( ( mn + mx ) * 0.5 )
 	--local max, min = modelPanel:GetEntity():GetRenderBounds()
     --modelPanel:SetCamPos( Vector( 0.55, 0.55, 0.55 ) * min:Distance( max ) )
 	--modelPanel:SetLookAt( ( min + max ) / 2 )
@@ -73,6 +65,17 @@ local function openDialog( dialog, npc )
 		draw.RoundedBox( 6, 0, 0, self:GetWide( ), self:GetTall( ), Color( 80, 80, 80 ) )
 		p( self )
 	end
+
+	local eyepos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
+
+	eyepos:Add( Vector( 0, 0, 2 ) )	-- Move up slightly
+
+	modelPanel:SetLookAt( eyepos )
+
+	modelPanel:SetCamPos( eyepos-Vector( -12, 0, 0 ) )	-- Move cam in front of eyes
+
+	modelPanel.Entity:SetEyeTarget( eyepos-Vector( -12, 0, 0 ) )
+
 	--modelPanel:SetFOV( 14 )
 	--modelPanel:SetLookAt( modelPanel.Entity:GetPos( ) + Vector( 0, 0, 60 ) )
 	
