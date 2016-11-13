@@ -1,0 +1,10 @@
+ "AddonInfo"
+ {
+    "name"                "Realistic Handcuffs"
+    "version"             "1.2.7"
+    "up_date"             "2016"
+    "author_name"         "ToBadForYou"
+    "author_email"        "tobadforyou@outlook.com"
+    "author_url"	  "None"
+    "info"                "A handcuff system to improve roleplay."
+ }

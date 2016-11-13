@@ -19,7 +19,7 @@ JOB.Weapons = { "weapon_physcannon",               // Was hat der Job für Waffe
 				"weapon_arc_atmcard",
                 "weapon_fists",
                 "m9k_sig_p229r", 
-                "weapon_cuff_elastic", 
+                "weapon_r_handcuffs", 
                 "weapon_stick"
 }
 JOB.DemoteOnDeath = false
