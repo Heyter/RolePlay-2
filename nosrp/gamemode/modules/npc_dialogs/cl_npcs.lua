@@ -58,7 +58,7 @@ local function openDialog( dialog, npc )
 	size = math.max( size, math.abs( mn.y ) + math.abs( mx.y ) )
 	size = math.max( size, math.abs( mn.z ) + math.abs( mx.z ) )
 
-	modelPanel:SetFOV( 100 )
+	modelPanel:SetFOV( 14 )
 	modelPanel:SetCamPos( Vector( size, size, size ) )
 	modelPanel:SetLookAt( ( mn + mx ) * 0.5 )
 	--local max, min = modelPanel:GetEntity():GetRenderBounds()
