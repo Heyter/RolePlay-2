@@ -16,7 +16,7 @@ net.Receive( "ShowCharMenu", function()
 		draw.SimpleTextOutlined( "Vorname:","RPNormal_45", DFrame1:GetWide()/2.55, DFrame1:GetTall()/3.8, Color( 255, 255, 255, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
 		draw.SimpleTextOutlined( "Nachname:","RPNormal_45", DFrame1:GetWide()/2.55, DFrame1:GetTall()/2.34, Color( 255, 255, 255, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
 		draw.SimpleTextOutlined( "Erstelle ein Spieleraccount","RPNormal_35", 35, 80, Color( 255, 102, 0, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
-		draw.SimpleTextOutlined( "Willkommen auf unseren NOS-RP!","RPNormal_45", 35, 25, Color( 255, 255, 255, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
+		draw.SimpleTextOutlined( "Willkommen auf unseren EPG RP!","RPNormal_45", 35, 25, Color( 255, 255, 255, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
 		draw.SimpleTextOutlined( "Passwort:","RPNormal_45", DFrame1:GetWide()/1.52, DFrame1:GetTall()/2.34, Color( 255, 255, 255, 255 ), 0, 0, 0.5, Color( 0, 0, 0, 50 ))
 	end
 	 
