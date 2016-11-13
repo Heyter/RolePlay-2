@@ -51,10 +51,12 @@ local function openDialog( dialog, npc )
 	modelPanel:SetModel( npc:GetModel( ) )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
+	
+	local max, min = modelPanel:GetEntity():GetRenderBounds()
+    modelPanel:SetCamPos( Vector( 0.55, 0.55, 0.55 ) * min:Distance( max ) )
+	modelPanel:SetLookAt( ( min + max ) / 2 )
 	function modelPanel:LayoutEntity( )
-		local max, min = modelPanel:GetEntity():GetRenderBounds()
-	    modelPanel:SetCamPos( Vector( 0.55, 0.55, 0.55 ) * min:Distance( max ) )
-		modelPanel:SetLookAt( ( min + max ) / 2 )
+		
 		--modelPanel:SetCamPos( Vector( 50, -10, 60 ) )
 		--modelPanel.Entity:SetAngles( Angle( -13, -10, 0 ) )
 	end
