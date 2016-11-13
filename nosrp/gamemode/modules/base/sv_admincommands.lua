@@ -44,6 +44,8 @@ PrintTable( args )
 	
 	admin:RPNotify( "Der Spieler Geld wurde Bearbeitet!", 3 )
 	
+	print( target )
+	print( args[2] )
 	target:AddMoney( tonumber( args[2] ) )
 	return true
 end)
