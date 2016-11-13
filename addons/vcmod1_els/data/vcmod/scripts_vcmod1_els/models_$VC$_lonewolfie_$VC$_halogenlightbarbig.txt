@@ -1,1 +1,0 @@
-{"Siren":{"Lights":{"1":{"Sprite":{"GlowPrxSize":2,"Size":0.4},"Dynamic":{"Size":1,"Brightness":2},"UseDynamic":true,"Color":{"1":0,"2":0,"3":0},"Pos":"[-4.32 27.23 5.34]","SpecSpin":[],"UseSprite":true}},"Sequences":{"1":{"SubSeq":{"1":{"Stages":{"1":{"Lights":{"1":1},"Time":0.5},"2":{"Lights":[],"Time":0.5}},"Time":5,"Type":"Each side"}},"Lights_Sel":{"1":true}}}}}

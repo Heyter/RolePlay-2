@@ -1,0 +1,8 @@
+"AddonInfo"
+{
+	"name"		"VCMod ELS"
+	"version"	"-"
+	"author_name"	"freemmaann"
+	"author_email"	"freemmaann@gmail.com"
+	"info"		""
+}

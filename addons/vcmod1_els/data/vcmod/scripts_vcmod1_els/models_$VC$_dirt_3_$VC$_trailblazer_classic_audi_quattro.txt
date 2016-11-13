@@ -1,1 +1,0 @@
-{"Date":"09/01/13 00:47:04","Siren":{"NormalSound":"VehController/police_short.wav","Pitch":100,"UseNormal":true,"Volume":1,"Distance":95,"UseQuick":true,"QuickSound":"VehController/police_quick.wav"},"Author":"freemmaann, VCMod.net"}
