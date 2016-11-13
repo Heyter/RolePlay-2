@@ -1,5 +1,6 @@
 
 concommand.Add( "rp_demote", function( admin, cmd, args )
+	PrintTable( args )
 	if !(IsValid( ply )) then return false end
 	if !(ply:IsAdmin()) then return false end
 	if !(args[1]) then return false end
@@ -15,6 +16,7 @@ concommand.Add( "rp_demote", function( admin, cmd, args )
 end)
 
 concommand.Add( "rp_job", function( admin, cmd, args )
+PrintTable( args )
 	if !(IsValid( ply )) then return false end
 	if !(ply:IsAdmin()) then return false end
 	if !(args[1]) then return false end
@@ -31,6 +33,7 @@ concommand.Add( "rp_job", function( admin, cmd, args )
 end)
 
 concommand.Add( "rp_givecash", function( admin, cmd, args )
+PrintTable( args )
 	if !(IsValid( ply )) then return false end
 	if !(ply:IsSuperAdmin()) then return false end
 	if !(args[1]) then return false end
