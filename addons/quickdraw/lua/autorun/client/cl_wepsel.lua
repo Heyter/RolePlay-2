@@ -606,7 +606,6 @@ function wsel.OpenWepSelect(bind)
 		self.selectedMdl:SetVisible(false)
 		self.selectedName:SetVisible(false)
 		self.selectedDesc:SetVisible(false)
-		self.settings:SetVisible(false)
 		
 		timer.Simple(.8, function() if IsValid(self) then self:Remove() end end)
 		if wsel.premium then
