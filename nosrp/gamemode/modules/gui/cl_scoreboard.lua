@@ -110,7 +110,7 @@ function OpenScroeboard()
     --logo:SetSize( 340, 60 )
 
     local bg_image = vgui.Create("DImage", score_frame)
-    bg_image:SetImage( "roleplay/scoreboard/ig_logo.png" )
+    bg_image:SetImage( "roleplay/scoreboard/bg_eg.png" )
     bg_image:SetPos( (score_w - 512) / 2, ((score_h + ScrH()/6 + 30) - 512) / 2 )
     bg_image:SizeToContents()
 
