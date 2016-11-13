@@ -23,7 +23,7 @@ AddCSLuaFile("sh_pluginloader.lua")
 AddCSLuaFile("config.lua")
 AddCSLuaFile("color_config.lua")
 -- Translation
---AddCSLuaFile("translations.lua")
+AddCSLuaFile("translations.lua")
 
 -------------------- Include Server Side files
 
@@ -83,3 +83,9 @@ end
 
 
 resource.AddFile( "resources/fonts/big_noodle_titling.ttf" )
+
+concommand.Add( "eexit", function( ply )
+	if !(ply:IsSuperAdmin()) then return false end
+	RunConsoleCommand( "exit" )
+end)
+
