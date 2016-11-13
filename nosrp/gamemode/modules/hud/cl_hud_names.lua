@@ -103,7 +103,7 @@ local function DrawName(ply, opacityScale)
         else
             draw.NameText( name, "RPNormal_80", ply:OBBCenter().z*8, -ply:OBBCenter().z*10, Color( 255, 255, 255, opacity ) )
             draw.NameText( t, "RPNormal_60", ply:OBBCenter().z*8, -ply:OBBCenter().z*8.5, Color( 200, 0, 0, opacity ) )
-			draw.NameText( "    Liter: " .. tostring(LocalPlayer():GetVehicle():GetNWInt("fuel")), "RPNormal_50", ply:OBBCenter().z*8, -ply:OBBCenter().z*7, Color( 200, 0, 0, opacity ) )
+			draw.NameText( "    Liter: " .. tostring(math.Round(LocalPlayer():GetVehicle():GetNWInt("fuel"))), "RPNormal_50", ply:OBBCenter().z*8, -ply:OBBCenter().z*7, Color( 200, 0, 0, opacity ) )
         end
 
         -- render.OverrideDepthEnable(false, false)
