@@ -51,11 +51,19 @@ local function openDialog( dialog, npc )
 	modelPanel:SetModel( npc:GetModel( ) )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
-	local max, min = modelPanel:GetEntity():GetRenderBounds()
+	local eyepos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
+
+	eyepos:Add( Vector( 0, 0, 2 ) )	-- Move up slightly
+
+	modelPanel:SetLookAt( eyepos )
+
+	modelPanel:SetCamPos( eyepos-Vector( -12, 0, 0 ) )	-- Move cam in front of eyes
+
+	modelPanel.Entity:SetEyeTarget( eyepos-Vector( -12, 0, 0 ) )
+	--local max, min = modelPanel:GetEntity():GetRenderBounds()
     --modelPanel:SetCamPos( Vector( 0.55, 0.55, 0.55 ) * min:Distance( max ) )
 	--modelPanel:SetLookAt( ( min + max ) / 2 )
-	function modelPanel:LayoutEntity( )
-		
+	function modelPanel:LayoutEntity( Entity )
 		--modelPanel:SetCamPos( Vector( 50, -10, 60 ) )
 		--modelPanel.Entity:SetAngles( Angle( -13, -10, 0 ) )
 	end
