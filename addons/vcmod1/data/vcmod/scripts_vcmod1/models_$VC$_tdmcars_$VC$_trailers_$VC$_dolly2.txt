@@ -1,1 +1,0 @@
-{"HookType":2,"SocketType":1,"UseSocket":true,"HookPos":"[0 114.65 35.9]","SocketPos":"[0 7.99 36.54]","Copyright":"Copyright © 2015 VCMod (freemmaann). All Rights Reserved.","UseHook":true,"Date":"03/06/15 13:32:50","Author":"freemmaann"}

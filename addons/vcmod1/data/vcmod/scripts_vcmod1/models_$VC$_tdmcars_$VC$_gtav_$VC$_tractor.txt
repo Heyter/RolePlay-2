@@ -1,1 +1,0 @@
-{"Date":"10/08/14 23:19:05","Exhaust":{"1":{"Ang":"{0 -90 0}","Pos":"[8.63 9.08 14.93]","EffectStress":"VC_Exhaust_Stress","EffectIdle":"VC_Exhaust"}},"ExtraSeats":{"1":{"Pos":"[0 -63 33.85]","DoorSounds":true,"Ang":"{0 180 0}","EnterRange":80,"RadioControl":true}},"Author":"freemmaann"}

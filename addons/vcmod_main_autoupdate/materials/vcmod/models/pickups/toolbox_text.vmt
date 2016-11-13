@@ -1,0 +1,29 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "vcmod/models/pickups/toolbox_text"
+	"$bumpmap" "vcmod/models/pickups/toolbox_bump"
+
+	"$translucent" 1
+	"$normalmapalphaenvmapmask" 1
+	"$nodecal" "1"
+
+    	$phong "1"
+    	$phongexponent "2"
+    	$phongboost "0.4"
+    	$phongfresnelranges "[ .2 .2 1]"
+	$phongtint "[0.1 0.1 0.1]"
+
+	"$colorfix" "{190 190 190}"
+	"Proxies"
+	{
+		"Equals"
+		{
+			srcVar1 $colorfix
+			resultVar	$color
+		}
+	}
+}
+
+
+
+

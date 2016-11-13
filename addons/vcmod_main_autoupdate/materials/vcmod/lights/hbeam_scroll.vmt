@@ -1,0 +1,27 @@
+"UnLitTwoTexture"
+{
+	"$baseTexture" "vcmod/lights/hbeam"
+	"$texture2" "vcmod/lights/hbeam_scroll" 
+	"$nocull" 1	
+	"$additive" 1
+	"$translucent" 1
+	"$vertexalpha" 1
+	"$vertexcolor" 1
+	"Proxies"
+	{
+		"Equals"
+		{
+			"$srcVar1" "$color"
+			"$resultVar" "$color2"
+		}
+
+		"TextureScroll"
+		{
+			"texturescrollvar" "$texture2transform"
+			"texturescrollrate" 0.02
+			"texturescrollangle" -135
+		}	
+
+	}
+}
+// Copyright © 2012-2016 VCMod (freemmaann). All Rights Reserved. If you have any complaints or ideas contact me: steam: freemmaann, email - freemmaann@gmail.com or skype - comman6. Pass me the Mountain Dew

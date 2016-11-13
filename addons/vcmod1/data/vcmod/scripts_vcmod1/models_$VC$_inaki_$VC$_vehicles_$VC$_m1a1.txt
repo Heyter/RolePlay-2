@@ -1,1 +1,0 @@
-{"Date":"08/06/14 00:04:05","ExtraSeats":{"1":{"Pos":"[0.0152 98.999 32.7844]","DoorSounds":true,"Ang":"{0 0 0}","EnterRange":80,"RadioControl":true},"2":{"Ang":"{0 0 0}","Pos":"[-0.0152 66.0115 32.7844]","EnterRange":80,"DoorSounds":true},"3":{"Ang":"{0 0 0}","Pos":"[0.02 66.01 32.78]","EnterRange":80,"DoorSounds":true}},"Author":"freemmaann vcmod.club"}

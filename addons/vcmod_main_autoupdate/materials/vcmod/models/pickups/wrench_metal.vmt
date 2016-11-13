@@ -1,0 +1,37 @@
+"vertexlitgeneric"
+{
+	"$basetexturetransform" "center .2 .2 scale 35 35 rotate 0 translate 0 0"
+	"$basetexture" "vcmod/models/pickups/wrench_metal"
+	"$bumpmap" "vcmod/models/pickups/wrench_metal_bump"
+
+	"$normalmapalphaenvmapmask" 1
+	"$nodecal" "1"
+   	$surfaceprop "metal"
+
+    	$envmap "env_cubemap"
+    	$envmaptint "[0.2 0.2 0.2]"
+    	$envmapcontrast "1"
+    	$envmapsaturation "1"
+    	$envmapfresnel "1"
+
+    	$phong "1"
+    	$phongexponent "8"
+    	$phongboost "8"
+    	$phongfresnelranges "[ .2 .2 1]"
+
+	"$detail" "vcmod/models/pickups/wrench_metal_detail"
+	"$detailscale" "20"
+	"$detailblendfactor" "2"
+	"$detailblendmode" "0"
+
+	"$colorfix" "{100 100 100}"
+	"Proxies"
+	{
+		"Equals"
+		{
+			srcVar1 $colorfix
+			resultVar	$color
+		}
+	}
+}
+

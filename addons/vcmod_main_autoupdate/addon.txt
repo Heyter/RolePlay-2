@@ -1,0 +1,8 @@
+"AddonInfo"
+{
+	"name"		"VCMod Main"
+	"version"	"-"
+	"author_name"	"freemmaann"
+	"author_email"	"freemmaann@gmail.com"
+	"info"		""
+}
