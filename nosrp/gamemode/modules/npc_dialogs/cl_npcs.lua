@@ -10,7 +10,7 @@ DIALOG = DIALOG or {}
 
 local function openDialog( dialog, npc )
 	local frame = vgui.Create( "DFrame" )
-	frame:SetSize( 490, 250 )
+	frame:SetSize( 500, 250 )
 	frame:SetTitle( "" )
 	frame:SetPos( ScrH( ) - frame:GetTall( ), ScrW( ) / 2 - frame:GetWide( ) / 2 )
 	frame:SetVisible( true )
