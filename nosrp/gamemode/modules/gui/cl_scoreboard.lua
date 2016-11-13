@@ -11,6 +11,8 @@ local function OpenContextMenu( tab )
 	context:AddOption("Steam Community Profil", function() ply:ShowProfile() end):SetImage("icon16/world.png")
 	context:AddOption("GExtension Profil", function() gui.OpenURL( "http://gmodweb.epic-gaming.de/?t=user&id=" .. ply:SteamID64()) end):SetImage("icon16/vcard.png")
 
+	context:AddSpacer()
+	
 	if LocalPlayer():IsUserGroup("operator") or LocalPlayer():IsUserGroup("moderator") or LocalPlayer():IsUserGroup("superadmin") or LocalPlayer():IsUserGroup("supporter") then  
 		local admintools,menuimg = context:AddSubMenu("Admin")
 		menuimg:SetImage("icon16/shield.png")
@@ -44,6 +46,32 @@ local function OpenContextMenu( tab )
 		admintools:AddOption("Spectate", function() RunConsoleCommand("ulx","spectate",ply:Nick()) end):SetImage("icon16/zoom.png")
 
 		admintools:AddSpacer()
+	end
+	
+	if LocalPlayer():IsAdmin() then
+		local admintools,menuimg = context:AddSubMenu("GameControl")
+		menuimg:SetImage("icon16/brick.png")
+		
+		
+		
+		/// Job
+		local job,menuimg2 = admintools:AddSubMenu("Job Control")
+		menuimg2:SetImage("icon16/user.png")
+		job:AddOption("Demote", function() RunConsoleCommand("rp_demote",ply:SteamID()) end):SetImage("icon16/user_delete.png")
+		job:AddSpacer()
+		job:AddOption("Mayor", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_MAYOR) end)
+		job:AddOption("Police", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_POLICE) end)
+		job:AddOption("SWAT", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_SWAT) end)
+		job:AddOption("Secret-Service", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_SECRETSERVICE) end)
+		job:AddOption("Fireman", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_FIRE) end)
+		job:AddOption("Medic", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_MEDIC) end)
+		job:AddOption("Road-Service", function() RunConsoleCommand("rp_job",ply:SteamID(), JOB_ROAD) end)
+		
+		// Give Cash & Co
+		local User,menuimg3 = admintools:AddSubMenu("User Control")
+		menuimg3:SetImage("icon16/joystick.png")
+		User:AddOption("Give -/ Take Money", function() Derma_StringRequest( "Amount", "Enter -amount to take, and just the amount to give money.", "", function(str) RunConsoleCommand("rp_givecash",ply:SteamID(),str) end, nil, "Give", "Cancel" ) end):SetImage("icon16/money.png")
+		
 	end
 	
 	context:Open()
