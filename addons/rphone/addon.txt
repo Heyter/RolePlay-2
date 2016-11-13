@@ -1,0 +1,8 @@
+"AddonInfo"
+{
+	"name"        "rPhone"
+	"version"     "1.4.3"
+	"author_name" "Dan"
+	"info"        "A realistic Smartphone addon for Garry's Mod."
+	"override"    "0"
+}
