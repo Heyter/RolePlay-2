@@ -33,7 +33,6 @@ PrintTable( args )
 end)
 
 concommand.Add( "rp_givecash", function( admin, cmd, args )
-PrintTable( args )
 	if !(IsValid( admin )) then return false end
 	if !(admin:IsSuperAdmin()) then return false end
 	if !(args[1]) then return false end
@@ -43,9 +42,7 @@ PrintTable( args )
 	if !(IsValid(target)) then return false end
 	
 	admin:RPNotify( "Der Spieler Geld wurde Bearbeitet!", 3 )
-	
-	print( target )
-	print( args[2] )
-	target:AddMoney( tonumber( args[2] ) )
+
+	target:AddCash( tonumber( args[2] ) )
 	return true
 end)
