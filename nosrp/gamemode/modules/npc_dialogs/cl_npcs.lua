@@ -10,7 +10,7 @@ DIALOG = DIALOG or {}
 
 local function openDialog( dialog, npc )
 	local frame = vgui.Create( "DFrame" )
-	frame:SetSize( 500, 250 )
+	frame:SetSize( 490, 250 )
 	frame:SetTitle( "" )
 	frame:SetPos( ScrH( ) - frame:GetTall( ), ScrW( ) / 2 - frame:GetWide( ) / 2 )
 	frame:SetVisible( true )
@@ -58,7 +58,7 @@ local function openDialog( dialog, npc )
 	size = math.max( size, math.abs( mn.y ) + math.abs( mx.y ) )
 	size = math.max( size, math.abs( mn.z ) + math.abs( mx.z ) )
 
-	modelPanel:SetFOV( 45 )
+	modelPanel:SetFOV( 100 )
 	modelPanel:SetCamPos( Vector( size, size, size ) )
 	modelPanel:SetLookAt( ( mn + mx ) * 0.5 )
 	--local max, min = modelPanel:GetEntity():GetRenderBounds()
