@@ -257,17 +257,6 @@ function wsel.OpenWepSelect(bind)
 	//Set global variable
 	g_WepSelect = radial
 	
-	//Create settings button:
-	radial.settings = vgui.Create("DButton",radial)
-	radial.settings:SetSize(250,100)
-	radial.settings:SetText("Quickdraw by Bobblehead")
-	radial.settings:CenterHorizontal()
-	radial.settings:AlignBottom(10)
-	radial.settings:SetTextColor(Color(255,255,255))
-	function radial.settings:Paint(w,h)
-		draw.RoundedBox(8,0,0,w,h,Color(0,0,0,200))
-	end
-	
 	//Create centerpieces:
 	radial.selectedMdl = vgui.Create("DImage",radial)
 	radial.selectedMdl:SetSize(400,400)
