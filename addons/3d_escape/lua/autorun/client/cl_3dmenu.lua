@@ -3,7 +3,7 @@ local Config = {}
 --- 3D ESCAPE MENU CONFIGURATION ---
 
 Config.DeathrunWorkaround = false
-Config.IgnoreConsole = false -- set this to false if you want your console to bypass the esc menu
+Config.IgnoreConsole = true -- set this to false if you want your console to bypass the esc menu
 Config.CameraCollision = true -- set this to false if you would rather have the camera phase through walls when the menu is active
 
 Config.Header = {}
