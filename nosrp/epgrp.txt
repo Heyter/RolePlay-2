@@ -1,0 +1,17 @@
+"epgrp"
+{
+	"base"		"sandbox"
+    "title"  "Epic-Gaming RolePlay"
+    "version"   "0.0.1"
+    "menusystem"	"1"
+
+    "author_name"   "ThaRealCamotrax"
+    "maps"          "^rp_"
+    "author_email"  ""
+    "author_url"    ""
+
+    "icon"  ""
+    "info"  ""
+    "hide"  "0"
+}
+

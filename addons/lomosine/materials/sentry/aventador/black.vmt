@@ -1,0 +1,5 @@
+"vertexlitgeneric"
+{
+	"$basetexture" "sentry/aventador/black"	
+	"$blendtintbybasealpha" 1
+}

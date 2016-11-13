@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "sentry/aventador/carbonFiber"
+	"$blendtintbybasealpha" "1"
+}

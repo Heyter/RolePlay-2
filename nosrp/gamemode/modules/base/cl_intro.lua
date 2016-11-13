@@ -30,9 +30,9 @@ function tutorial.AddMove( name, from_pos, to_pos, look_to, time, drawing_functi
 end
 
 tutorial.AddMove( "TEST#1", Vector(-5950, -7761, 175), Vector(-5968, -6171, 175), Angle(0, 0, 0), 15, function( time )
-    draw.SimpleText( "Willkommen zu NOS Role-Play", "Trebuchet50", ScrW()/3.3 + (-150-time*20), ScrH()/1.5, Color( 50, 150, 255, 150 ) )
+    draw.SimpleText( "Willkommen zu EPGRP", "Trebuchet50", ScrW()/3.3 + (-150-time*20), ScrH()/1.5, Color( 50, 150, 255, 150 ) )
     draw.SimpleText( "Gamemode von: ThaRealCamotrax", "Trebuchet50", ScrW()/3 + (-380+time*10), ScrH()/1.4, Color( 255, 255, 255, 50 ) )
-    draw.SimpleText( "Just4FunKiller", "Trebuchet25", ScrW()/1.79 + (-350+time*10), ScrH()/1.32, Color( 255, 255, 255, 50 ) )
+    draw.SimpleText( "IBot3 und P4sca1", "Trebuchet25", ScrW()/1.79 + (-350+time*10), ScrH()/1.32, Color( 255, 255, 255, 50 ) )
 end)
 tutorial.AddMove( "TEST#2", Vector(-5777, 13698, 274), Vector(-6287, 13693, 678), Angle(10, 180, 0), 7.5, function( time )
     draw.SimpleText( "Die RolePlay Revolution!", "Trebuchet50", ScrW()/3.3 + (-140-time*20), ScrH()/1.5, Color( 50, 150, 255, 150 ) )
@@ -120,12 +120,12 @@ tutorial.AddMove( "TEST#15", Vector(-527, 4553, 398), Vector(-308, 4840, 612), A
 end)
 tutorial.AddMove( "TEST#15", Vector(-5751, -10686, 197), Vector(-5748, -9847, 197), Angle(0, 180, 0), 14.6, function( time )
     draw.SimpleText( "Und jetzt viel Spaß auf unseren RP!", "Trebuchet50", ScrW()/3.3 + (-140-time*20), ScrH()/1.5, Color( 50, 150, 255, 150 ) )
-    draw.SimpleText( "Web: WwW.NOS-Gaming.de", "Trebuchet50", ScrW()/3 + (-380+time*10), ScrH()/1.4, Color( 255, 255, 255, 50 ) )
+    draw.SimpleText( "Web: WwW.Epic-Gaming.de", "Trebuchet50", ScrW()/3 + (-380+time*10), ScrH()/1.4, Color( 255, 255, 255, 50 ) )
     tutorial.config.fading_end = 3
     tutorial.config.fading_start = 3
 end)
 tutorial.AddMove( "TEST#16", Vector(-8477, -9359, 255), Vector(-8477, -9359, 983), Angle(9, -144, 0), 20, function( time )
-    draw.SimpleText( "NOS", "RPNormal_45", ScrW()/2, ScrH()/2.2, Color( 255, 153, 0, 100 ), 1, 1 )
+    draw.SimpleText( "EPG", "RPNormal_45", ScrW()/2, ScrH()/2.2, Color( 255, 153, 0, 100 ), 1, 1 )
     draw.SimpleText( " - RolePlay - ", "RPNormal_60", ScrW()/2, ScrH()/2, Color( 50, 150, 255, 150 ), 1, 1 )
     draw.SimpleText( "Credits: Sligwolf - Models", "Trebuchet15", ScrW()/2, ScrH()/1.87, Color( 255, 255, 255, 100 ), 1, 1 )
     tutorial.config.fading_end = 2
