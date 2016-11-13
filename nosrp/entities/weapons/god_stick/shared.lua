@@ -120,7 +120,7 @@ local Gears = {};
 			return false;
 		end
 		
-		Gears[self.Owner:GetTable().CurGear][4](self.Owner, trace);
+		Gears[Gear][4](self.Owner, trace);
   end
   
 
