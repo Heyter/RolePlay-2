@@ -1,3 +1,3 @@
 if SERVER then
-	resource.AddCollection(140550510)
+	resource.AddCollection("798650513")
 end
