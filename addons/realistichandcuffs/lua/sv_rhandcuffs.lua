@@ -129,12 +129,12 @@ function PLAYER:RHCRestrain(HandcuffedBy)
         self:SetupRBones()
         self:SetupCuffs()
         self:SetupWeapons()
-        DarkRP.notify(self, 1, 4, "You have been cuffed by: " .. HandcuffedBy:Nick() .. ".")
-        DarkRP.notify(HandcuffedBy, 1, 4, "You successfully cuffed " .. self:Nick() .. ".")    
+		self:RPNotify( "You have been cuffed by: " .. HandcuffedBy:Nick() .. ".", 3 )
+		HandcuffedBy:RPNotify( "You successfully cuffed " .. self:Nick() .. ".", 3 )   
     elseif self.Restrained then
         self:CleanUpRHC(true)
-        DarkRP.notify(self, 1, 4, "You have been released by: " .. HandcuffedBy:Nick() .. ".")
-        DarkRP.notify(HandcuffedBy, 1, 4, "You successfully released " .. self:Nick() .. ".")              
+		self:RPNotify( "You have been released by: " .. HandcuffedBy:Nick() .. ".", 3 )
+		HandcuffedBy:RPNotify( "You successfully released " .. self:Nick() .. ".", 3 ) 
     end
 end
  
@@ -250,8 +250,9 @@ end)
 hook.Add("onLockpickCompleted", "OnSuccessPickCuffs", function(Player, Success, CuffedP)
     if CuffedP:GetNWBool("rhc_cuffed", false) and Success then
         CuffedP:CleanUpRHC(true)
-        DarkRP.notify(CuffedP, 1, 4, "You have been released by: " .. Player:Nick() .. ".")
-        DarkRP.notify(Player, 1, 4, "You successfully released " .. CuffedP:Nick() .. ".")
+		
+        CuffedP:RPNotify("You have been released by: " .. Player:Nick() .. ".", 3)
+        Player:RPNotify("You successfully released " .. CuffedP:Nick() .. ".", 3)
         if CuffedP:isArrested() then
             CuffedP:unArrest(Player)
         end
@@ -260,7 +261,7 @@ end)
  
 hook.Add("CanPlayerEnterVehicle", "RestrictEnteringVCuffs", function(Player, Vehicle)
     if Player.Restrained and !Player.DraggedBy then
-        DarkRP.notify(Player, 1, 4, "You can't enter a vehicle while cuffed!") 
+		Player:RPNotify("You can't enter a vehicle while cuffed!", 3)
         return false
 	elseif Player.Dragging then
 		return false
@@ -283,7 +284,7 @@ end)
  
 hook.Add("CanExitVehicle", "RestrictLeavingVCuffs", function(Vehicle, Player)
     if Player.Restrained then
-        DarkRP.notify(Player, 1, 4, "You can't leave the vehicle because you're cuffed!")  
+		Player:RPNotify("You can't leave the vehicle because you're cuffed!", 3)
         return false
     end
 end)
@@ -312,7 +313,7 @@ end)
  
 hook.Add("PlayerSpawnProp", "DisablePropSpawningCuffed", function(Player)
     if Player.Restrained then
-        DarkRP.notify(Player, 1, 4, "You can't spawn props while cuffed!") 
+		Player:RPNotify("You can't spawn props while cuffed!", 3)
         return false
     end
 end)
@@ -368,7 +369,7 @@ hook.Add("playerArrested", "SetTeamArrested", function(Player, time, Arrester)
 		if RHC_ArrestReward then
 			local RAmount = RHC_ArrestRewardAmount
 			Arrester:addMoney(RAmount)
-			DarkRP.notify(Arrester, 1, 4, "You were rewarded $" .. RAmount .. " for arresting " .. Player:Nick() .. ".") 
+			Arrester:RPNotify("You were rewarded $" .. RAmount .. " for arresting " .. Player:Nick() .. ".", 3)
 		end	
 	end
 

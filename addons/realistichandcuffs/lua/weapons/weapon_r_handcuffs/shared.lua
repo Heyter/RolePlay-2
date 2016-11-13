@@ -103,7 +103,7 @@ function SWEP:SecondaryAttack()
 				local PlayerDragged = Player.Dragging
 				if IsValid(PlayerDragged) then
 					local SeatsTBL = TVehicle:VC_GetSeatsAvailable()
-					if #SeatsTBL < 1 then DarkRP.notify(Player, 1, 4, "No seats available!") return end
+					if #SeatsTBL < 1 then Player:RPNotify( "Kein Sitz verfuegbar!", 3 ) return end
 					for k,v in pairs(SeatsTBL) do
 						local SeatsDist = Player:GetPos():Distance(v:GetPos())
 						if SeatsDist < 80 then
@@ -138,7 +138,7 @@ function SWEP:SecondaryAttack()
 						end
 					end
 					
-					if #SeatsTBL < 1 then DarkRP.notify(Player, 1, 4, "No seats available!") return end
+					if #SeatsTBL < 1 then Player:RPNotify( "Kein Sitz verfuegbar!", 3 ) return end
 					for k,v in pairs(SeatsTBL) do
 						local SeatsDist = Player:GetPos():Distance(v:GetPos())
 						if SeatsDist < 80 then
@@ -204,6 +204,6 @@ function SWEP:DrawHUD()
     local h = ScrH()
 
 	local TPercent = math.Round(percent*100)
-    draw.DrawNonParsedSimpleText("Cuffing " .. PlayerToCuff:Nick() .. " (" .. TPercent .. "%)", "Trebuchet24", w/2, h/2, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)	
+	draw.SimpleText( "Nehme Fest " .. PlayerToCuff:Nick() .. " (" .. tostring(TPercent) .. "%)", "RPNormal_24", w/2, h/2, Color(255, 255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 end
