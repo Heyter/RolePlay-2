@@ -1,8 +1,8 @@
 
 concommand.Add( "rp_demote", function( admin, cmd, args )
 	PrintTable( args )
-	if !(IsValid( ply )) then return false end
-	if !(ply:IsAdmin()) then return false end
+	if !(IsValid( admin )) then return false end
+	if !(admin:IsAdmin()) then return false end
 	if !(args[1]) then return false end
 	local target = FindPlayerBySteamID( args[1] )
 	
@@ -17,8 +17,8 @@ end)
 
 concommand.Add( "rp_job", function( admin, cmd, args )
 PrintTable( args )
-	if !(IsValid( ply )) then return false end
-	if !(ply:IsAdmin()) then return false end
+	if !(IsValid( admin )) then return false end
+	if !(admin:IsAdmin()) then return false end
 	if !(args[1]) then return false end
 	if !(tonumber(args[2])) then return false end
 	local target = FindPlayerBySteamID( args[1] )
@@ -34,8 +34,8 @@ end)
 
 concommand.Add( "rp_givecash", function( admin, cmd, args )
 PrintTable( args )
-	if !(IsValid( ply )) then return false end
-	if !(ply:IsSuperAdmin()) then return false end
+	if !(IsValid( admin )) then return false end
+	if !(admin:IsSuperAdmin()) then return false end
 	if !(args[1]) then return false end
 	if !(tonumber(args[2])) then return false end
 	local target = FindPlayerBySteamID( args[1] )
