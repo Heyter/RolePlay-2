@@ -159,7 +159,7 @@ f2_menu.AddButton( "Regeln", "roleplay/f2_menu/icons/rules_new.png", function( p
     local image = vgui.Create("HTML", pnl)
     image:SetPos( 0, 0 )
     image:SetSize( pnl:GetWide(), pnl:GetTall() )
-    image:OpenURL( "https://forum.epic-gaming.de/index.php?thread/228-epgrp-regeln/" )
+    image:OpenURL( "https://forum.epic-gaming.de/index.php?thread/228-epgrp-regeln/&postID=1512#post1512" )
 end )
 f2_menu.AddButton( "Inventar", "roleplay/f2_menu/icons/inventory_new.png", function( pnl )
 	--local size = itemstore.config.InventorySizes[ "default" ]
