@@ -103,13 +103,14 @@ function LoadNPCSpawns()
         callfunc = "NPC_HouseRentHello",
         teamHello = ""
     }
+	/*
     NPC_SPAWNS["Bank_1"] = {
         pos = Vector(-7582, -7676, 72),
         ang = Angle( 0, 0, 0 ),
         model = "models/mossman.mdl",
         callfunc = "NPC_BankHello",
         teamHello = ""
-    }
+    }*/
     NPC_SPAWNS["CarDealer#1"] = {
         pos = Vector(5184, -4718, 64),
         ang = Angle( 0, 90, 0 ),
