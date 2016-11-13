@@ -7,6 +7,7 @@ JOB.Color = Color( 102, 51, 0, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 0                                // Wie viel Rüstung der Spieler bekommt
 JOB.Weapons = {"weapon_physcannon",
                "weapon_fists",
+			   "weapon_arc_atmcard",
                "keys"
 }
 JOB.DemoteOnDeath = false

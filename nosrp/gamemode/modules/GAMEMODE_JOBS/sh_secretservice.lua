@@ -14,6 +14,7 @@ JOB.Weapons = { "weapon_physgun",               // Was hat der Job für Waffen?
                 "weapon_physcannon",
                 "weapon_fists",
                 "keys", 
+				"weapon_arc_atmcard",
                 "m9k_usp", 
                 "m9k_mp7", 
                 "weapon_stick"

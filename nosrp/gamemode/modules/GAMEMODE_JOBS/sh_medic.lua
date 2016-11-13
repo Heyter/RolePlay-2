@@ -14,6 +14,7 @@ JOB.Armor = 0                                   // Wie viel Rüstung der Spieler
 JOB.Weapons = { "weapon_physgun",               // Was hat der Job für Waffen?
                 "weapon_physcannon",
                 "keys",
+				"weapon_arc_atmcard",
                 "weapon_fists",
                 "weapon_medkit",
                 "defi"

@@ -8,6 +8,7 @@ JOB.Armor = 0                                 // Wie viel Rüstung der Spieler b
 JOB.Weapons = { "weapon_physcannon",               // Was hat der Job für Waffen?
                 "keys",
                 "fire_axe",
+				"weapon_arc_atmcard",
                 "fire_extinguisher"
 }
 JOB.DemoteOnDeath = false
