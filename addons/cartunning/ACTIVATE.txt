@@ -1,0 +1,5 @@
+Hello! For activating your script license, you need make 3 easy step:
+
+Step 1: On website http://seannaprotection.pw/  LogIn throught Steam.
+Step 2: Insert your ServerIP adress (without port, like 173.128.64.32) in textbox. You can get ServerIP ingame, just write in console - "getserverip"
+Step 3: Press "Activate" near script name, what was buyed.

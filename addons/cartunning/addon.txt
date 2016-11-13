@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"car tuning"
+	"version"			"1"
+	"up_date"			"10/10/16"
+	"author_name"			"Seanna"
+	"author_email"			""
+	"author_url"			""
+	"info"				""
+	"override"			"0"
+}
