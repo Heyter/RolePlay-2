@@ -1,6 +1,0 @@
-"eyes"
-{
-	"$basetexture" "models/player/uk_police/dark_eyeball_l"
-	"$iris" "models/player/uk_police/pupil_l"
-	"$halflambert" 1
-}
