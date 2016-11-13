@@ -19,11 +19,7 @@ function CreateF2Menu()
         draw.RoundedBox( 6, 0, 0, f2_menu:GetWide(), f2_menu:GetTall(), HUD_SKIN.THEME_BGCOLOR )
         draw.RoundedBox( 2, 0, 0, f2_menu:GetWide(), (f2_menu:GetTall()/6), HUD_SKIN.THEME_COLOR )
         draw.RoundedBox( 2, 0, (f2_menu:GetTall()/6) - 2, f2_menu:GetWide(), 2, Color( 0, 102, 204, 50 ) )
-<<<<<<< HEAD
         draw.SimpleText( "EPG RP - Menu", "RPNormal_54", 25, f2_menu:GetTall()/24, Color( 255, 255, 255, 255 ) )
-=======
-        draw.SimpleText( "EPG - Menu", "RPNormal_54", 25, f2_menu:GetTall()/24, Color( 255, 255, 255, 255 ) )
->>>>>>> origin/master
     end
     
     f2_menu.HideBtn = vgui.Create( "DButton", f2_menu )
