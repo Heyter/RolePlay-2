@@ -51,7 +51,7 @@ local function openDialog( dialog, npc )
 	modelPanel:SetModel( npc:GetModel( ) )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
-	modelPanel:SetFOV( 120 )
+	modelPanel:SetFOV( 200 )
 
 	--local max, min = modelPanel:GetEntity():GetRenderBounds()
     --modelPanel:SetCamPos( Vector( 0.55, 0.55, 0.55 ) * min:Distance( max ) )
