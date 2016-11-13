@@ -1,0 +1,14 @@
+"AddonInfo"
+{
+	"name" "Fireman PLayer Model"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "model",
+	"tags": 
+	[
+		"fun"
+	]
+}"
+}

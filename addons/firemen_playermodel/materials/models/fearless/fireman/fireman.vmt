@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/fearless/fireman/fireman"
+	"$phong" "1"
+//	"$phongexponent" 3
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[0.02 0.1 0.3]"
+	"$halflambert" 1
+}
