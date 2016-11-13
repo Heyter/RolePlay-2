@@ -150,7 +150,7 @@ if game.GetMap() == "rp_evocity_v33x" then
 		--SpawnEnt( 'bank_atm', Vector(-7448.15625, -7923.46875, 72.625), Angle(0.044 ,89.923 ,-0.088), 'models/bankautomat/bankautomat.mdl' )
 		--SpawnEnt( 'bank_atm', Vector(-7454, -7478.40625, 72.40625), Angle(0.000 ,-90.011 ,0.000), 'models/bankautomat/bankautomat.mdl' )
 		--SpawnEnt( 'bank_atm', Vector(-7330.4375, -7478.46875, 72.59375), Angle(0.088 ,-89.967 ,0.088), 'models/bankautomat/bankautomat.mdl' )
-        SpawnEnt( 'npc_drugdealer', Vector(-9364, -9572, 75), Angle(0, 180, 0), '' )
+        SpawnEnt( 'npc_newdrug', Vector(-9364, -9572, 75), Angle(0, 180, 0), '' )
         --SpawnEnt( 'npc_cardealer', Vector(5184.598145, -4718.879395, 64.031250), Angle(0, 91.459, 0), '' )	
         --SpawnEnt( 'npc_cardealer_garage', Vector(4577.999512, -3804.216553, 64.031250), Angle(0, 180, 0), '' )
 
