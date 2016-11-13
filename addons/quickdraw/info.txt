@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"name" "Quickdraw Weapon Select"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "effects",
+	"tags": 
+	[
+		"realism",
+		"scenic"
+	]
+}"
+}
