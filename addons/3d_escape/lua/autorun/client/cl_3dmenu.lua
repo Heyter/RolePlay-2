@@ -7,7 +7,7 @@ Config.IgnoreConsole = false -- set this to false if you want your console to by
 Config.CameraCollision = true -- set this to false if you would rather have the camera phase through walls when the menu is active
 
 Config.Header = {}
-Config.Header.Text = "My Community"
+Config.Header.Text = "EPG RolePlay"
 Config.Header.Font = "Roboto Condensed"
 Config.Header.Size = 64
 Config.Header.Weight = 700
@@ -33,10 +33,7 @@ Config.Button.BackgroundColor = Color( 0, 0, 0, 200 )
 
 Config.Entries = {
 	{ "Category", "COMMUNITY" },
-	{ "Button", "Forums", "URL", "https://my.community.example/" },
-	{ "Button", "Rules", "URL", "https://my.community.example/rules" },
-	{ "Button", "Donate", "URL", "https://my.community.example/donate" },
-	{ "Button", "PointShop", "Command", "ps_open" }
+	{ "Button", "Forums", "URL", "https://epic-gaming.de" }
 }
 
 --- CONFIGURATION END ---
