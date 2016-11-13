@@ -63,8 +63,8 @@ local function openDialog( dialog, npc )
 		draw.RoundedBox( 6, 0, 0, self:GetWide( ), self:GetTall( ), Color( 80, 80, 80 ) )
 		p( self )
 	end
-	modelPanel:SetFOV( 14 )
-	modelPanel:SetLookAt( modelPanel.Entity:GetPos( ) + Vector( 0, 0, 60 ) )
+	--modelPanel:SetFOV( 14 )
+	--modelPanel:SetLookAt( modelPanel.Entity:GetPos( ) + Vector( 0, 0, 60 ) )
 	
 	function frame:GoToStage( iStage )
 		for k, v in pairs( self.buttons ) do
