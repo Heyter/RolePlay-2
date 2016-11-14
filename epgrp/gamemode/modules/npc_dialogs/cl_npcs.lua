@@ -52,9 +52,7 @@ local function openDialog( dialog, npc )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
 
-	function modelPanel:LayoutEntity( Entity )
-
-	end
+	function modelPanel:LayoutEntity( Entity ) end
 
 	local p = modelPanel.Paint
 	function modelPanel:Paint( )
@@ -63,16 +61,10 @@ local function openDialog( dialog, npc )
 	end
 
 	local eyepos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
-
 	eyepos:Add( Vector( 0, 16, 38) )	-- Move up slightly
-
 	modelPanel:SetLookAt( eyepos )
-
 	modelPanel:SetCamPos( eyepos-Vector( -230, 0, 0 ) )
 
-	local headpos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
-	modelPanel:SetLookAt( headpos )
-	
 	function frame:GoToStage( iStage )
 		for k, v in pairs( self.buttons ) do
 			v:Remove( )
