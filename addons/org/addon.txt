@@ -1,0 +1,8 @@
+"AddonInfo"
+{
+	"name"		"Organisation Mod for DarkRP"
+	"version"	"1.2.7"
+	"author_name"	"Barel"
+	"author_url"	"https://scriptfodder.com/users/view/76561198028513780"
+	"info"		""
+}
