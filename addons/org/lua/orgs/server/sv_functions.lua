@@ -145,7 +145,7 @@ end
 
 local mysqlConnected = true
 
-function db.createTables()
+function createTables()
 	if mysqlConnected then
 		Query("CREATE TABLE IF NOT EXISTS `orgs_orgs` ( `id` int(11) NOT NULL AUTO_INCREMENT, `name` text NOT NULL, `motd` text NOT NULL, `bankbalance` int(11) NOT NULL, PRIMARY KEY (`id`))")
 		Query("CREATE TABLE IF NOT EXISTS `orgs_players` ( `id` int(11) NOT NULL AUTO_INCREMENT, `steamid` text NOT NULL, `name` text NOT NULL, `rank` text NOT NULL, `orgid` int(11) NOT NULL, `lastseen` text NOT NULL, PRIMARY KEY (`id`))")
