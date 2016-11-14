@@ -186,7 +186,7 @@ end
 function QueryValue( query, callback )
 	if mysqlConnected then
 		local query = Query( query, function( d ) 
-			for k,v in pairs(d or {}) do
+			for k,v in pairs(d[1] or {}) do
 				PrintTable( v )
 				callback(v)
 				return
