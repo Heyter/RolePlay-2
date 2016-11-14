@@ -291,11 +291,13 @@ function PLAYER_META:LockDoor( door )
     if door:GetNWInt("Welded") >= 1 then self:RPNotify( "Diese Tür wurde verschweißt!", 5 ) return false end
     if door:IsVehicle() && (data.owner == self or data.owner:IsBuddy( self )) then
         door:Fire( "lock", "", 1 )
+        self:RPNotify("Fahrzeug erfolgreich abgeschlossen.", 5)
         return true
     end
 
 	if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
         door:Fire( "lock", "", 1 )
+        self:RPNotify("Tür erfolgreich abgeschlossen.", 5)
         return true
     end
     
@@ -306,11 +308,13 @@ function PLAYER_META:LockDoor( door )
     
     if master.owner == self then
         door:Fire( "lock", "", 1 )
+        self:RPNotify("Tür erfolgreich abgeschlossen.", 5)
         return true
     else
         for k, v in pairs( teams ) do
             if self:Team() == GetTeamByEnum( v ) then
                 door:Fire( "lock", "", 1 )
+                elf:RPNotify("Tür erfolgreich abgeschlossen.", 5)
                 return true
             end
         end
@@ -329,11 +333,13 @@ function PLAYER_META:UnLockDoor( door )
     if door:GetNWInt("Welded") >= 1 then self:RPNotify( "Diese Tür wurde verschweißt!", 5 ) return false end
     if door:IsVehicle() && (data.owner == self or data.owner:IsBuddy( self )) then
         door:Fire( "unlock", "", 1 )
+        self:RPNotify("Fahrzeug erfolgreich aufgeschlossen.", 5)
         return true
     end
     
     if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
         door:Fire( "unlock", "", 1 )
+        self:RPNotify("Tür erfolgreich aufgeschlossen.", 5)
         return true
     end
     
@@ -344,11 +350,13 @@ function PLAYER_META:UnLockDoor( door )
     
     if master.owner == self then
         door:Fire( "unlock", "", 1 )
+        self:RPNotify("Tür erfolgreich aufgeschlossen.", 5)
         return true
     else
         for k, v in pairs( teams ) do
             if self:Team() == GetTeamByEnum( v ) then
                 door:Fire( "unlock", "", 1 )
+                self:RPNotify("Tür erfolgreich aufgeschlossen.", 5)
                 return true
             end
         end
