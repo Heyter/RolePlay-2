@@ -117,6 +117,7 @@ end
     Opens the Panel
 */------------------------
 function OpenF2Menu()
+	if GetConVarNumber( "spawnmenu_activated" ) == 1 then return false end
     if !(IsValid( f2_menu )) then CreateF2Menu() end
     f2_menu:Show() 
     f2_menu.visible = true

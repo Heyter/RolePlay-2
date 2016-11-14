@@ -64,7 +64,7 @@ concommand.Add( "-menu_context", function() if ( input.IsKeyTrapping() ) then re
 
 
 local function DisallowSpawnMenu( )
-	if not LocalPlayer():IsAdmin() then
+	if not LocalPlayer():IsAdmin() && GetConVarNumber( "spawnmenu_activated" ) == 1 then
 		return false
 	end
 end
