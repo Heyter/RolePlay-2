@@ -126,9 +126,9 @@ concommand.Add("org_deny", org_deny)
 function org_deposit( pl, cmd, arg )
 	if pl:havePermission( "a" ) then
 		if isnumber(tonumber(arg[1])) and tonumber(arg[1]) > 0 then
-			if pl:CanAfford(arg[1]) then
+			if pl:CanAfford( tonumber(arg[1])) then
 				Orgs.AddCash(pl:getOrgID(), arg[1])
-				pl:AddCash(-arg[1])
+				pl:AddCash(tonumber(-arg[1]))
 				sendNotify( pl, "You have been deposited " .. arg[1] .. "$ to the ".. ORGS_Config.addonName .." bank!", "NOTIFY_HINT" )
 				notifyOrg( pl:getOrgID(), "" .. pl:Nick() .. " has been deposited " .. arg[1] .. "$ to the ".. ORGS_Config.addonName .." bank!")
 				QueryValue("SELECT `bankbalance` FROM `orgs_orgs` WHERE `id` = '".. pl:getOrgID() .."'", function( r )
@@ -157,7 +157,7 @@ function org_withdraw( pl, cmd, arg )
 		if isnumber( tonumber(arg[1]) ) and tonumber(arg[1]) > 0 then
 			QueryValue("SELECT `bankbalance` FROM `orgs_orgs` WHERE `id` = '".. pl:getOrgID() .."'", function( r )
 				if tonumber( r ) >= tonumber( arg[1] ) then
-					pl:AddCash(arg[1])
+					pl:AddCash(tonumber(arg[1]))
 					Orgs.AddCash(pl:getOrgID(), -arg[1])
 					sendNotify( pl, "You have been withdrawn " ..arg[1].. "$ from the ".. ORGS_Config.addonName .." bank!", "NOTIFY_HINT" )
 					notifyOrg( pl:getOrgID(), "" .. pl:Nick() .. " has been withdrawn " ..arg[1].. "$ from the ".. ORGS_Config.addonName .." bank!")
