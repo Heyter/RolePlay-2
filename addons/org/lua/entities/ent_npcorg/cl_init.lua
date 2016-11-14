@@ -71,7 +71,7 @@ net.Receive( "orgmenudialogue", function()
 	local dialogueButton1 = vgui.Create("DFlatButton", mainFrame)
 	dialogueButton1:SetSize(488, 25)
 	dialogueButton1:SetPos(6, 128)
-	if LocalPlayer():canAfford(ORGS_Config.createPrice) then
+	if LocalPlayer():CanAfford(ORGS_Config.createPrice) then
 		dialogueButton1:SetText( ORGS_Lang.npcnew )
 	else
 		dialogueButton1:SetText( ORGS_Lang.npcgetmoney )

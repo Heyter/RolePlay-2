@@ -101,7 +101,7 @@ function Orgs.newMember( pl, orgid, rank )
 	pl:loadOrg()
 end
 
-function Orgs.addMoney( orgid, amount )
+function Orgs.AddCash( orgid, amount )
 	db.QueryValue("SELECT `bankbalance` FROM `orgs_orgs` WHERE `id` = '".. orgid  .."'", function( r )
 		db.Query("UPDATE `orgs_orgs` SET `bankbalance` = '".. r + amount .."' WHERE `ID` = '" .. orgid .. "'")
 	end)
