@@ -2,6 +2,7 @@ local meta = FindMetaTable( "Player" )
 
 function meta:loadOrg()
 	Query("SELECT * FROM `orgs_players` WHERE `steamid` = '".. self:SteamID() .."'", function(r)
+		PrintTable( r )
 		if r then
 			Query("SELECT `name` FROM `orgs_orgs` WHERE `id` = '".. r[1]["orgid"] .."'", function(r)
 				if r then
