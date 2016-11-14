@@ -293,31 +293,31 @@ function PLAYER_META:LockDoor( door )
         door:Fire( "lock", "", 1 )
         return true
     end
-    
-    print("DOORDEBUG:")
-    PrintTable(data)
 
-    if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
-        door:Fire( "lock", "", 1 )
-        return true
+    if data and data.owner and IsValid(data.owner) then
+    	if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
+	        door:Fire( "lock", "", 1 )
+	        return true
+	    end
+	    
+	    local master = data.masterdoor
+	    if !(IsValid( master )) then return end
+	    
+	    local teams = data.teams
+	    
+	    if master.owner == self then
+	        door:Fire( "lock", "", 1 )
+	        return true
+	    else
+	        for k, v in pairs( teams ) do
+	            if self:Team() == GetTeamByEnum( v ) then
+	                door:Fire( "lock", "", 1 )
+	                return true
+	            end
+	        end
+	    end  
     end
     
-    local master = data.masterdoor
-    if !(IsValid( master )) then return end
-    
-    local teams = data.teams
-    
-    if master.owner == self then
-        door:Fire( "lock", "", 1 )
-        return true
-    else
-        for k, v in pairs( teams ) do
-            if self:Team() == GetTeamByEnum( v ) then
-                door:Fire( "lock", "", 1 )
-                return true
-            end
-        end
-    end  
     return false
 end
 
