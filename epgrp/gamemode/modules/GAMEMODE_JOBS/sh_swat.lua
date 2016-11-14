@@ -2,7 +2,7 @@ local JOB = {}
 
 JOB.Name = "SWAT"                               // Wie der Job heißt
 JOB.Description = "Bla Bla Bla"                 // Beschreibung vom Job
-JOB.Model = {"models/ccz/swa2.mdl"}       // Das/-Die Model/s vom Job
+JOB.Model = {"models/gign remasteredhd.mdl"}       // Das/-Die Model/s vom Job
 JOB.Color = Color( 51, 153, 255, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 100                                 // Wie viel Rüstung der Spieler bekommt
 JOB.Weapons = { "weapon_physcannon",               // Was hat der Job für Waffen?
