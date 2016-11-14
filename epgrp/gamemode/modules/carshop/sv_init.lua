@@ -203,7 +203,7 @@ function CARSHOP.CreateGarageCar( ply, index, pos, angles )
 	local VehData = list.Get("Vehicles")[index]
 
 	if not VehData then
-		GAMEMODE:Log( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. index .. " geladen!" )
+		print( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. index .. " geladen!" )
 		return
 	end
     
@@ -324,7 +324,8 @@ function CARSHOP.SpawnGarageCar( ply, index )
     local pos = CARSHOP.FindSpawnPos( ply )
     if pos == nil then print("Couldnt spawn car - too far away") return end
     
-    timer.Simple( 0.2, function() CARSHOP.CreateGarageCar( ply, index, pos.pos, pos.ang ) 
+    timer.Simple( 0.2, function() 
+        CARSHOP.CreateGarageCar( ply, index, pos.pos, pos.ang ) 
         ply:RPNotify("Dein Auto steht nun in der Garage bereit.", 5)
     end )
 end

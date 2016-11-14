@@ -28,8 +28,10 @@ if itemstore.config.AntiDupe then
 	local oldRemove = meta.Remove
 
 	function meta:Remove()
-		self.__Deleted = true
-		oldRemove( self )
+		if IsValid(self) then
+			self.__Deleted = true
+			oldRemove( self )
+		end
 	end
 end
 
