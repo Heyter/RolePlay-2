@@ -12,7 +12,7 @@ ORGS_Config = {}
 ORGS_Config.addonName = "Organization"
 
 -- Creation Price
-ORGS_Config.createPrice = 0
+ORGS_Config.createPrice = 50000
 
 -- Key to open the menu
 ORGS_Config.keyToActivate = 94 --Change the value that you want to open the menu (values from Binds.txt)
