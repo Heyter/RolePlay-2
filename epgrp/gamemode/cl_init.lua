@@ -35,3 +35,16 @@ function RPIsInSight(v)
 	end
 end
 
+function GM:SpawnMenuEnabled()
+	return true
+end
+
+local act_spwn = CreateClientConVar( "spawnmenu_activated", "0", true, false ) 
+function GM:SpawnMenuOpen()
+
+	if LocalPlayer():IsSuperAdmin() then
+		return true
+	end
+	return false
+end
+

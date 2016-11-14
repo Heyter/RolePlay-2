@@ -68,7 +68,7 @@ function LoadNPCSpawns()
         Team = TEAM_SWAT,
         pos = Vector(-7250, -9230, 72),
         ang = Angle( 0, 90, 0 ),
-        model = "models/gign remasteredhd.mdl",
+        model = "models/gign remasteredhdnpc.mdl",
         callfunc = "NPC_SwatHello",
         teamHello = "NPC_SwatInTeam"
     }
