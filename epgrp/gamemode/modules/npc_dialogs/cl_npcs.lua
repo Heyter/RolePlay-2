@@ -51,17 +51,24 @@ local function openDialog( dialog, npc )
 	modelPanel:SetModel( npc:GetModel( ) )
 	modelPanel:SetWide( 100 )
 	modelPanel:SetAnimated( false )
-	function modelPanel:LayoutEntity( )
-		modelPanel:SetCamPos( Vector( 50, -10, 60 ) )
-		modelPanel.Entity:SetAngles( Angle( -13, -10, 0 ) )
+
+	function modelPanel:LayoutEntity( Entity )
+
 	end
+
 	local p = modelPanel.Paint
 	function modelPanel:Paint( )
 		draw.RoundedBox( 6, 0, 0, self:GetWide( ), self:GetTall( ), Color( 80, 80, 80 ) )
 		p( self )
 	end
-	modelPanel:SetFOV( 14 )
-	modelPanel:SetLookAt( modelPanel.Entity:GetPos( ) + Vector( 0, 0, 60 ) )
+
+	local eyepos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
+
+	eyepos:Add( Vector( 0, 16, 38) )	-- Move up slightly
+
+	modelPanel:SetLookAt( eyepos )
+
+	modelPanel:SetCamPos( eyepos-Vector( -230, 0, 0 ) )
 	
 	function frame:GoToStage( iStage )
 		for k, v in pairs( self.buttons ) do
