@@ -99,7 +99,7 @@ end
 Orgs = {}
 
 function Orgs.newMember( pl, orgid, rank )
-	local newMemberQuery = db.Query("INSERT INTO `orgs_players` (`steamid`, `name`, `rank`, `orgid`, `lastseen`) VALUES ('".. pl:SteamID() .."', '".. pl:Nick() .."', '".. rank .."', '" .. orgid .. "', '" .. tostring( os.date() ) .. "')")
+	local newMemberQuery = Query("INSERT INTO `orgs_players` (`steamid`, `name`, `rank`, `orgid`, `lastseen`) VALUES ('".. pl:SteamID() .."', '".. pl:Nick() .."', '".. rank .."', '" .. orgid .. "', '" .. tostring( os.date() ) .. "')")
 	pl:loadOrg()
 end
 
