@@ -120,7 +120,7 @@ PI.States.Running = {
 	{ 1, DR, .25 }, { 2, DR, .25 }
 }
 
-Photon.VehicleLibrary["sgm_swatvan"] = PI
+--Photon.VehicleLibrary["sgm_swatvan"] = PI
 
 // EMV DATA
 
@@ -683,7 +683,7 @@ local V = {
 					    },
 				IsEMV = true,
 				EMV = EMV,
-				HasPhoton = true,
+				HasPhoton = false,
 				Photon = "sgm_swatvan"	
 
 }
