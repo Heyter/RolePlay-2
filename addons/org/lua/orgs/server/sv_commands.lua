@@ -36,6 +36,7 @@ function org_new( pl, cmd, arg )
 		if pl:CanAfford( ORGS_Config.createPrice ) then
 			Query("INSERT INTO `orgs_orgs` (`name`, `motd`, `bankbalance`) VALUES ('".. SQLStr( arg[1], true ) .."', 'Set a new MOTD!', '0')")
 			QueryValue("SELECT `id` FROM `orgs_orgs` WHERE `name` = '".. SQLStr( arg[1], true ) .."'", function( r )
+				print( tostring( r) )
 				Orgs.newMember( pl, tostring(r), "o" )
 			end)
 			sendNotify( pl, ORGS_Lang.neworg, "NOTIFY_HINT" )
