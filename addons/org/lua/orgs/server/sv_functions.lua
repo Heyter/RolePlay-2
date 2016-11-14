@@ -143,9 +143,7 @@ function rank.delete( rankid )
 	return deletequery
 end
 
-database = nil
 local mysqlConnected = true
-db = {}
 
 function db.createTables()
 	if mysqlConnected then
