@@ -294,6 +294,9 @@ function PLAYER_META:LockDoor( door )
         return true
     end
     
+    print("DOORDEBUG:")
+    PrintTable(data)
+
     if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
         door:Fire( "lock", "", 1 )
         return true
