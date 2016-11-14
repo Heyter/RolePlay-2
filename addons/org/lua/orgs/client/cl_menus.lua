@@ -318,6 +318,7 @@ net.Receive("orgmenu", function()
 	for k,v in pairs( data[3] ) do
 		PrintTable( v )
 		print( data[4] )
+		PrintTable( data[4] )
 		local online
 		local rankname
 		if player.GetBySteamID(v.steamid) != false then online = "Online" else online = "Offline" end
