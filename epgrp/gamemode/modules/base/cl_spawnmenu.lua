@@ -13,13 +13,7 @@ end
    Return false to dissallow it.
 -----------------------------------------------------------]]
 function GM:SpawnMenuOpen()
-	if LocalPlayer():IsSuperAdmin() && act_spwn == tonumber( 1 ) then
-		print("yolo")
-		return true
-	else
-		print("nono")
-		return false
-	end
+	return true
 end
 
 --[[---------------------------------------------------------
@@ -67,3 +61,12 @@ concommand.Add( "-menu", function() if ( input.IsKeyTrapping() ) then return end
 -----------------------------------------------------------]]
 concommand.Add( "+menu_context", function() hook.Call( "OnContextMenuOpen", GAMEMODE ) end, nil, "Opens the context menu", { FCVAR_DONTRECORD } )
 concommand.Add( "-menu_context", function() if ( input.IsKeyTrapping() ) then return end hook.Call( "OnContextMenuClose", GAMEMODE ) end, nil, "Closes the context menu", { FCVAR_DONTRECORD } )
+
+
+local function DisallowSpawnMenu( )
+	if not LocalPlayer():IsAdmin() then
+		return false
+	end
+end
+ 
+hook.Add( "SpawnMenuOpen", "DisallowSpawnMenu", DisallowSpawnMenu)
