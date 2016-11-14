@@ -52,7 +52,7 @@ function LoadNPCSpawns()
         Team = TEAM_POLICE,
         pos = Vector(-7187.291992, -9230, 72),
         ang = Angle( 0, 88.257, 0.000 ),
-        model = "models/player/uk_police/uk_police_02.mdl",
+        model = "models/ecpd/male_05.mdl",
         callfunc = "NPC_PoliceHello",
         teamHello = "NPC_PoliceInTeam"
     }
@@ -68,7 +68,7 @@ function LoadNPCSpawns()
         Team = TEAM_SWAT,
         pos = Vector(-7250, -9230, 72),
         ang = Angle( 0, 90, 0 ),
-        model = "models/Barney.mdl",
+        model = "models/gign remasteredhd.mdl",
         callfunc = "NPC_SwatHello",
         teamHello = "NPC_SwatInTeam"
     }

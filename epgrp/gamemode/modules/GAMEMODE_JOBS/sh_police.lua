@@ -2,15 +2,15 @@ local JOB = {}
 
 JOB.Name = "Polizei"                            // Wie der Job heißt
 JOB.Description = "Bla Bla Bla"                 // Beschreibung vom Job
-JOB.Model = {"models/taggart/police01/male_01.mdl",
-            "models/taggart/police01/male_02.mdl",
-            "models/taggart/police01/male_03.mdl",
-            "models/taggart/police01/male_04.mdl",
-            "models/taggart/police01/male_05.mdl",
-            "models/taggart/police01/male_06.mdl",
-            "models/taggart/police01/male_07.mdl",
-            "models/taggart/police01/male_08.mdl",
-            "models/taggart/police01/male_09.mdl"
+JOB.Model = {"models/ecpd/male_01.mdl",
+			"models/ecpd/male_02.mdl",
+			"models/ecpd/male_03.mdl",
+			"models/ecpd/male_04.mdl",
+			"models/ecpd/male_05.mdl",
+			"models/ecpd/male_06.mdl",
+			"models/ecpd/male_07.mdl",
+			"models/ecpd/male_08.mdl",
+			"models/ecpd/male_09.mdl"
             }       // Das/-Die Model/s vom Job
 JOB.Color = Color( 0, 0, 200, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 30                                   // Wie viel Rüstung der Spieler bekommt
