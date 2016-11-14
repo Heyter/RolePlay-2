@@ -6,6 +6,7 @@ function meta:loadOrg()
 		if r then
 			Query("SELECT `name` FROM `orgs_orgs` WHERE `id` = '".. r[1]["orgid"] .."'", function(r)
 				if r then
+					PrintTable ( r )
 					self:SetNWString("orgName", r[1]["name"])
 				end
 			end)
