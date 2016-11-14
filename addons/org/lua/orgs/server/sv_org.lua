@@ -13,9 +13,11 @@ util.AddNetworkString( "returnorgcheckname" )
 util.AddNetworkString( "leaveorg" )
 util.AddNetworkString( "meetuppoint" )
 
+ORGS_MySQLConfig = ORGS_MySQLConfig or {}
 ORGS_MySQLConfig.enabled = true
 hook.Add("Initialize", "connecttodb", function()
 	if ORGS_MySQLConfig.enabled then
+		createTables()
 		--db.connectToMySQL()
 		print("[ORG ADDON]: Connecting to MySQL Database...")
 	else 
