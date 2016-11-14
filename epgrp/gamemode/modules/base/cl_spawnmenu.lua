@@ -14,9 +14,12 @@ end
 -----------------------------------------------------------]]
 function GM:SpawnMenuOpen()
 	if LocalPlayer():IsSuperAdmin() && act_spwn == tonumber( 1 ) then
+		print("yolo")
 		return true
+	else
+		print("nono")
+		return false
 	end
-	return false
 end
 
 --[[---------------------------------------------------------
