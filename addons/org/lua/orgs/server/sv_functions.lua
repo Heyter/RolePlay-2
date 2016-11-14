@@ -185,19 +185,7 @@ end
 
 function QueryValue( query, callback )
 	if mysqlConnected then
-		local query = Query( query )
-		local data
-		query.onData = function(Q, D)
-			data = D
-		end
-		query.onSuccess = function()
-			for k,v in pairs(data or {}) do
-				callback(v)
-				return
-			end
-			callback()
-		end
-		query:start()
+		local query = Query( query, callback )
 		return
 	else
 		callback(sql.QueryValue( query ))
