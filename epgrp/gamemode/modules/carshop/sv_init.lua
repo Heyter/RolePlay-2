@@ -325,7 +325,7 @@ function CARSHOP.SpawnGarageCar( ply, index )
     if pos == nil then print("Couldnt spawn car - too far away") return end
     
     timer.Simple( 0.2, function() CARSHOP.CreateGarageCar( ply, index, pos.pos, pos.ang ) 
-        ply:RPNotify("Dein Auto steht nun in der Garage bereit.")
+        ply:RPNotify("Dein Auto steht nun in der Garage bereit.", 5)
     end )
 end
 net.Receive( "CarDealer_SpawnGarageCar", function( data, ply ) local c = net.ReadString() CARSHOP.SpawnGarageCar( ply, c ) end )
