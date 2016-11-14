@@ -15,7 +15,7 @@ ORGS_Config.addonName = "Organization"
 ORGS_Config.createPrice = 0
 
 -- Key to open the menu
-ORGS_Config.keyToActivate = 101 --Change the value that you want to open the menu (values from Binds.txt)
+ORGS_Config.keyToActivate = 94 --Change the value that you want to open the menu (values from Binds.txt)
 
 
 --NPC Settings
@@ -37,10 +37,10 @@ ORGS_Config.showNames = true
 ORGS_Config.nameColor = Color(255, 0, 0, 255)
 
 -- frienly fire beetween members (true is on, false is off)
-ORGS_Config.enableFriendlyFire = false
+ORGS_Config.enableFriendlyFire = true
 
 -- halo effect (effected on online players of the organisation - kind of wallhack of the members)
-ORGS_Config.enableHaloEffect = true
+ORGS_Config.enableHaloEffect = false
 
 -- Enabling the org bank
 ORGS_Config.enableOrgBank = true

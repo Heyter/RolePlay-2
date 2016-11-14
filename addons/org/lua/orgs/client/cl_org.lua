@@ -40,31 +40,6 @@ net.Receive("orgchatmsg", function()
 	end
 end)
 
-hook.Add("HUDPaint", "playersorgs", function()
-	if ORGS_Config.showNames then
-		local eyepos = LocalPlayer():GetShootPos()
-		local aimvec = LocalPlayer():GetAimVector()
-		for k, v in pairs(players or player.GetAll()) do
-			local hisPos = v:GetShootPos()
-			if hisPos:DistToSqr(eyepos) < 160000 then
-				local pos = hisPos - eyepos
-				local unitPos = pos:GetNormalized()
-				if unitPos:Dot(aimvec) > 0.95 then
-					local pos = LocalPlayer():EyePos()
-					if pos:isInSight({LocalPlayer(), v}) then
-						local pos = v:EyePos()
-					    if not pos:isInSight({LocalPlayer(), v}) then return end
-					    pos.z = pos.z + 10
-					    pos = pos:ToScreen()
-					    draw.DrawNonParsedText(v:GetNWString("orgName"), "DarkRPHUD2", pos.x + 1, pos.y + 10, Color(0,0,0), 1)
-					    draw.DrawNonParsedText(v:GetNWString("orgName"), "DarkRPHUD2", pos.x + 1, pos.y + 9, Color(255,0,0), 1)
-					end
-				end
-			end
-		end
-	end
-end)
-
 
 meetup = nil
 net.Receive("meetuppoint", function()
@@ -82,7 +57,7 @@ function drawMeetupPoint()
 		ang:RotateAroundAxis( ang:Forward(), 90 )
 		ang:RotateAroundAxis( ang:Right(), 90 )
 		cam.Start3D2D( meetup[2] + Vector( 0,80, 80 + 10 * math.abs(math.sin(CurTime() * 0.8)) ) , Angle(0, ang.y, 90), 1 )
-            draw.DrawText( ORGS_Config.addonName.. " Meeting Point!\nCreated by: "..meetup[3].."\n"..meetup[1], "meetupfont", 0, 0, Color(255, 255, 255), TEXT_ALIGN_CENTER )
+            draw.DrawText( "Meeting Point!\nCreated by: "..meetup[3].."\n"..meetup[1], "meetupfont", 0, 0, Color(255, 255, 255), TEXT_ALIGN_CENTER )
         cam.End3D2D()
 	end
 end

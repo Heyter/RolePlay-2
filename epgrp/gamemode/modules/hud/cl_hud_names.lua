@@ -85,7 +85,8 @@ local function DrawName(ply, opacityScale)
         if ply:IsPlayer() then
             draw.NameText( name, "RPNormal_40", 50, 0, Color( 255, 255, 255, opacity ) )
             draw.NameText( t, "RPNormal_25", 50, -20, Color( col.r, col.g, col.b, opacity ) )
-            
+            draw.NameText( ply:GetNWString("orgName"), "RPNormal_20", 50, -40, Color( 255, 255, 255, opacity ) )
+			
             local count = ply:GetRPVar( "warrant" ) or 0
             for i= 0, 4 do
                 local col = Color( 0, 0, 0, 100 )
