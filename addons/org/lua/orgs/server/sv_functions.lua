@@ -183,7 +183,7 @@ end
 
 function QueryValue( query, callback )
 	if mysqlConnected then
-		local query = Query( query, function( d ) callback( d[1]["data"] ) end )
+		local query = Query( query, function( d ) callback( d[1] ) end )
 		return
 	else
 		callback(sql.QueryValue( query ))
