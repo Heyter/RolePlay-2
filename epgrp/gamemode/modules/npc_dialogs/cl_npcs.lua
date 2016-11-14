@@ -70,8 +70,8 @@ local function openDialog( dialog, npc )
 
 	modelPanel:SetCamPos( eyepos-Vector( -230, 0, 0 ) )
 
-	local headpos = mdl.Entity:GetBonePosition( mdl.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
-	mdl:SetLookAt( headpos )
+	local headpos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
+	modelPanel:SetLookAt( headpos )
 	
 	function frame:GoToStage( iStage )
 		for k, v in pairs( self.buttons ) do
