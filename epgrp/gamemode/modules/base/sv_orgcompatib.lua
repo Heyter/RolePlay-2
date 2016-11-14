@@ -32,7 +32,7 @@ end)
 	
 
 RP.PLUGINS.CHATCOMMAND.AddChatCommand( "!org_admin", function( ply, args, public )
-	if pl:IsSuperAdmin() pl:IsUserGroup("superadmin") or pl:IsUserGroup("owner") then
+	if pl:IsSuperAdmin() or pl:IsUserGroup("superadmin") or pl:IsUserGroup("owner") then
 		Query("SELECT * FROM `orgs_orgs`", function( r )
 			if r == nil then 
 				sendNotify( pl, "There are no organisations.", "NOTIFY_HINT" )
