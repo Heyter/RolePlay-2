@@ -190,7 +190,7 @@ function QueryValue( query, callback )
 				callback(v)
 				return
 			end
-			callback( d )
+			callback( d[1] )
 		end )
 		return
 	else
