@@ -320,6 +320,7 @@ net.Receive("orgmenu", function()
 		local rankname
 		if player.GetBySteamID(v.steamid) != false then online = "Online" else online = "Offline" end
 		if data[4] != nil then
+			PrintTable( data[4] )
 			for k,val in pairs(data[4]) do
 				if tonumber(v.rank) == tonumber(val.id) then
 					rankname = val.name
