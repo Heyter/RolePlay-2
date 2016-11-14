@@ -186,7 +186,11 @@ end
 function QueryValue( query, callback )
 	if mysqlConnected then
 		local query = Query( query, function( d ) 
-			callback( d[1] )
+			for k,v in pairs(d or {}) do
+				callback(v)
+				return
+			end
+			callback( d )
 		end )
 		return
 	else
