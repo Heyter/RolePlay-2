@@ -316,7 +316,6 @@ net.Receive("orgmenu", function()
 	end
 
 	for k,v in pairs( data[3] ) do
-		PrintTable( v )
 		local online
 		local rankname
 		if player.GetBySteamID(v.steamid) != false then online = "Online" else online = "Offline" end
@@ -332,10 +331,12 @@ net.Receive("orgmenu", function()
 			end
 		else
 			if v.rank == "o" then
+				print( "yes")
 				rankname = ORGS_Lang.rankowner	
 			elseif v.rank == "n" then
 				rankname = ORGS_Lang.ranknewmember
 			end
+			print("druch")
 		end
 		addMember( v.name, rankname, online, v.steamid, v.lastseen )
 	end
