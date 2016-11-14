@@ -36,16 +36,6 @@ hook.Add("PlayerDisconnected", "setplayerlastseen", function( pl )
 	end
 end)
 
-hook.Add( "PlayerShouldTakeDamage", "orgfriendlyfire", function( victim, attacker )
-	if ORGS_Config.enableFriendlyFire then
-		if victim.org and attacker.org then
-			if victim.org["orgid"] == attacker.org["orgid"] then
-				return false
-			end
-		end
-	end
-end)
-
 hook.Add("CanTool", "disabletools", function(_, trace)
 	local ent = trace.Entity
 	if( ent:GetClass() == "ent_npcorg" ) then
