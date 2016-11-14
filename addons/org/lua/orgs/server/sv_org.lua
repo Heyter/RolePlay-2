@@ -15,7 +15,7 @@ util.AddNetworkString( "meetuppoint" )
 
 hook.Add("Initialize", "connecttodb", function()
 	if ORGS_MySQLConfig.enabled then
-		db.connectToMySQL()
+		--db.connectToMySQL()
 		print("[ORG ADDON]: Connecting to MySQL Database...")
 	else 
 		db.createTables()
