@@ -287,37 +287,35 @@ function PLAYER_META:LockDoor( door )
     if !(IsDoor( door )) then return end
     
     local data = door:GetRPVar( "doordata" )
-    if !(data) or data == nil then return end
+    if not data or not data.owner or not IsValid(data.owner) then return end
     if door:GetNWInt("Welded") >= 1 then self:RPNotify( "Diese Tür wurde verschweißt!", 5 ) return false end
     if door:IsVehicle() && (data.owner == self or data.owner:IsBuddy( self )) then
         door:Fire( "lock", "", 1 )
         return true
     end
 
-    if data and data.owner and IsValid(data.owner) then
-    	if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
-	        door:Fire( "lock", "", 1 )
-	        return true
-	    end
-	    
-	    local master = data.masterdoor
-	    if !(IsValid( master )) then return end
-	    
-	    local teams = data.teams
-	    
-	    if master.owner == self then
-	        door:Fire( "lock", "", 1 )
-	        return true
-	    else
-	        for k, v in pairs( teams ) do
-	            if self:Team() == GetTeamByEnum( v ) then
-	                door:Fire( "lock", "", 1 )
-	                return true
-	            end
-	        end
-	    end  
+	if !(door:IsVehicle()) && data.owner == self or data.owner:IsBuddy( self ) then
+        door:Fire( "lock", "", 1 )
+        return true
     end
     
+    local master = data.masterdoor
+    if !(IsValid( master )) then return end
+    
+    local teams = data.teams
+    
+    if master.owner == self then
+        door:Fire( "lock", "", 1 )
+        return true
+    else
+        for k, v in pairs( teams ) do
+            if self:Team() == GetTeamByEnum( v ) then
+                door:Fire( "lock", "", 1 )
+                return true
+            end
+        end
+    end  
+
     return false
 end
 
@@ -327,7 +325,7 @@ function PLAYER_META:UnLockDoor( door )
     if !(IsDoor( door )) then return end
     
     local data = door:GetRPVar( "doordata" )
-    if !(data) or data == nil then return end
+    if not data or not data.owner or not IsValid(data.owner) then return end
     if door:GetNWInt("Welded") >= 1 then self:RPNotify( "Diese Tür wurde verschweißt!", 5 ) return false end
     if door:IsVehicle() && (data.owner == self or data.owner:IsBuddy( self )) then
         door:Fire( "unlock", "", 1 )
