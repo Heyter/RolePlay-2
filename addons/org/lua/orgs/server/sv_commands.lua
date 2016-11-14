@@ -488,6 +488,7 @@ net.Receive("orgcheckname", function( l, pl )
 			net.WriteBool( false )
 		end
 		net.Send( pl )
+		PrintTable( r )
 		print( r )
 	end)
 end)
