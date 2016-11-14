@@ -363,6 +363,7 @@ end
 concommand.Add("org_meetup", org_meetup)
 
 hook.Add( "PlayerSay", "orgChat", function( pl, text, public )
+	print( text )
 	if (string.sub(text, 1, 5) == "!orgc") then
 		if pl:hasOrg() then
 			if string.len(string.sub(text, 6)) > 0 then
