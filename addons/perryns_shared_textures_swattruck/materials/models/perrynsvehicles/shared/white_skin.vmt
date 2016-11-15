@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	$nocull 1
+	$basetexture "models/perrynsvehicles/Shared/white_skin/white_skin"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ .3 .3 .3 ]"
+	"$normalmapalphaenvmapmask" "1"
+	"$surfaceprop" "Metal"
+	"$nodecal" "1"
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost" "1"
+	"Proxies"
+	{
+		"Equals"
+		{
+			srcVar1 $colorfix
+			resultVar	$color
+		}
+	}
+}

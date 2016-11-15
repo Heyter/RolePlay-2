@@ -1,0 +1,25 @@
+"VertexLitGeneric"
+{
+
+	$basetexture "models/perrynsvehicles/Shared/glass/glass"
+
+
+	 $translucent "1"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ .3 .3 .3 ]"
+	"$normalmapalphaenvmapmask" "1"
+	"$surfaceprop" "Glass"
+	"$nodecal" "1"
+	"$translucent" "1"
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost" "1"
+	"Proxies"
+	{
+		"Equals"
+		{
+			srcVar1 $colorfix
+			resultVar	$color
+		}
+	}
+}

@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"name" "Perryn's Ported Vehicles - Shared Textures"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "vehicle",
+	"tags": 
+	[
+		"realism",
+		"roleplay"
+	]
+}"
+}
