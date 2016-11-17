@@ -70,12 +70,16 @@ function CARSHOP.OpenGarage()
             local col = HUD_SKIN.FULL_GREY
             local left = p:GetTall() - 4
                             
-            draw.SimpleText( text, font, left + 5, 2, Color( col.r, col.g, col.b, col.a - 50 ) )
-            draw.SimpleText( v.Desc, "RPNormal_20", left + 5, h - 5, Color( col.r, col.g, col.b, col.a - 50 ) )
+            
+            
             
             if v.Health < 1 then
-                draw.SimpleText( " - Reparatur Benoetigt - ", "RPNormal_27", left + w + 100, 10, Color( 255, 0, 0, 200 ) )
+                draw.SimpleText( text, font, left + 5, 2, Color( col.r, col.g, col.b, col.a - 50 ) )
+            else
+                draw.SimpleText( "[DEFEKT]" .. text, font, left + 5, 2, Color( 255, 0, 0, 200 ) )
             end
+
+            draw.SimpleText( v.Desc, "RPNormal_20", left + 5, h - 5, Color( col.r, col.g, col.b, col.a - 50 ) )
             
             text = "HP"
             font = "RPNormal_25"
