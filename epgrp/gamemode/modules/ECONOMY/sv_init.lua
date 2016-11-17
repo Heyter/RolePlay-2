@@ -83,6 +83,9 @@ end
 *///////////////////////////////////////////////////////
     timer.Create( "ECONOMY_MONTH_TIMER", ECONOMY.MONTH_LAST, 0, function()
         ECONOMY.CITY_LOG = {}
+		ECONOMY.CITY_LOG.CASH = {}
+		ECONOMY.CITY_LOG.WARRANT = {}
+		ECONOMY.CITY_LOG.DAMAGE = {}
         ECONOMY.LAST_MONTH_CASH = ECONOMY.CITY_CASH
         ECONOMY.SyncCityData()
         
@@ -162,10 +165,18 @@ function ECONOMY.GetCityCash()
     return (ECONOMY.CITY_CASH or 0)
 end
 
-function ECONOMY.AddToLog( text )
-    if !(text) then return end
-    if string.len( text ) < 2 then return end
+function ECONOMY.AddToLog( args, class )
+	class = class or "cash"
+    if !(args) then return end
     
-    table.insert( ECONOMY.CITY_LOG, { text } )
+	if class == "cash" then	
+		if string.len( args ) < 2 then return end
+		table.insert( ECONOMY.CITY_LOG.CASH, {text} )
+	elseif class == "warrant" then
+		table.insert( ECONOMY.CITY_LOG.WARRANT, { args[1], args[2], args[3] } )
+	elseif class == "damage" then
+		table.insert( ECONOMY.CITY_LOG.DAMAGE, { args[1], args[2], args[3] } )
+	end
+	
     ECONOMY.SyncCityData()
 end

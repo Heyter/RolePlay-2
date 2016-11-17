@@ -34,7 +34,9 @@ JOB.RequiredGameMinutes = 360                   // Wie lange der Spieler gespiel
 JOB.RequiredSex = 0                             // Welches geschlecht der Spieler haben muss. 0 = egal, 1 = Mann, 2 = Frau
 JOB.RequiredBodySize = 0                        // Welche Körpergröße der Spieler haben muss, damit er diesen Job ausführen kann. 0 = egal
 
-JOB.CarType = "lambosine"
+JOB.CarType = {}
+JOB.CarType["lambosine"] = {"Eine Limo für den Mayor"}
+
 JOB.CarArmor = 100
 JOB.CarColor = Color( 0, 0, 0, 255 )
 JOB.CarSkin = nil

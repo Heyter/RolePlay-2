@@ -48,9 +48,7 @@ DIALOG["NPC_SwatInTeam"] = function( frame )
                     frame:GoToStage( 2 )
                 end,
                 ["Ich möchte einen Dienstwagen anfordern!"] = function( frame ) 
-					net.Start( "NPC_ClaimJobCar" )
-                    net.SendToServer()
-                    --frame:GoToStage( 2 )
+					Open_JobGarage()
                     frame:Close()
                 end,
                 ["Schon gut"] = function( frame )

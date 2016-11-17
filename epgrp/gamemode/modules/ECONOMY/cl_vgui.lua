@@ -270,11 +270,17 @@ function OpenEconomyMenu()
     PropertySheet:AddSheet( "Stadt Shop", hostpanel3, "icon16/coins.png", false, false )
     
     
+    /// CITY Log
+	
+	local log_sheet = vgui.Create( "DPropertySheet", PropertySheet )
+    log_sheet:SetPos( 0, 0 )
+    log_sheet:SetSize( PropertySheet:GetWide() , PropertySheet:GetTall() - 35 )
+    log_sheet.Paint = function() end
     
-    
-    local hostpanel4 = vgui.Create( "DPanelList", PropertySheet )
+	
+    local hostpanel4 = vgui.Create( "DPanelList", log_sheet )
     hostpanel4:SetPos( 0, 0 )
-    hostpanel4:SetSize( PropertySheet:GetWide(), (PropertySheet:GetTall() - 35) )
+    hostpanel4:SetSize( log_sheet:GetWide(), (log_sheet:GetTall() - 35) )
     hostpanel4:SetSpacing( 0 )
     hostpanel4:EnableHorizontal( false )
     hostpanel4:EnableVerticalScrollbar( true )
@@ -285,9 +291,40 @@ function OpenEconomyMenu()
     hostpanel4.VBar.btnGrip.Paint = function() 
         draw.RoundedBox( 2, 0, 0, hostpanel4.VBar:GetWide(), hostpanel4.VBar:GetTall(), Color( 0, 0, 0, 50 ) )
     end
+	log_sheet:AddSheet( "Geld Log", hostpanel4, "icon16/money.png", false, false )
+	
+	local hostpanel5 = vgui.Create( "DPanelList", log_sheet )
+    hostpanel5:SetPos( 0, 0 )
+    hostpanel5:SetSize( log_sheet:GetWide(), (log_sheet:GetTall() - 35) )
+    hostpanel5:SetSpacing( 0 )
+    hostpanel5:EnableHorizontal( false )
+    hostpanel5:EnableVerticalScrollbar( true )
+    hostpanel5.Paint = function() end
+    hostpanel5.VBar.Paint = function() end
+    hostpanel5.VBar.btnUp.Paint = function() end
+    hostpanel5.VBar.btnDown.Paint = function() end
+    hostpanel5.VBar.btnGrip.Paint = function() 
+        draw.RoundedBox( 2, 0, 0, hostpanel5.VBar:GetWide(), hostpanel5.VBar:GetTall(), Color( 0, 0, 0, 50 ) )
+    end
+	log_sheet:AddSheet( "Warrant Log", hostpanel5, "icon16/shield.png", false, false )
+	
+	local hostpanel6 = vgui.Create( "DPanelList", log_sheet )
+    hostpanel6:SetPos( 0, 0 )
+    hostpanel6:SetSize( log_sheet:GetWide(), (log_sheet:GetTall() - 35) )
+    hostpanel6:SetSpacing( 0 )
+    hostpanel6:EnableHorizontal( false )
+    hostpanel6:EnableVerticalScrollbar( true )
+    hostpanel6.Paint = function() end
+    hostpanel6.VBar.Paint = function() end
+    hostpanel6.VBar.btnUp.Paint = function() end
+    hostpanel6.VBar.btnDown.Paint = function() end
+    hostpanel6.VBar.btnGrip.Paint = function() 
+        draw.RoundedBox( 2, 0, 0, hostpanel6.VBar:GetWide(), hostpanel6.VBar:GetTall(), Color( 0, 0, 0, 50 ) )
+    end
+	log_sheet:AddSheet( "Damage Log", hostpanel6, "icon16/gun.png", false, false )
     
     i = 0
-    for k, v in pairs( ECONOMY.CITY_LOG ) do
+    for k, v in pairs( ECONOMY.CITY_LOG.CASH ) do
         local list_col = HUD_SKIN.LIST_BG_FIRST
         i = i + 1
         if i == 2 then list_col = HUD_SKIN.LIST_BG_SECOND i = 0 end
@@ -305,7 +342,59 @@ function OpenEconomyMenu()
         
         hostpanel4:AddItem( pnl )
     end
-    PropertySheet:AddSheet( "Stadt Log", hostpanel4, "icon16/pencil.png", false, false )
+	
+	i = 0
+    for k, v in pairs( ECONOMY.CITY_LOG.WARRANT ) do
+        local list_col = HUD_SKIN.LIST_BG_FIRST
+        i = i + 1
+        if i == 2 then list_col = HUD_SKIN.LIST_BG_SECOND i = 0 end
+		
+		local cop = v[1]
+		local ply = v[2]
+		local reason = v[3]
+        
+        local pnl = vgui.Create( "DPanel", hostpanel5 )
+        pnl:SetTall( (PropertySheet:GetTall() - 35) / 8 )
+        pnl:SetWide( hostpanel5:GetWide() )
+        pnl.Paint = function( pnl )
+            draw.RoundedBox( 0, 0, 0, pnl:GetWide(), pnl:GetTall(), list_col )
+			
+            local w, h = draw.SimpleText( ply:GetRPVar( "rpname" ), "RPNormal_25", 5, 5, Color( 0, 150, 0, 200 ) )
+			local w2, h2 = draw.SimpleText( " wird nun von ", "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
+			local w, h = draw.SimpleText( cop:GetRPVar( "rpname" ) .. " gesucht. Grund: ", "RPNormal_25", 5 + w2, 5, Color( 0, 0, 200, 200 ) )
+			draw.SimpleText( reason, "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
+        end
+        
+        
+        hostpanel5:AddItem( pnl )
+    end
+	
+	i = 0
+    for k, v in pairs( ECONOMY.CITY_LOG.DAMAGE ) do
+        local list_col = HUD_SKIN.LIST_BG_FIRST
+        i = i + 1
+        if i == 2 then list_col = HUD_SKIN.LIST_BG_SECOND i = 0 end
+		
+		local cop = v[1]
+		local ply = v[2]
+		local damage = v[3]
+        
+        local pnl = vgui.Create( "DPanel", hostpanel6 )
+        pnl:SetTall( (PropertySheet:GetTall() - 35) / 8 )
+        pnl:SetWide( hostpanel6:GetWide() )
+        pnl.Paint = function( pnl )
+            draw.RoundedBox( 0, 0, 0, pnl:GetWide(), pnl:GetTall(), list_col )
+			
+            local w, h = draw.SimpleText( cop:GetRPVar( "rpname" ), "RPNormal_25", 5, 5, Color( 0, 0, 150, 200 ) )
+			local w2, h2 = draw.SimpleText( " hat Schaden an ", "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
+			local w, h = draw.SimpleText( ply:GetRPVar( "rpname" ) .. " verursacht. (-" .. tostring( damage ) .. " )", "RPNormal_25", 5 + w2, 5, Color( 0, 200, 0, 200 ) )
+        end
+        
+        
+        hostpanel6:AddItem( pnl )
+    end
+	
+    PropertySheet:AddSheet( "Stadt Log", log_sheet, "icon16/pencil.png", false, false )
     
 
     btn.DoClick = function() // Accept Changes Button

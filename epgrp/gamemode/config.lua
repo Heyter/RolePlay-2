@@ -28,6 +28,9 @@ SETTINGS.STAMINA_REPLAY = 0.717
 // Warrant
 SETTINGS.MAX_STARS = 5                              //  Maximale Anzahl der Warrant Stufen
 SETTINGS.WARRANT_LENGHT = {320, 320, 320, 320, 320}        //  Abklingzeiten der einzelnen Sterne
+SETTINGS.Warrant_BlastDoor = 5						// Ab welchen Sternlevel ein Polizist eine Tür auframmen kann
+SETTINGS.Warrant_ShootPerson = 3					// Ab welchen Sternlevel ein Polizist die Erlaubniss hat zu schießen ( Mayor Log, wenn nicht! )
+
 
 // Name Change
 SETTINGS.NameChangeCost = 10000

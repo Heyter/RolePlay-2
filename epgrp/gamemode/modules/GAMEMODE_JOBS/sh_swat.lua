@@ -29,8 +29,11 @@ JOB.MaxCars = 2                                 // Wie viele Dienstwagen die Sta
 JOB.RequiredGameMinutes = 1440                   // Wie lange der Spieler gespielt haben muss, bevor er diesen Job ausführen kann
 JOB.RequiredSex = 0                             // Welches geschlecht der Spieler haben muss. 0 = egal, 1 = Mann, 2 = Frau
 JOB.RequiredBodySize = 0                        // Welche Körpergröße der Spieler haben muss, damit er diesen Job ausführen kann. 0 = egal
+JOB.RequiredRuf = 50							// Wie viel Ruf man braucht um diesen Job ausüben zu können
 
-JOB.CarType = "escaladetdm"
+JOB.CarType = {}
+JOB.CarType["escaladetdm"] = "Der Normale SWAT-Truck"
+
 JOB.CarArmor = 100
 JOB.CarColor = Color( 0, 0, 0, 255 )
 JOB.CarSkin = nil

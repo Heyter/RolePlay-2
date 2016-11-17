@@ -285,6 +285,13 @@ net.Receive( "NPC_LeaveJob", function( data, ply )
 end)
 
 net.Receive( "NPC_ClaimJobCar", function( data, ply )
+	local name = net.ReadString()
+	ply:SpawnJobCar( name )
+end)
+
+function PLAYER_META:SpawnJobCar( name )
+	local ply = self
+	
     if !(IsValid( ply )) then return end
     if GAMEMODE.TEAMS[ply:Team()].MaxCars < 1 then return end
     
@@ -306,11 +313,12 @@ net.Receive( "NPC_ClaimJobCar", function( data, ply )
     for k, v in pairs( ents.GetAll() ) do
         if !(IsValid( v )) then continue end
         if !(v:IsVehicle()) then continue end
-        if v.VehicleName == GAMEMODE.TEAMS[ply:Team()].CarType then
+        if v.JobCar && v.Job == ply:Team() then
             GAMEMODE.TEAMS[ply:Team()].SpawnedCars = GAMEMODE.TEAMS[ply:Team()].SpawnedCars + 1
         end
     end
-    
+    print( GAMEMODE.TEAMS[ply:Team()].SpawnedCars )
+	SetGlobalInt( "SpawnedCars_" .. tostring( ply:Team() ), GAMEMODE.TEAMS[ply:Team()].SpawnedCars ) 	// Make a global var, so client has some info
     if GAMEMODE.TEAMS[ply:Team()].SpawnedCars >= GAMEMODE.TEAMS[ply:Team()].MaxCars then return end
     
     local found, p, a = false, nil, nil
@@ -330,14 +338,17 @@ net.Receive( "NPC_ClaimJobCar", function( data, ply )
     end
     
     if found then
-        ply.car = CARSHOP.CreateJOBCar( ply, GAMEMODE.TEAMS[ply:Team()].CarType, p, a )
+		--GAMEMODE.TEAMS[ply:Team()].CarType
+        ply.car = CARSHOP.CreateJOBCar( ply, name, p, a )
         ply.car.armor = (GAMEMODE.TEAMS[ply:Team()].CarArmor or 0)
         if GAMEMODE.TEAMS[ply:Team()].CarSkin != nil then ply.car:SetSkin( GAMEMODE.TEAMS[ply:Team()].CarSkin ) end
         if GAMEMODE.TEAMS[ply:Team()].CarColor != nil then ply.car:SetColor( GAMEMODE.TEAMS[ply:Team()].CarColor ) end
         
-        if IsValid( car ) then ply:DeleteOnRemove( car ) end
+        if IsValid( car ) then 
+			ply:DeleteOnRemove( car ) 
+		end
     end
-end)
+end
 
 // Chat Commands
 

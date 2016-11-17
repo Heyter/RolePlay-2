@@ -26,7 +26,9 @@ JOB.RequiredSex = 0                             // Welches geschlecht der Spiele
 JOB.RequiredBodySize = 0                        // Welche Körpergröße der Spieler haben muss, damit er diesen Job ausführen kann. 0 = egal
 
 
-JOB.CarType = "scaniafiretdm"
+JOB.CarType = {}
+JOB.CarType["scaniafiretdm"] = "Normaler Einsatz Truck"
+
 JOB.CarArmor = 100
 JOB.CarColor = nil
 JOB.CarSkin = nil

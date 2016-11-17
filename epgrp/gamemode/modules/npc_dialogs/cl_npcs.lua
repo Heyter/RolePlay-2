@@ -75,14 +75,24 @@ local function openDialog( dialog, npc )
 	frame.buttons = { }
 	function frame:SetDialog( dialogTable )
 		npcSay:SetText( dialogTable.npcsay )
+		local add = 0
+		local Next = CurTime()
+		local delay = 0.2
+		local i = 0
 		for k, v in pairs( dialogTable.options ) do
+			i = i + 1
 			local btn = vgui.Create( "DButton", bottomPanel )
 			btn:SetText( "" )
+			btn:SetPos( 0, add )
+			
+			btn.Next = Next
+			btn.s = 0
+			btn.max = frame:GetWide()
+			btn:SetWide( btn.s )
+			
 			function btn.DoClick( )
 				v( self )
 			end
-			btn:DockMargin( 5, 5, 5, 5 )
-			btn:Dock( TOP )
             btn.Paint = function()
                 local font = "RPNormal_20"
                 local text = k
@@ -91,7 +101,14 @@ local function openDialog( dialog, npc )
                 draw.RoundedBox( 4, 0, 0, btn:GetWide(), btn:GetTall(), HUD_SKIN.THEME_COLOR )
                 draw.SimpleText( k, "RPNormal_20", (btn:GetWide() - w) / 2, (btn:GetTall() - h)/2, Color( 255, 255, 255, 255 ) )
             end
+			btn.Think = function()
+				if (btn.Next > CurTime()) then return end
+				if !(btn.s >= btn.max) then btn.s = btn.s + 20 end
+				btn:SetWide( btn.s )
+			end
 			
+			Next = CurTime() + delay*i
+			add = add + btn:GetTall() + 5
 			table.insert( self.buttons, btn )
 		end
 	end

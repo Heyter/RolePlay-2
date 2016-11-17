@@ -197,14 +197,14 @@ end
 
 function CARSHOP.CreateGarageCar( ply, index, pos, angles )
     local tbl = (ply:GetRPVar( "garage_table" ) or {})
-    if !(tbl) then return false end
-    if !(tbl[index]) then return false end
+    if !(tbl) then return end
+    if !(tbl[index]) then return end
     tbl = tbl[index]
 	local VehData = list.Get("Vehicles")[index]
 
 	if not VehData then
 		print( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. index .. " geladen!" )
-		return false
+		return
 	end
     
     local found = false
@@ -214,10 +214,10 @@ function CARSHOP.CreateGarageCar( ply, index, pos, angles )
         v.destructed = v.destructed or false
         if v.Owner == ply && !(v.destructed) then
             ply:RPNotify( "Stelle erst dein Aktuelles Auto in die Garage, bevor du ein neues Spawnst", 5 )
-            return false
+            return
         elseif v.Owner == ply && v.destructed then
             ply:RPNotify( "Du musst dein Auto zuerst Reparieren lassen, bevor du ein neues Spawnen kannst", 5 )
-            return false
+            return
         end
     end
 	local CarCreate = ents.Create( "prop_vehicle_jeep" )
@@ -257,8 +257,6 @@ function CARSHOP.CreateGarageCar( ply, index, pos, angles )
 	CarCreate:Fire( "lock", 1 )
     
     CARSHOP.ApplyVisuals( ply, CarCreate )
-
-    return true;
 end
 
 function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
@@ -268,6 +266,8 @@ function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
     local cartbl = FindCarTableByClassName( vehname )
 
 	if not VehData then
+	print("no")
+	print( vehname )
 		--GAMEMODE:Log( 1, "[VehicleScript] FATAL: Keine Vehicle Lua-Datei für " .. vehname .. " geladen!" )
 		return
 	end
@@ -299,6 +299,7 @@ function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
 	CarCreate:SetHealth( cartbl.Health or 300 )
 	CarCreate:SetMaxHealth( cartbl.Health or 300 )
     CarCreate.JobCar = true
+	CarCreate.Job = ply:Team()
     
 	
 	CarCreate.ClassOverride = VehData.Class
@@ -310,6 +311,8 @@ function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
 	CarCreate:SetRPVar( "owner", ply )
     CarCreate:SetRPVar( "Armor", cartbl.Armor or 0 )
 	CarCreate.Owner = ply 
+	
+	ply:RPNotify( "Dein Job-Auto wurde gespawn!", 6 )
 	gamemode.Call("PlayerSpawnedVehicle", ply, CarCreate, false) -- VUMod compatability
 	CarCreate:Fire( "lock", 1 )
     return CarCreate
@@ -327,9 +330,8 @@ function CARSHOP.SpawnGarageCar( ply, index )
     if pos == nil then print("Couldnt spawn car - too far away") return end
     
     timer.Simple( 0.2, function() 
-        if CARSHOP.CreateGarageCar( ply, index, pos.pos, pos.ang ) then
-            ply:RPNotify("Dein Auto steht nun in der Garage bereit.", 5)
-        end
+        CARSHOP.CreateGarageCar( ply, index, pos.pos, pos.ang ) 
+        ply:RPNotify("Dein Auto steht nun in der Garage bereit.", 5)
     end )
 end
 net.Receive( "CarDealer_SpawnGarageCar", function( data, ply ) local c = net.ReadString() CARSHOP.SpawnGarageCar( ply, c ) end )

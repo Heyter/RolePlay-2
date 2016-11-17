@@ -82,13 +82,22 @@ function GM:PlayerCanHearPlayersVoice( listener, talker )
     if listener:GetRPVar( "RadioChat" ) == true && talker:GetRPVar( "RadioChat" ) == true && (listener:IsPolice() or listener:IsSWAT() or listener:IsMedic() or listener:Team() == TEAM_FIRE) then
         local c1 = listener:GetRPVar( "RadioChannel" ) or 1
         local c2 = talker:GetRPVar( "RadioChannel" ) or 1
+		local hacked = listener:GetRPVar( "RadioHack" ) or 0
+		local car = listener:GetVehicle() or nil
+		
+		local radio = (listener:GetInfoNum( "play_radio_in_car", 1 ) or 1)
+		if radio then		// Check if the Player wants to hear Radio in car
+			if (listener:IsPolice() or listener:IsSWAT() or listener:IsMedic() or listener:Team() == TEAM_FIRE) && talker:GetRPVar( "RadioChat" ) && (c1==c1) && car != nil && IsValid( car ) && car.JobCar == true then return true end	// Play the Radiochat when in a Job car
+		end
+		
+		if hacked && c1 == c2 then return true end	// He has hacked the channel!
         if c1 != c2 then return false end   // Not in the same channel!
         
         return true
     end
     
 	if pos:Distance( lpos ) > SETTINGS.VoiceRadius then return false end
-    if talker:GetRPVar( "RadioChat" ) == true then return false end
+    --if talker:GetRPVar( "RadioChat" ) == true then return false end		// We want to hear him, when near to him....
     
 	return true, true
 end

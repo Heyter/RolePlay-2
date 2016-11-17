@@ -47,7 +47,11 @@ function PLAYER_META:RemoveStars( victim, level )
 	victim:SetRPVar( "warrant", math.Clamp(stars - level, 0, SETTINGS.MAX_STARS) )
 	
 	if timer.Exists( "Player_Warrant_Expiration_" .. tostring(victim:UniqueID() ) ) then
-		timer.Remove( "Player_Warrant_Expiration_" .. tostring(victim:UniqueID() ) )
+		if math.Clamp(stars - level, 0, SETTINGS.MAX_STARS) < 1 then
+			timer.Remove( "Player_Warrant_Expiration_" .. tostring(victim:UniqueID() ) )
+		else
+			victim:AdjustTimer( SETTINGS.WARRANT_LENGHT[victim:GetRPVar( "warrant" )] )
+		end
 	end
 end
 hook.Add( "NOSRP_PlayerDeath", "Warrant_Remove_Stars", function( ply ) ply:RemoveStars( ply, SETTINGS.MAX_STARS ) end )
@@ -57,6 +61,21 @@ function PLAYER_META:HasWarrantAccess()
     return t.CanWarrant
 end
 
+function PLAYER_META:COP_CanBlastDoor( owner )
+	return (owner:GetStarLevel() >= SETTINGS.Warrant_BlastDoor)
+end
+
+function PLAYER_META:COP_ShotPlayer( ply )
+	if !(IsValid( ply ) or IsValid( self )) then return end
+	if !(self:IsSWAT() or self:IsCP()) then return end
+	
+	if ply:GetStarLevel() < SETTINGS.Warrant_ShootPerson then
+		ECONOMY.AddToLog( {self,ply,0} , "damage" )
+	end
+end
+hook.Add( "PlayerShouldTakeDamage", "COP_ShotPlayer", function( ply, cop ) cop:COP_ShotPlayer( ply ) end )
+
+// Some Chat Commands ////////////////////////////////////////
 
 RP.PLUGINS.CHATCOMMAND.AddChatCommand( "/warrant", function( ply, args, public )
     if !(ply:HasWarrantAccess()) then ply:ChatPrint( "Police only command" ) return "" end
@@ -66,5 +85,16 @@ RP.PLUGINS.CHATCOMMAND.AddChatCommand( "/warrant", function( ply, args, public )
     if user == nil then ply:ChatPrint( "Please provide a valid playername: /warrant <player|name> <level|number>" ) return "" end
     if !(args[2]) then ply:ChatPrint( "Please enter a warrant level: /warrant <player|name> <level|number>" ) return "" end
     ply:SetStars( user, tonumber(args[2]) )
+    return ""
+end )
+
+RP.PLUGINS.CHATCOMMAND.AddChatCommand( "/unwarrant", function( ply, args, public )
+    if !(ply:HasWarrantAccess()) then ply:ChatPrint( "Police only command" ) return "" end
+    if !(args[1]) then ply:ChatPrint( "Please provide a valid playername: /unwarrant <player|name> <number|stars to remove>" ) return "" end
+
+    local user = RP.PLUGINS.CHATCOMMAND.FindUserByName( args[1] )
+    if user == nil then ply:ChatPrint( "Please provide a valid playername: /unwarrant <player|name> <number|stars to remove>" ) return "" end
+    if !(args[2]) then ply:ChatPrint( "Please enter a unwarrant level: /unwarrant <player|name> <number|stars to remove>" ) return "" end
+    ply:RemoveStars( user, tonumber(args[2]) )
     return ""
 end )
