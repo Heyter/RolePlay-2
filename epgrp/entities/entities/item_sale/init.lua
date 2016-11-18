@@ -54,6 +54,14 @@ function ENT:Use(activator,caller)
     if ply:SteamID() == self.owner then
         ply.lastuse = CurTime() + 1
         local item = itemstore.Item( self.itemclass )
+		
+		self.data = self.data or nil
+		if self.data != nil then				// Parameter übernehmen
+			for k, v in pairs( self.data ) do
+				self[k] = v
+			end
+		end
+		
         item:Run( "CanPickup", ply, self )
         item:Run( "SaveData", self )
 		item:Run( "Pickup", ply, self )

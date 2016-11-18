@@ -69,6 +69,8 @@ if SERVER then
 			ent.owner = self:SteamID()
 			ent.itemclass = item.Class
 			ent:Spawn()
+
+			ent.data = item.Data
 			
 			timer.Simple( 1, function()
 				ent:SetRPVar( "name", item:GetName() )
