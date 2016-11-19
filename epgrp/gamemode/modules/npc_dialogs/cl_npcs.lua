@@ -21,6 +21,7 @@ local function openDialog( dialog, npc )
         draw.RoundedBox( 4, 0, 0, frame:GetWide(), frame:GetTall(), HUD_SKIN.LIST_BG_FIRST )
         draw.RoundedBox( 2, 0, 0, frame:GetWide(), 25, HUD_SKIN.THEME_COLOR )
     end
+	frame.npc = npc
 	
 	local topPanel = vgui.Create( "DPanel", frame )
 	topPanel:DockMargin( 5, 5, 5, 5 )
@@ -54,16 +55,16 @@ local function openDialog( dialog, npc )
 
 	function modelPanel:LayoutEntity( Entity ) end
 
-	local p = modelPanel.Paint
-	function modelPanel:Paint( )
-		draw.RoundedBox( 6, 0, 0, self:GetWide( ), self:GetTall( ), Color( 80, 80, 80 ) )
-		p( self )
-	end
+	--local p = modelPanel.Paint
+	--function modelPanel:Paint( )
+	--	draw.RoundedBox( 6, 0, 0, self:GetWide( ), self:GetTall( ), Color( 80, 80, 80 ) )
+	--	p( self )
+	--end
 
 	local eyepos = modelPanel.Entity:GetBonePosition( modelPanel.Entity:LookupBone( "ValveBiped.Bip01_Head1" ) )
-	eyepos:Add( Vector( 0, 16, 38) )	-- Move up slightly
+	eyepos:Add( Vector( 0, 0, 0) )	-- Move up slightly
 	modelPanel:SetLookAt( eyepos )
-	modelPanel:SetCamPos( eyepos-Vector( -230, 0, 0 ) )
+	modelPanel:SetCamPos( eyepos-Vector( -15, 0, 0 ) )
 
 	function frame:GoToStage( iStage )
 		for k, v in pairs( self.buttons ) do
@@ -89,6 +90,7 @@ local function openDialog( dialog, npc )
 			btn.s = 0
 			btn.max = frame:GetWide()
 			btn:SetWide( btn.s )
+			btn.npc = npc
 			
 			function btn.DoClick( )
 				v( self )

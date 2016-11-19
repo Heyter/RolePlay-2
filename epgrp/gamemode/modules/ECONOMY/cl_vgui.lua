@@ -308,6 +308,21 @@ function OpenEconomyMenu()
     end
 	log_sheet:AddSheet( "Warrant Log", hostpanel5, "icon16/shield.png", false, false )
 	
+	local hostpanel7 = vgui.Create( "DPanelList", log_sheet )
+    hostpanel7:SetPos( 0, 0 )
+    hostpanel7:SetSize( log_sheet:GetWide(), (log_sheet:GetTall() - 35) )
+    hostpanel7:SetSpacing( 0 )
+    hostpanel7:EnableHorizontal( false )
+    hostpanel7:EnableVerticalScrollbar( true )
+    hostpanel7.Paint = function() end
+    hostpanel7.VBar.Paint = function() end
+    hostpanel7.VBar.btnUp.Paint = function() end
+    hostpanel7.VBar.btnDown.Paint = function() end
+    hostpanel7.VBar.btnGrip.Paint = function() 
+        draw.RoundedBox( 2, 0, 0, hostpanel7.VBar:GetWide(), hostpanel7.VBar:GetTall(), Color( 0, 0, 0, 50 ) )
+    end
+	log_sheet:AddSheet( "Arrest Log", hostpanel7, "icon16/shield.png", false, false )
+	
 	local hostpanel6 = vgui.Create( "DPanelList", log_sheet )
     hostpanel6:SetPos( 0, 0 )
     hostpanel6:SetSize( log_sheet:GetWide(), (log_sheet:GetTall() - 35) )
@@ -362,6 +377,32 @@ function OpenEconomyMenu()
             local w, h = draw.SimpleText( ply:GetRPVar( "rpname" ), "RPNormal_25", 5, 5, Color( 0, 150, 0, 200 ) )
 			local w2, h2 = draw.SimpleText( " wird nun von ", "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
 			local w, h = draw.SimpleText( cop:GetRPVar( "rpname" ) .. " gesucht. Grund: ", "RPNormal_25", 5 + w2, 5, Color( 0, 0, 200, 200 ) )
+			draw.SimpleText( reason, "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
+        end
+        
+        
+        hostpanel5:AddItem( pnl )
+    end
+	
+	i = 0
+    for k, v in pairs( ECONOMY.CITY_LOG.ARREST ) do
+        local list_col = HUD_SKIN.LIST_BG_FIRST
+        i = i + 1
+        if i == 2 then list_col = HUD_SKIN.LIST_BG_SECOND i = 0 end
+		
+		local cop = v[1]
+		local ply = v[2]
+		local reason = v[3]
+        
+        local pnl = vgui.Create( "DPanel", hostpanel5 )
+        pnl:SetTall( (PropertySheet:GetTall() - 35) / 8 )
+        pnl:SetWide( hostpanel5:GetWide() )
+        pnl.Paint = function( pnl )
+            draw.RoundedBox( 0, 0, 0, pnl:GetWide(), pnl:GetTall(), list_col )
+			
+            local w, h = draw.SimpleText( ply:GetRPVar( "rpname" ), "RPNormal_25", 5, 5, Color( 0, 150, 0, 200 ) )
+			local w2, h2 = draw.SimpleText( " hat ", "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
+			local w, h = draw.SimpleText( cop:GetRPVar( "rpname" ) .. " festgenommen. Grund: ", "RPNormal_25", 5 + w2, 5, Color( 0, 0, 200, 200 ) )
 			draw.SimpleText( reason, "RPNormal_25", 5 + w, 5, Color( 255, 255, 255, 200 ) )
         end
         

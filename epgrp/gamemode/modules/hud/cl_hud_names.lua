@@ -69,9 +69,15 @@ local function DrawName(ply, opacityScale)
         t = "   KM/H: " .. tostring( ply:GetSpeed() )
         col = GAMEMODE.TEAMS[ ply:GetRPVar("owner"):Team() ].Color
     else
+		local check = GAMEMODE.TEAMS[ ply:Team() ]
+		if check == nil then 
+			t = "Erstellt Charakter" 
+			col = Color( 255, 255, 255, 255 )
+		else
+			t = string.upper( GAMEMODE.TEAMS[ ply:Team() ].Name )
+			col = GAMEMODE.TEAMS[ ply:Team() ].Color
+		end
         name = "  " .. string.upper( ply:GetRPVar("rpname") or ply:Nick() )
-        t = "  " .. string.upper( GAMEMODE.TEAMS[ ply:Team() ].Name )
-        col = GAMEMODE.TEAMS[ ply:Team() ].Color
     end
     
     if LocalPlayer():InVehicle() then
@@ -83,8 +89,19 @@ local function DrawName(ply, opacityScale)
 
         -- render.OverrideDepthEnable(false, true)
         if ply:IsPlayer() then
+		
+			if ply:GetNWBool( "arrested" ) then		// Arrested Display
+				local ar_col = HUD_SKIN.ARRESTED_COL
+				ar_col.a = opacity
+				local unarrest = ply:GetNWInt( "unarrest_time" ) or 0
+				print( unarrest - CurTime() )
+				draw.NameText( ConvPlaytimeArrest( unarrest - CurTime() ), "RPNormal_20", 50, -40, Color( 255, 255, 255, opacity) )
+				draw.NameText( "Gefangener", "RPNormal_25", 50, -20, ar_col )
+			else
+				draw.NameText( t, "RPNormal_25", 50, -20, Color( col.r, col.g, col.b, opacity ) )
+			end
+			
             draw.NameText( name, "RPNormal_40", 50, 0, Color( 255, 255, 255, opacity ) )
-            draw.NameText( t, "RPNormal_25", 50, -20, Color( col.r, col.g, col.b, opacity ) )
             draw.NameText( ply:GetNWString("orgName"), "RPNormal_20", 50, -40, Color( 255, 255, 255, opacity ) )
 			
             local count = ply:GetRPVar( "warrant" ) or 0

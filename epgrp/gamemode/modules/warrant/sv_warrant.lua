@@ -5,6 +5,11 @@ function PLAYER_META:SetStars( victim, level, script )
         local t = GAMEMODE.TEAMS[self:Team()]
 		if !(t.CanWarrant) then return end
 		if victim:IsPolice() or victim:IsSWAT() then return end
+		
+		if GetMayor() != nil then
+			GetMayor():RPNotify( (GetMayor():GetRPVar( "rpname") or "Unknown") .. " Wir jetzt gesucht. Grund: " .. reason, 10 )
+			ECONOMY.AddToLog( {ply,self,reason}, "warrant" )
+		end
 	end
 	
 	if !(IsValid( victim )) then return end
@@ -67,7 +72,7 @@ end
 
 function PLAYER_META:COP_ShotPlayer( ply )
 	if !(IsValid( ply ) or IsValid( self )) then return end
-	if !(self:IsSWAT() or self:IsCP()) then return end
+	if !(self:IsSWAT() or self:IsPolice()) then return end
 	
 	if ply:GetStarLevel() < SETTINGS.Warrant_ShootPerson then
 		ECONOMY.AddToLog( {self,ply,0} , "damage" )

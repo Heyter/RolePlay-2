@@ -32,6 +32,12 @@ SETTINGS.Warrant_BlastDoor = 5						// Ab welchen Sternlevel ein Polizist eine T
 SETTINGS.Warrant_ShootPerson = 3					// Ab welchen Sternlevel ein Polizist die Erlaubniss hat zu schießen ( Mayor Log, wenn nicht! )
 
 
+// Arrest
+SETTINGS.ArrestRange = 500
+SETTINGS.MaxArrestTime = 600
+
+
+
 // Name Change
 SETTINGS.NameChangeCost = 10000
 

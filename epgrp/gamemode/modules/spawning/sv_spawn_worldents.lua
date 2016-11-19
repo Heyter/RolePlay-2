@@ -56,6 +56,14 @@ function LoadNPCSpawns()
         callfunc = "NPC_PoliceHello",
         teamHello = "NPC_PoliceInTeam"
     }
+	 NPC_SPAWNS["Police_Arrester"] = {
+        Team = TEAM_POLICE,
+        pos = Vector(-6950, -9226, -431),
+        ang = Angle( 0, 90, 0 ),
+        model = "models/gign remasteredhdnpc.mdl",
+        callfunc = "NPC_Jailer_Nope",
+        teamHello = "NPC_Jailer"
+    }
     NPC_SPAWNS["Firefighter"] = {
         Team = TEAM_FIRE,
         pos = Vector(-3871, -6969, 210),

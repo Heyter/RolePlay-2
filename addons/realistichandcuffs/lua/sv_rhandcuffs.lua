@@ -125,16 +125,20 @@ function PLAYER:RHCRestrain(HandcuffedBy)
     if !self.Restrained then
         self.Restrained = true
         self.CuffedBy = HandcuffedBy
-        HandcuffedBy.CuffedPlayer = self
         self:SetupRBones()
         self:SetupCuffs()
         self:SetupWeapons()
-		self:RPNotify( "You have been cuffed by: " .. HandcuffedBy:Nick() .. ".", 3 )
-		HandcuffedBy:RPNotify( "You successfully cuffed " .. self:Nick() .. ".", 3 )   
+		if HandcuffedBy != nil then
+			HandcuffedBy.CuffedPlayer = self
+			self:RPNotify( "You have been cuffed by: " .. HandcuffedBy:Nick() .. ".", 3 )
+			HandcuffedBy:RPNotify( "You successfully cuffed " .. self:Nick() .. ".", 3 )   
+		end
     elseif self.Restrained then
         self:CleanUpRHC(true)
-		self:RPNotify( "You have been released by: " .. HandcuffedBy:Nick() .. ".", 3 )
-		HandcuffedBy:RPNotify( "You successfully released " .. self:Nick() .. ".", 3 ) 
+		if HandcuffedBy != nil then
+			self:RPNotify( "You have been released by: " .. HandcuffedBy:Nick() .. ".", 3 )
+			HandcuffedBy:RPNotify( "You successfully released " .. self:Nick() .. ".", 3 ) 
+		end
     end
 end
  

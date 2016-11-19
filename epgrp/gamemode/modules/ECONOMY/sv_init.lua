@@ -85,6 +85,7 @@ end
         ECONOMY.CITY_LOG = {}
 		ECONOMY.CITY_LOG.CASH = {}
 		ECONOMY.CITY_LOG.WARRANT = {}
+		ECONOMY.CITY_LOG.ARREST = {}
 		ECONOMY.CITY_LOG.DAMAGE = {}
         ECONOMY.LAST_MONTH_CASH = ECONOMY.CITY_CASH
         ECONOMY.SyncCityData()
@@ -171,10 +172,16 @@ function ECONOMY.AddToLog( args, class )
     
 	if class == "cash" then	
 		if string.len( args ) < 2 then return end
+		ECONOMY.CITY_LOG.CASH = ECONOMY.CITY_LOG.CASH or {}
 		table.insert( ECONOMY.CITY_LOG.CASH, {text} )
 	elseif class == "warrant" then
+		ECONOMY.CITY_LOG.WARRANT = ECONOMY.CITY_LOG.WARRANT or {}
 		table.insert( ECONOMY.CITY_LOG.WARRANT, { args[1], args[2], args[3] } )
+	elseif class == "arrest" then
+		ECONOMY.CITY_LOG.ARREST = ECONOMY.CITY_LOG.ARREST or {}
+		table.insert( ECONOMY.CITY_LOG.ARREST, { args[1], args[2], args[3] } )
 	elseif class == "damage" then
+		ECONOMY.CITY_LOG.DAMAGE = ECONOMY.CITY_LOG.DAMAGE or {}
 		table.insert( ECONOMY.CITY_LOG.DAMAGE, { args[1], args[2], args[3] } )
 	end
 	
