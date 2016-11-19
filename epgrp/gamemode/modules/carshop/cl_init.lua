@@ -174,6 +174,7 @@ function CARSHOP.LoadShopGarage(pnl)
             move_panel.PurchaseButton.Think = function()
                 v.Sold = v.Sold or false
                 if v.Sold then 
+                    print("Sell dis")
                     move_panel.PurchaseButton:SetEnabled( false ) 
                 else 
                     move_panel.PurchaseButton:SetEnabled( true ) 
