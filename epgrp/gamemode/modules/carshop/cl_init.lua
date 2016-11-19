@@ -214,7 +214,7 @@ function CARSHOP.OpenShop()
                     local col = HUD_SKIN.FULL_GREY
                     
                     draw.SimpleText( text, font, (move_panel:GetWide() - w)/2, (move_panel:GetTall() - h)/2, Color( col.r, col.g, col.b, col.a - 50 ) )
-                    text = "Halte die Maus hier drÃ¼ber fÃ¼r mehr Informationen!"
+                    text = "Halte die Maus hier drüber für mehr Informationen!"
                     font = "RPNormal_21"
                     surface.SetFont( font )
                     w, h = surface.GetTextSize( text )
