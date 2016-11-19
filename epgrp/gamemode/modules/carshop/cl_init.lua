@@ -192,8 +192,9 @@ function CARSHOP.LoadShopGarage(pnl)
             move_panel.ViewButton.Paint = function()
                 draw.RoundedBox( 0, 0, 0, move_panel.ViewButton:GetWide(), move_panel.ViewButton:GetTall(), HUD_SKIN.THEME_COLOR )
                 local text = ""
-                local rech = math.Round(((v.repair - os.time()) / 60))
-                if v.repair > 1 then
+
+                if v.repair and v.repair > 1 then
+                    local rech = math.Round(((v.repair - os.time()) / 60))
                     text = rech .. " Minuten"
                 elseif v.Health > 50 then
                     text = "In Takt"
