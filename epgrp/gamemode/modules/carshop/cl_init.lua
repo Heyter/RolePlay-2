@@ -166,6 +166,7 @@ function CARSHOP.LoadShopGarage(pnl)
                 draw.SimpleText( text, font, (move_panel.PurchaseButton:GetWide() - w)/2, (move_panel.PurchaseButton:GetTall() - h)/2, Color( 255, 255, 255, 255 ) )
             end
             move_panel.PurchaseButton.DoClick = function()
+                print("Sell sent")
                 net.Start( "CarDealer_SellCar" )
                     net.WriteString( k )
                 net.SendToServer()
