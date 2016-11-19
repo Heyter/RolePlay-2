@@ -68,6 +68,7 @@ function meta:UnownDoor( door )
     
     self:AddCash( v.cost / 2 )
     
+	door:Fire( "lock", "", 1 )
 	door:SetRPVar( "doordata", {owner=nil, title=v.title, cost=v.cost, teams=v.teams, pos=v.position, subdoors=v.subdoors, locked=v.locked, door=door} )
 	EditDoorTable( door, {owner=nil, title=v.title, cost=v.cost, teams=v.teams, pos=v.position, subdoors=v.subdoors, locked=v.locked, door=door} )
 	
