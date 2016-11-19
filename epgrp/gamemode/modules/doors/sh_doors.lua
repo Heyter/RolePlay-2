@@ -41,7 +41,7 @@ function door_meta:GetDoorOwner()
 end
 
 if CLIENT then
-	local viewdistance = GetConVarNumber( "door_viewdistance" ) or 250
+	local viewdistance = 250
 	
 	net.Receive( "SendDoorTable", function()
 		local tbl = net.ReadTable() or nil
