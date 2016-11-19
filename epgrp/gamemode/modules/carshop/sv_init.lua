@@ -135,9 +135,13 @@ end
 net.Receive( "CarDealer_PurchaseCar", function( data, ply ) CARSHOP.PurchaseCar( ply, net.ReadString(), {} ) end)
 
 function CARSHOP.SellCar( ply, index )
+    print("SC: 1")
     local tbl = ply:GetRPVar( "garage_table" ) or {}
+    print("SC: 2")
     if !(tbl) then return end
+    print("SC: 3")
     if !(tbl[index]) then return end
+    print("SC: 4")
     
     local price = CARSHOP.CalculateSellPrice( ply, index ) or 0
     Query( "DELETE FROM garage WHERE player_sid='" .. tostring(ply:SteamID()) .. "' AND carname='" .. index .. "'", function() 
