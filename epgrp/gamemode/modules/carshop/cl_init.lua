@@ -72,7 +72,7 @@ function CARSHOP.OpenGarage()
             
             
             if v.Health < 1 then
-                draw.SimpleText( "[DEFEKT] " .. text, font, left + 5, 2, Color( 255, 0, 0, 200 ) )
+                draw.SimpleText( "-DEFEKT- " .. text, font, left + 5, 2, Color( 255, 0, 0, 200 ) )
             else
                 draw.SimpleText( text, font, left + 5, 2, Color( col.r, col.g, col.b, col.a - 50 ) )
             end
@@ -600,6 +600,7 @@ function CARSHOP.OpenShop()
             
             move_panel.ViewButton = vgui.Create( "DButton", move_panel )
 			move_panel.ViewButton.focused = false
+            move_panel.ViewButton.canRepair = false
 			move_panel.ViewButton.OnCursorEntered = function() move_panel.ViewButton.focused = true end
 			move_panel.ViewButton.OnCursorExited = function() move_panel.ViewButton.focused = false end
             move_panel.ViewButton:SetSize( 100, 25 )
@@ -615,6 +616,8 @@ function CARSHOP.OpenShop()
                 elseif v.Health > 50 then
                     text = "In Takt"
                 else
+                    move_panel.ViewButton.canRepair = true
+
 					if move_panel.ViewButton.focused then
 						text = tostring(CARSHOP.CalculateRepairCost( k, LocalPlayer() )) .. ",-€"
 					else
@@ -628,11 +631,17 @@ function CARSHOP.OpenShop()
 
             end
             move_panel.ViewButton.DoClick = function()
-                net.Start( "CarDealer_RepairCar" )
-                    net.WriteString( k )
-                net.SendToServer()
+                if move_panel.ViewButton.canRepair then
+                    net.Start( "CarDealer_RepairCar" )
+                        net.WriteString( k )
+                    net.SendToServer()
+                end
             end
             move_panel.ViewButton:Hide()
+
+            net.Receive("CarDealer_RepairedCar", function()
+                move_panel.ViewButton.canRepair = false
+            end)
             
             function move_panel.CreateProgressBar( x, y, w, h, value, max )
                 local rech = (w / max) * value

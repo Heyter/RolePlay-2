@@ -151,13 +151,15 @@ function CARSHOP.RepairGarageCar( ply, index )
     
     local tbl = ply:GetRPVar( "garage_table" )
 
-    if tbl[index] and (tbl[index].Health < 1 or tbl[index].repair == 1) then
+    if tbl[index] and (tbl[index].Health <= 50) then
         ply:AddCash( -price )
 
         tbl[index].Health = CARSHOP.CARTABLE.CARS[index].Health
         tbl[index].Armor = CARSHOP.CARTABLE.CARS[index].Armor
         tbl[index].repair = 0
         ply:SetRPVar( "garage_table", tbl )
+
+        ply:RPNotify( "Die Werkstatt hat dein Auto erfolgreich repariert.", 5 )
         
         Query(string.format("UPDATE garage SET Health=%s,Armor=%s,repair=%s",
         CARSHOP.CARTABLE.CARS[index].Health,
@@ -216,7 +218,7 @@ function CARSHOP.CreateGarageCar( ply, index, pos, angles )
         if !(v.VehicleTable) then continue end
         v.destructed = v.destructed or false
         if v.Owner == ply && !(v.destructed) then
-            ply:RPNotify( "Stelle erst dein Aktuelles Auto in die Garage, bevor du ein neues Spawnst", 5 )
+            ply:RPNotify( "Stelle erst dein aktuelles Auto in die Garage, bevor du ein neues Spawnst", 5 )
             return
         elseif v.Owner == ply && v.destructed then
             ply:RPNotify( "Du musst dein Auto zuerst Reparieren lassen, bevor du ein neues Spawnen kannst", 5 )
