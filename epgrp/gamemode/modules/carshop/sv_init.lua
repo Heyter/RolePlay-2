@@ -8,6 +8,7 @@ util.AddNetworkString( "CarDealer_SellCar" )
 util.AddNetworkString( "CarDealer_RepairCar" )
 util.AddNetworkString( "CarDealer_DoInstaRepair" )
 util.AddNetworkString( "CarDealer_SpawnGarageCar" )
+util.AddNetworkString( "CarDealer_RefreshGarage" )
 
 
 function CARSHOP.PlayerAuthed( ply )
