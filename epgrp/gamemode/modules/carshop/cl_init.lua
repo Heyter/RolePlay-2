@@ -286,7 +286,6 @@ function CARSHOP.OpenShop()
     					if move_panel.entered == true then return end
     					
     					for k, v in pairs( move_panel.parents ) do
-    						print( v.focused )
     						if v.focused == true then return end
     					end
     					
@@ -507,6 +506,7 @@ function CARSHOP.OpenShop()
                 end
             end
             move_panel.OnCursorEntered = function()
+                move_panel.entered = true
                 if move_panel.inmove && move_panel.status == 2 && move_panel.still_selected == false then
                     move_panel.still_selected = true
                 end
@@ -531,9 +531,11 @@ function CARSHOP.OpenShop()
                 end)
             end
             move_panel.OnCursorExited = function()
+                move_panel.entered = false
 				timer.Simple( 0.5, function()
 					if move_panel.inmove == true then return end
-					if move_panel.status == 1 then return end
+                    if move_panel.status == 1 then return end
+					if move_panel.entered == true then return end
 					
 					// Checks if cursor on a parented panel
 					for k, v in pairs( move_panel.parents ) do
