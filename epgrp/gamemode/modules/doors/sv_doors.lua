@@ -32,6 +32,7 @@ function LoadDoors()
                 door:SetRPVar( "doordata", {owner=nil, title=v.title, cost=v.cost, teams=util.JSONToTable(v.teams), pos=v.position, subdoors=util.JSONToTable(v.subdoors), locked=v.locked, door=door} )
                 EditDoorTable( door, {owner=nil, title=v.title, cost=v.cost, teams=util.JSONToTable(v.teams), pos=v.position, subdoors=util.JSONToTable(v.subdoors), locked=v.locked, door=door} )
                 OwnSubDoors( door, nil )
+				door:Fire( "lock", "", 1 )
             end)
         end
         print( "Loading doors ... takes: " .. tostring(0.1*(#q)) .. " seconds!" )
