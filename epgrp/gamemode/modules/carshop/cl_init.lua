@@ -521,42 +521,48 @@ function CARSHOP.OpenShop()
                     move_panel.ViewButton:Show()
                     move_panel.status = 2
                     timer.Simple( 0.2, function()
-                        move_panel:MoveTo( x, y, 0.2, 0, -1, function() 
-                            move_panel.inmove = false
-                            if move_panel.still_selected == false then
-                                move_panel.OnCursorExited()
-                            end
-                        end)
+                        if IsValid(move_panel) then
+                            move_panel:MoveTo( x, y, 0.2, 0, -1, function() 
+                                move_panel.inmove = false
+                                if move_panel.still_selected == false then
+                                    move_panel.OnCursorExited()
+                                end
+                            end)
+                        end
                     end)
                 end)
             end
             move_panel.OnCursorExited = function()
                 move_panel.entered = false
 				timer.Simple( 0.5, function()
-					if move_panel.inmove == true then return end
-                    if move_panel.status == 1 then return end
-					if move_panel.entered == true then return end
-					
-					// Checks if cursor on a parented panel
-					for k, v in pairs( move_panel.parents ) do
-						if v.focused then return end
-					end
-					
-					move_panel.inmove = true
-					move_panel.still_selected = false
-					
-					local x, y = move_panel:GetPos()
-					
-					move_panel:MoveTo( carpanel:GetWide(), y, 0.2, 0, -1, function()
-						move_panel.status = 1
-						move_panel.PurchaseButton:Hide()
-						move_panel.ViewButton:Hide()
-						timer.Simple( 0.2, function()
-							move_panel:MoveTo( x, y, 0.2, 0, -1, function() 
-								move_panel.inmove = false
-							end)
-						end)
-					end)
+                    if IsValid(move_panel) then
+    					if move_panel.inmove == true then return end
+                        if move_panel.status == 1 then return end
+    					if move_panel.entered == true then return end
+    					
+    					// Checks if cursor on a parented panel
+    					for k, v in pairs( move_panel.parents ) do
+    						if v.focused then return end
+    					end
+    					
+    					move_panel.inmove = true
+    					move_panel.still_selected = false
+    					
+    					local x, y = move_panel:GetPos()
+    					
+    					move_panel:MoveTo( carpanel:GetWide(), y, 0.2, 0, -1, function()
+    						move_panel.status = 1
+    						move_panel.PurchaseButton:Hide()
+    						move_panel.ViewButton:Hide()
+    						timer.Simple( 0.2, function()
+                                if IsValid(move_panel) then
+        							move_panel:MoveTo( x, y, 0.2, 0, -1, function() 
+        								move_panel.inmove = false
+        							end)
+                                end
+    						end)
+    					end)
+                    end
 				end)
             end
             
