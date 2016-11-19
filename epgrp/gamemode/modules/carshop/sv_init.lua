@@ -167,6 +167,10 @@ function CARSHOP.RepairGarageCar( ply, index )
         0) .. " WHERE player_sid='"..tostring(ply:SteamID()).."' AND carname='"..index.."'", function()
             --CARSHOP.PlayerAuthed( ply )
         end)
+
+        net.Start("CarDealer_RepairedCar")
+            net.WriteString(index)
+        net.Send(ply)
     end
 end
 net.Receive( "CarDealer_RepairCar", function( data, ply ) CARSHOP.RepairGarageCar( ply, net.ReadString() ) end )

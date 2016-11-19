@@ -640,7 +640,12 @@ function CARSHOP.OpenShop()
             move_panel.ViewButton:Hide()
 
             net.Receive("CarDealer_RepairedCar", function()
-                move_panel.ViewButton.canRepair = false
+                local cid = net.ReadString()
+
+                if cid and cid == k then
+                    move_panel.ViewButton.canRepair = false
+                    move_panel.ViewButton:SetText("In Takt")
+                end
             end)
             
             function move_panel.CreateProgressBar( x, y, w, h, value, max )
