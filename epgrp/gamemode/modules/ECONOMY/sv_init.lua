@@ -171,10 +171,13 @@ function ECONOMY.AddToLog( args, class )
     
 	if class == "cash" then	
 		if string.len( args ) < 2 then return end
+        if not ECONOMY.CITY_LOG.CASH then end
 		table.insert( ECONOMY.CITY_LOG.CASH, {text} )
 	elseif class == "warrant" then
+        if not ECONOMY.CITY_LOG.WARRANT then end
 		table.insert( ECONOMY.CITY_LOG.WARRANT, { args[1], args[2], args[3] } )
 	elseif class == "damage" then
+        if not ECONOMY.CITY_LOG.DAMAGE then end
 		table.insert( ECONOMY.CITY_LOG.DAMAGE, { args[1], args[2], args[3] } )
 	end
 	
