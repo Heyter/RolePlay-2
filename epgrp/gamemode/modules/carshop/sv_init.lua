@@ -168,8 +168,7 @@ function CARSHOP.RepairGarageCar( ply, index )
             --CARSHOP.PlayerAuthed( ply )
         end)
 
-        net.Start("CarDealer_RepairedCar")
-            net.WriteString(index)
+        net.Start("CarDealer_RefreshGarage")
         net.Send(ply)
     end
 end
