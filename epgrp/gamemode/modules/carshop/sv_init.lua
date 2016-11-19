@@ -127,6 +127,9 @@ function CARSHOP.PurchaseCar( ply, index, data )
             net.WriteTable( CARSHOP.BuyableCars or {} )
         net.Send( player.GetAll() )
         ply:RPNotify( "Das Auto wurde zu deiner Garage geliefert!", 5 )
+
+        net.Start("CarDealer_RefreshGarage")
+        net.Send(ply)
     end)
 end
 net.Receive( "CarDealer_PurchaseCar", function( data, ply ) CARSHOP.PurchaseCar( ply, net.ReadString(), {} ) end)
@@ -142,6 +145,9 @@ function CARSHOP.SellCar( ply, index )
         tbl = table.RemoveByKey( tbl, index )
         ply:SetRPVar( "garage_table", tbl )
         ply:RPNotify( "Du hast dein Auto erfolgreich Verkauft!", 5 )
+
+        net.Start("CarDealer_RefreshGarage")
+        net.Send(ply)
     end)
 end
 net.Receive( "CarDealer_SellCar", function( data, ply ) CARSHOP.SellCar( ply, net.ReadString() ) end)
