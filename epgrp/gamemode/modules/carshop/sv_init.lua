@@ -148,21 +148,24 @@ net.Receive( "CarDealer_SellCar", function( data, ply ) CARSHOP.SellCar( ply, ne
 function CARSHOP.RepairGarageCar( ply, index )
     local price = CARSHOP.CalculateRepairCost( index, ply ) or 3500
     if !(ply:CanAfford( price )) then ply:RPNotify( "Du kannst dir keine Reparatur leisten!", 5 ) return end
-    ply:AddCash( -price )
     
-	print("got")
     local tbl = ply:GetRPVar( "garage_table" )
-    tbl[index].Health = CARSHOP.CARTABLE.CARS[index].Health
-    tbl[index].Armor = CARSHOP.CARTABLE.CARS[index].Armor
-    tbl[index].repair = 0
-    ply:SetRPVar( "garage_table", tbl )
-    
-    Query(string.format("UPDATE garage SET Health=%s,Armor=%s,repair=%s",
-    CARSHOP.CARTABLE.CARS[index].Health,
-    CARSHOP.CARTABLE.CARS[index].Armor,
-    0) .. " WHERE player_sid='"..tostring(ply:SteamID()).."' AND carname='"..index.."'", function()
-        --CARSHOP.PlayerAuthed( ply )
-    end)
+
+    if tbl[index] and (tbl[index].Health < 1 or tbl[index].repair == 1) then
+        ply:AddCash( -price )
+
+        tbl[index].Health = CARSHOP.CARTABLE.CARS[index].Health
+        tbl[index].Armor = CARSHOP.CARTABLE.CARS[index].Armor
+        tbl[index].repair = 0
+        ply:SetRPVar( "garage_table", tbl )
+        
+        Query(string.format("UPDATE garage SET Health=%s,Armor=%s,repair=%s",
+        CARSHOP.CARTABLE.CARS[index].Health,
+        CARSHOP.CARTABLE.CARS[index].Armor,
+        0) .. " WHERE player_sid='"..tostring(ply:SteamID()).."' AND carname='"..index.."'", function()
+            --CARSHOP.PlayerAuthed( ply )
+        end)
+    end
 end
 net.Receive( "CarDealer_RepairCar", function( data, ply ) CARSHOP.RepairGarageCar( ply, net.ReadString() ) end )
 

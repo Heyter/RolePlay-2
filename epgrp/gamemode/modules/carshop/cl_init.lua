@@ -253,6 +253,7 @@ function CARSHOP.OpenShop()
                 end
             end
             move_panel.OnCursorEntered = function()
+                move_panel.entered = true
                 if move_panel.inmove && move_panel.status == 2 && move_panel.still_selected == false then
                     move_panel.still_selected = true
                 end
@@ -277,30 +278,36 @@ function CARSHOP.OpenShop()
                 end)
             end
             move_panel.OnCursorExited = function()
+                move_panel.entered = false
 				timer.Simple( 0.5, function()
-					if move_panel.inmove == true then return end
-					if move_panel.status == 1 then return end
-					
-					for k, v in pairs( move_panel.parents ) do
-						print( v.focused )
-						if v.focused == true then return end
-					end
-					
-					move_panel.inmove = true
-					move_panel.still_selected = false
-					
-					local x, y = move_panel:GetPos()
-					
-					move_panel:MoveTo( carpanel:GetWide(), y, 0.2, 0, -1, function()
-						move_panel.status = 1
-						move_panel.PurchaseButton:Hide()
-						move_panel.ViewButton:Hide()
-						timer.Simple( 0.2, function()
-							move_panel:MoveTo( x, y, 0.2, 0, -1, function() 
-								move_panel.inmove = false
-							end)
-						end)
-					end)
+                    if IsValid(move_panel) then
+    					if move_panel.inmove == true then return end
+                        if move_panel.status == 1 then return end
+    					if move_panel.entered == true then return end
+    					
+    					for k, v in pairs( move_panel.parents ) do
+    						print( v.focused )
+    						if v.focused == true then return end
+    					end
+    					
+    					move_panel.inmove = true
+    					move_panel.still_selected = false
+    					
+    					local x, y = move_panel:GetPos()
+    					
+    					move_panel:MoveTo( carpanel:GetWide(), y, 0.2, 0, -1, function()
+    						move_panel.status = 1
+    						move_panel.PurchaseButton:Hide()
+    						move_panel.ViewButton:Hide()
+    						timer.Simple( 0.2, function()
+    							move_panel:MoveTo( x, y, 0.2, 0, -1, function()
+                                    if IsValid(move_panel) then
+    								    move_panel.inmove = false
+                                    end
+    							end)
+    						end)
+    					end)
+                    end
 				end)
             end
             
@@ -460,7 +467,7 @@ function CARSHOP.OpenShop()
                     local col = HUD_SKIN.FULL_GREY
                     
                     draw.SimpleText( text, font, (move_panel:GetWide() - w)/2, (move_panel:GetTall() - h)/2, Color( col.r, col.g, col.b, col.a - 50 ) )
-                    text = "Halte die Maus hier drÃ¼ber fÃ¼r mehr Informationen!"
+                    text = "Halte die Maus hier drüber für mehr Informationen!"
                     font = "RPNormal_21"
                     surface.SetFont( font )
                     w, h = surface.GetTextSize( text )
