@@ -71,8 +71,8 @@ function PLAYER_META:COP_CanBlastDoor( owner )
 end
 
 function PLAYER_META:COP_ShotPlayer( ply )
-	if !(IsValid( ply ) or IsValid( self )) then return end
-	if !(self:IsSWAT() or self:IsPolice()) then return end
+	if !(IsValid( ply ) or IsValid( self )) then return true end
+	if !(self:IsSWAT() or self:IsPolice()) then return true end
 	
 	if ply:GetStarLevel() < SETTINGS.Warrant_ShootPerson then
 		ECONOMY.AddToLog( {self,ply,0} , "damage" )
