@@ -142,7 +142,7 @@ function SWEP:Think()
 	self.d = self.d or false
 	self.walkspeed = self.walkspeed or self.Owner:GetWalkSpeed()
 	
-	if CurTime() > (self.r_check + 0.1) then
+	if CurTime() > (self.r_check + 0.2) then
 		self.rotating = false
 		self.Owner:SetWalkSpeed( self.walkspeed )
 	end
