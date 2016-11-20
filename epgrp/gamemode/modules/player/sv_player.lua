@@ -34,7 +34,7 @@ function ply:SaveSkills()
     end
     tbl = util.TableToJSON( tbl )
 
-    RP.SQL:Query( "UPDATE players SET skills = %1% WHERE sid = %2%", function(tbl, self:SteamID()) end )
+    RP.SQL:Query( "UPDATE players SET skills = %1% WHERE sid = %2%", {tbl, self:SteamID()} )
     RP.SQL:Query( "UPDATE players SET skill_points = %1% WHERE sid = %2%", {self:GetRPVar( "skill_points" ), self:SteamID()} )
 end
 
