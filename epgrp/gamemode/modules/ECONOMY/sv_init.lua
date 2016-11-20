@@ -6,6 +6,11 @@ util.AddNetworkString( "ECONOMY_PURCHASE_ITEM" )
 ECONOMY.CITY_CASH = ECONOMY.MAX / 2
 ECONOMY.LAST_MONTH_CASH = 0
 ECONOMY.CITY_LOG = {}
+ECONOMY.CITY_LOG.CASH = ECONOMY.CITY_LOG.CASH or {}
+ECONOMY.CITY_LOG.WARRANT = ECONOMY.CITY_LOG.WARRANT or {}
+ECONOMY.CITY_LOG.ARREST = ECONOMY.CITY_LOG.ARREST or {}
+ECONOMY.CITY_LOG.DAMAGE = ECONOMY.CITY_LOG.DAMAGE or {}
+
 
 
 hook.Add( "ShowTeam", "ECONOMY_SHOW_MENU", function( ply )
@@ -169,11 +174,13 @@ end
 function ECONOMY.AddToLog( args, class )
 	class = class or "cash"
     if !(args) then return end
+	
+	local split = string.Explode( "%s", args, true ) 
     
 	if class == "cash" then	
 		if string.len( args ) < 2 then return end
 		ECONOMY.CITY_LOG.CASH = ECONOMY.CITY_LOG.CASH or {}
-		table.insert( ECONOMY.CITY_LOG.CASH, {text} )
+		table.insert( ECONOMY.CITY_LOG.CASH, {args} )
 	elseif class == "warrant" then
 		ECONOMY.CITY_LOG.WARRANT = ECONOMY.CITY_LOG.WARRANT or {}
 		table.insert( ECONOMY.CITY_LOG.WARRANT, { args[1], args[2], args[3] } )
