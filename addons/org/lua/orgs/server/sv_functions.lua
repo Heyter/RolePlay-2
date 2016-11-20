@@ -187,7 +187,7 @@ end
 
 function QueryValue( query, callback )
 	if mysqlConnected then
-		local query = Query( query, function( d ) 
+		local query = RP.SQL:Query( query, _, function( d ) 
 			for k,v in pairs(d[1] or {}) do
 				print( v )
 				callback(v)
