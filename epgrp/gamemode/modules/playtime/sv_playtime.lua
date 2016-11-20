@@ -22,7 +22,7 @@ function PLAYER_META:LoadPlaytime()
 end
 
 function PLAYER_META:SavePlaytime()
-    self:SteamID()( "UPDATE players SET playtime = %1% WHERE sid = %2%", {(self:GetRPVar( "playtime" ) or 0), self:SteamID()})
+    RP.SQL:Query( "UPDATE players SET playtime = %1% WHERE sid = %2%", {(self:GetRPVar( "playtime" ) or 0), self:SteamID()})
 end
 
 function PLAYER_META:HasPlaytime( time )
