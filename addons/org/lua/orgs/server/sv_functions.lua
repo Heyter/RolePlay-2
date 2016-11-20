@@ -13,7 +13,7 @@ function meta:loadOrg()
 			self.org = r[1]
 			if tostring(self.org["rank"]) != "o" then
 				if tostring(self.org["rank"]) != "n" then
-					Query("SELECT * FROM `orgs_ranks` where `id` = %1%", {self.org["rank"]}, function( r )
+					RP.SQL:Query("SELECT * FROM `orgs_ranks` where `id` = %1%", {self.org["rank"]}, function( r )
 						self.org["rank"] = r[1]
 					end)
 				end
