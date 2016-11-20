@@ -215,7 +215,7 @@ function SWEP:Think()
 		end
 		
 		if vec == Vector( 0, 0, 0 ) then
-			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)))
+			self.prop:SetPos( trace.endpos )
 		else
 			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
 		end
