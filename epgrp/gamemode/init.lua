@@ -42,7 +42,7 @@ include("sh_pluginloader.lua")      // Muss ganz unten sein!
             Connects to database, adds network strings
 -----------------------------------------------------------]]
 function GM:Initialize()
-    InitializeDatabase()
+    RP.SQL:InitializeDatabase()
     --Load_Plugins()
     
     timer.Simple( 2, function() 
