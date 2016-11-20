@@ -12,7 +12,7 @@ JOB.Model = {"models/taggart/police02/male_01.mdl",
 JOB.Color = Color( 255, 0, 153, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 0                                   // Wie viel Rüstung der Spieler bekommt
 JOB.Weapons = { "weapon_physgun",               // Was hat der Job für Waffen?
-                "weapon_physcannon",
+                "hands",
                 "keys",
 				"weapon_arc_atmcard",
                 "weapon_fists",

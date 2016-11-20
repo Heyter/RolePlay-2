@@ -5,7 +5,7 @@ JOB.Description = "Bla Bla Bla"                 // Beschreibung vom Job
 JOB.Model = {"models/fearless/fireman2.mdl"}       // Das/-Die Model/s vom Job
 JOB.Color = Color( 255, 153, 0, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 0                                 // Wie viel Rüstung der Spieler bekommt
-JOB.Weapons = { "weapon_physcannon",               // Was hat der Job für Waffen?
+JOB.Weapons = { "hands",               // Was hat der Job für Waffen?
                 "keys",
                 "fire_axe",
 				"weapon_arc_atmcard",

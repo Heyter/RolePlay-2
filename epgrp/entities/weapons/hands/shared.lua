@@ -79,12 +79,80 @@ function SWEP:PrimaryAttack()
 	self.lasthold = CurTime()
 end
 
+function SWEP:SecondaryAttack()
+	if CLIENT then return end
+	if self.prop == nil or !(IsValid(self.prop)) then return end
+	
+	local ent = self:GroundedEntity()
+	
+	
+	self.prop.frozen = self.prop.frozen or false
+	local frozen = self.prop.frozen
+	
+	if frozen then
+		if self:CanFreeze() then
+			self.prop:GetPhysicsObject():EnableMotion( true )
+			self.prop.frozen = false
+		end
+	else
+		--if ent == NULL or ent == nil then return end
+		if self:CanFreeze() then
+			self.prop:GetPhysicsObject():EnableMotion( false )
+			self.prop.frozen = true
+		end
+	end
+	
+end
+
+function SWEP:CanFreeze()
+	if self.prop.owner then		// Check owner ( only owner can unfreeze or friends )
+		local o = player.GetBySteamID( self.prop.owner )
+		if o == false then return true end	// Owner does no longer exists
+		
+		if (o != false && o == self.Owner) or (o != false && o:IsBuddy( self.Owner )) then
+			return true
+		else
+			return false
+		end
+	else
+		return true
+	end
+end
+
+function SWEP:GroundedEntity()
+	local center = self.prop:OBBCenter().z/2
+	local pos = Vector( 0, 0, -(center + 5))
+	local trace = {}
+	trace.start = self.prop:GetPos()
+	trace.endpos = trace.start + pos
+	trace.filter = { self.Owner, self.Weapon, self.prop }
+	local tr = util.TraceLine( trace )
+	
+	return tr.Entity
+end
+
 function SWEP:Think()
 	if CLIENT then return end
+	
+	self.rotating = self.rotating or false
+	self.r_check = self.r_check or CurTime()
+	self.w = self.w or false
+	self.s = self.s or false
+	self.a = self.a or false
+	self.d = self.d or false
+	self.walkspeed = self.walkspeed or self.Owner:GetWalkSpeed()
+	
+	if CurTime() > (self.r_check + 0.1) then
+		self.rotating = false
+		self.Owner:SetWalkSpeed( self.walkspeed )
+	end
 	
 	if CurTime() > self.lasthold + 0.1 then self:SetNWEntity( "grabed", NULL ) self.prop = nil end
 	if self.prop != nil then
 		if self.prop == nil or !(IsValid(self.prop)) then return end
+		
+		self.prop.frozen = self.prop.frozen or false
+		if self.prop.frozen then return end
 		
 		local trace = {}
 		trace.start = self.Owner:GetShootPos()
@@ -114,14 +182,38 @@ function SWEP:Think()
 		
 		local speed = self.prop:GetPhysicsObject():GetVelocity()
 		if self.prop:GetClass() != "prop_ragdoll" then
-			local a = self.Owner:GetAngles()
-			local aa = Angle( a.p, a.y, a.r )
-			--self.prop:SetAngles( aa - self.ang )		// Need better solution
+			--local self.ang = Angle( a.p, a.y, a.r )
+			
+			// Rotating
+		
+			if ( self.Owner:KeyDown( IN_RELOAD ) ) then 
+				self.rotating = true 
+				self.r_check = CurTime()
+				self.Owner:SetWalkSpeed( 0.000001 )
+			end
+			if ( self.Owner:KeyDown( IN_FORWARD ) && self.rotating ) then 
+				self.ang.r = self.ang.r + 1
+			end
+			if ( self.Owner:KeyDown( IN_BACK ) && self.rotating ) then 
+				self.ang.r = self.ang.r - 1
+			end
+			if ( self.Owner:KeyDown( IN_MOVELEFT ) && self.rotating ) then 
+				self.ang.y = self.ang.y - 1
+			end
+			if ( self.Owner:KeyDown( IN_MOVERIGHT ) && self.rotating ) then 
+				self.ang.y = self.ang.y + 1
+			end
+			
+			if ( self.Owner:KeyDown( IN_SPEED ) && self.rotating ) then 
+				self.ang = Angle( 0, 0, 0 )
+			end
+			
 			self.prop:SetAngles( self.ang )
 		else
 			max = 200
 			mass = mass + 3
 		end
+		
 		self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
 	end
 end

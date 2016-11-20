@@ -14,7 +14,7 @@ JOB.Model = {"models/ecpd/male_01.mdl",
             }       // Das/-Die Model/s vom Job
 JOB.Color = Color( 0, 0, 200, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 30                                   // Wie viel Rüstung der Spieler bekommt
-JOB.Weapons = { "weapon_physcannon",               // Was hat der Job für Waffen?
+JOB.Weapons = { "hands",               // Was hat der Job für Waffen?
                 "keys",
 				"weapon_arc_atmcard",
                 "weapon_fists",

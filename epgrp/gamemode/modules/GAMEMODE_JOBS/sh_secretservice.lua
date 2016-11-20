@@ -11,7 +11,7 @@ JOB.Model = {"models/player/suits/male_05_open.mdl",
 JOB.Color = Color( 0, 200, 0, 255 )             // Welche Farbe hat das Team?
 JOB.Armor = 50                                   // Wie viel Rüstung der Spieler bekommt
 JOB.Weapons = { "weapon_physgun",               // Was hat der Job für Waffen?
-                "weapon_physcannon",
+                "hands",
                 "weapon_fists",
                 "keys", 
 				"weapon_arc_atmcard",
