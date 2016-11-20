@@ -5,7 +5,7 @@ util.AddNetworkString( "Request_Arrest" )
 util.AddNetworkString( "Open_ArrestPanel" )
 
 function LoadCellPositions()
-	Query( "SELECT * FROM cell_positions WHERE map = '" .. tostring(game.GetMap()) .. "'", function( q )
+	RP.SQL:Query( "SELECT * FROM cell_positions WHERE map = %1%", {game.GetMap()}, function( q )
 		if not q[1] then return end
 		
 		for k, v in pairs( q ) do
@@ -20,7 +20,8 @@ function Arrest_AddCellPos( ply, cmd, args )
 	table.insert( RP.Cell_Positions, ply:GetPos() )
 	local x, y, z = ply:GetPos().x, ply:GetPos().y, ply:GetPos().z
 	
-	Query( "INSERT INTO cell_positions(map,x,y,z) VALUES('" .. tostring( game.GetMap() ) .. "'," .. x .. "," .. y .. "," .. z .. ")", function( d ) 
+	RP.SQL:Query( "INSERT INTO cell_positions(map, x, y, z) VALUES(%1%, %2%, %3%, %4%)", 
+	{game.GetMap(), x, y, z}, function( d ) 
 		ply:RPNotify( "Cell Position hinzugefügt!", 4 )
 	end)
 end

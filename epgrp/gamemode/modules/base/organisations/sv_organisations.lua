@@ -8,7 +8,7 @@ util.AddNetworkString( "ChangeOrgPicture" )
 
 function LoadOrganisations()
 	RP.Organisations = {}
-	Query("SELECT * FROM Organisations", function( q )
+	RP.SQL:Query("SELECT * FROM Organisations", _, function( q )
 		if #q > 0 then
 			local tbl = {}
 			for k, v in pairs( q ) do
@@ -47,7 +47,7 @@ function CreateOrganisation( name, level, exp, leader, member )
 	
 	local leaders = util.TableToJSON( leadertable )
 	local members = util.TableToJSON( member )
-	Query("INSERT INTO Organisations(name,level,exp,leader,member) VALUES('" .. tostring(name) .. "'," .. tonumber(level) .. "," .. tonumber(exp) .. ",'" .. tostring(leaders) .. "','" .. tostring(members) .. "')", function( q )
+	RP.SQL:Query("INSERT INTO Organisations (name, level, exp, leader, member) VALUES()", {name, level, exp, leaders, members}, function( q )
 		table.insert(RP.Organisations, {name=name, level=level, exp=exp, leader=leader, member=member} )
     end)
 	

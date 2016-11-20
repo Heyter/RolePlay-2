@@ -15,7 +15,7 @@ if SERVER then
     util.AddNetworkString( "RP_WantNameChange" )
     
     function RP.LoadGivenRPNames()
-        Query("SELECT * FROM players", function( data )
+        RP.SQL:Query("SELECT * FROM players", _, function( data )
             for k, v in pairs( data ) do
                 table.insert( RP.RPGivenNames, v.rpname )
             end
@@ -70,7 +70,9 @@ if SERVER then
             if !(ply.namechange_forced) then
                 ply:AddCash( -SETTINGS.NameChangeCost )
             end
-            Query( "UPDATE players SET rpname = '" .. name .. "' WHERE sid = '" .. tostring(ply:SteamID()) .. "'", function() end )
+
+            RP.SQL:Query( "UPDATE players SET rpname = %1% WHERE sid = %2%", {name, ply:SteamID()})
+            
             hook.Call( "NOSRP_PlayerChangeName", {}, ply )
         end
     end)

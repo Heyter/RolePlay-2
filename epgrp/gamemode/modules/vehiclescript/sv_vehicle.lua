@@ -94,7 +94,7 @@ function CreateCarfuel( car )
             if carfuel > 0 then 
                 carfuel = carfuel - ( 0.01 * vehicleConv )
                 car:SetNWInt("fuel", carfuel)
-                Query( string.format( "UPDATE garage SET Fuel='%s' WHERE player_sid='%s' AND carname='%s'", carfuel, tostring(car.Owner:SteamID()), tostring(car.VehicleName)), function() end )
+                RP.SQL:Query( "UPDATE garage SET Fuel = %1% WHERE player_sid = %2% AND carname = %3%", {carfuel, car.Owner:SteamID(), car.VehicleName})
             else
                 car:EmitSound("vehicles/apc/apc_shutdown.wav")
                 car:Fire("TurnOff", "1", 0)
@@ -103,7 +103,7 @@ function CreateCarfuel( car )
             if carfuel > 0 then 
                 carfuel = carfuel - 0.01
                 car:SetNWInt("fuel", carfuel)
-                Query( string.format( "UPDATE garage SET Fuel='%s' WHERE player_sid='%s' AND carname='%s'", carfuel, tostring(car.Owner:SteamID()), tostring(car.VehicleName)), function() end )
+                RP.SQL:Query( "UPDATE garage SET Fuel = %1% WHERE player_sid = %2% AND carname = %3%", {carfuel, car.Owner:SteamID(), car.VehicleName})
             else
                 car:EmitSound("vehicles/apc/apc_shutdown.wav")
                 car:Fire("TurnOff", "1", 0)

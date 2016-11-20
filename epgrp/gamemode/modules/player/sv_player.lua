@@ -11,7 +11,7 @@ local ply = FindMetaTable("Player")
 -----------------------------------------------------------]]
 function ply:SetCash(amount)
     self:SetRPVar( "cash", amount )
-    Query( "UPDATE players SET cash = " .. amount .. " WHERE sid = '" .. tostring(self:SteamID()) .. "'", function() end, function() print("nö") end )
+    RP.SQL:Query( "UPDATE players SET cash = %1% WHERE sid = %2%", {amount, self:SteamID()} )
 end
 
 --[[---------------------------------------------------------
@@ -33,8 +33,9 @@ function ply:SaveSkills()
         tbl[v.name] = tonumber((self:GetRPVar( "skills_" .. v.name ) or 0))
     end
     tbl = util.TableToJSON( tbl )
-    Query( "UPDATE players SET skills = '" .. tbl .. "' WHERE sid = '" .. tostring(self:SteamID()) .. "'", function() end )
-    Query( "UPDATE players SET skill_points = " .. self:GetRPVar( "skill_points" ) .. " WHERE sid = '" .. tostring(self:SteamID()) .. "'", function() end )
+
+    RP.SQL:Query( "UPDATE players SET skills = %1% WHERE sid = %2%", function(tbl, self:SteamID()) end )
+    RP.SQL:Query( "UPDATE players SET skill_points = %1% WHERE sid = %2%", {self:GetRPVar( "skill_points" ), self:SteamID()} )
 end
 
 --[[---------------------------------------------------------
@@ -52,9 +53,11 @@ function PLAYER_META:ResetSkillPoints( purchase )
         if !(v.can_skill) then continue end
         self:SetRPVar( "skills_" .. v.name, 0 )
     end
-    Query( "UPDATE players SET skill_points = " .. self:GetRPVar( "skill_points" ) .. " WHERE sid = '" .. tostring(self:SteamID()) .. "'", function() end )
-    self:RPNotify( "Deine Skills wurden Erfolgreich zurückgesetzt!", 5 )
-    self:SaveSkills()
+
+    RP.SQL:Query( "UPDATE players SET skill_points = %1% WHERE sid = %2%", {self:GetRPVar( "skill_points" ), self:SteamID()}, function()
+        self:RPNotify( "Deine Skills wurden Erfolgreich zurückgesetzt!", 5 )
+        self:SaveSkills()
+    end)
 end
 
 function PLAYER_META:AddSkillPoint( amount, purchase )
@@ -62,6 +65,7 @@ function PLAYER_META:AddSkillPoint( amount, purchase )
     
     if purchase && !(self:CanAfford( SETTINGS.GenePointCost * (self:GetGivenSkillPoints() - SETTINGS.StartGenePoints) )) then return false end
     if purchase then self:AddCash( -SETTINGS.GenePointCost * (self:GetGivenSkillPoints() - SETTINGS.StartGenePoints) ) end
+
     self:SetRPVar( "skill_points", self:GetRPVar( "skill_points" ) + amount )
     self:SaveSkills()
 end
@@ -139,9 +143,9 @@ local function CreatePlayeraccount( len, ply )
     end
     
     tbl.bodysize = tbl.bodysize or 1
-    local text = "'" .. tostring(ply:SteamID()) .. "','" .. tbl.fname  .. " " .. tbl.sname .. "'," .. SETTINGS.StartingCash .. "," .. SETTINGS.StartingBank .. ",0,'" .. tbl.playermodel .. "',0,'" .. util.TableToJSON( skills ) .. "'," .. tbl.bodysize
     
-    Query( "INSERT INTO players(sid,rpname,cash,bank_cash,playtime,playermodel,clan,skills,bodysize) VALUES (" .. text .. ")", function( data )
+    RP.SQL:Query( "INSERT INTO players (sid, rpname, cash, bank_cash, playtime, playermodel, clan, skills, bodysize) VALUES (%1%, %2%, %3%, %4%, %5%, %6%, %7%, %8%, %9%)", 
+    {ply:SteamID(), tbl.fname, tbl.sname, SETTINGS.StartingCash, SETTINGS.StartingBank, tbl.playermodel, 0, util.TableToJSON( skills ), tbl.bodysize}, function( data )
         ply:Spawn()
         ply:SetHealth( 100 )
         ply:SetArmor( 0 )
@@ -179,11 +183,10 @@ function LoadPlayer(Player)
     end
 
     -- Check if User exists
-    Query("SELECT COUNT(sid) AS count FROM players WHERE sid = '"..tostring(Player:SteamID()).."'", function (sqldata)
-
+    RP.SQL:Query("SELECT COUNT(sid) AS count FROM players WHERE sid = %1%", {Player:SteamID()}, function (sqldata)
         -- User already exists
         if (tonumber(sqldata[1].count) > 0) then
-            Query("SELECT * FROM players WHERE sid = '" .. tostring(Player:SteamID()) .. "'", function( data )
+            RP.SQL:Query("SELECT * FROM players WHERE sid = %1%", {Player:SteamID()}, function( data )
                 Player:SetRPVar( "cash", data[1].cash )
                 Player:SetRPVar( "bank_cash", data[1].bank_cash )
                 Player:SetRPVar( "rpname", data[1].rpname )

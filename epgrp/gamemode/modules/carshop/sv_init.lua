@@ -16,7 +16,7 @@ function CARSHOP.PlayerAuthed( ply )
         net.WriteTable( CARSHOP.BuyableCars or {} )
     net.Send( ply )
     
-    Query("SELECT * FROM garage WHERE player_sid='" .. tostring(ply:SteamID()) .. "'", function( q ) 
+    RP.SQL:Query("SELECT * FROM garage WHERE player_sid = %1%", {ply:SteamID()}, function( q ) 
         local tbl = {}
         for k, v in pairs( q ) do
             v.Tunings = util.JSONToTable( v.Tunings )
@@ -69,17 +69,8 @@ function CARSHOP.SaveCar( car )
     local rep = tbl.repair or 0
     
     --(col_r,col_b,col_g,Skin,Tunings,Fuel,Health,car_number,Model,data,Armor)
-    Query(string.format("UPDATE garage SET col_r=%s,col_g=%s,col_b=%s,Skin=%s,Tunings='%s',Fuel=%s,Health=%s,car_number='%s',data='%s',Armor=%s,repair=%s",
-    r,
-    g,
-    b,
-    s,
-    tostring(t),
-    f,
-    h,
-    tostring(cn),
-    tostring(d),
-    a, rep) .. " WHERE player_sid='"..tostring(car.Owner:SteamID()).."' AND carname='"..car.VehicleName.."'", function()
+    RP.SQL:Query("UPDATE garage SET col_r = %1%, col_g = %2%, col_b = %3%, Skin = %4%, Tunings = %5%, Fuel = %6%, Health = %7%, car_number = %8%, data = %9%, Armor = %10%, repair = %11% WHERE player_sid = %12% AND carname = %12%",
+    {r, g, b, s, t, f, h, cn, d, a, rep, car.Owner:SteamID(), car.VehicleName} , function()
         CARSHOP.PlayerAuthed( owner )
     end)
 end
@@ -106,7 +97,8 @@ function CARSHOP.PurchaseCar( ply, index, data )
     local m = tbl.Model
     local d = "[]"
     local p = os.time()
-    Query("INSERT INTO garage(player_sid,carname,col_r,col_b,col_g,Skin,Tunings,Fuel,Health,car_number,Model,data,purchase_date,Armor) VALUES('"..sid.."','"..name .."',"..col..","..col..","..col..","..s..",'"..t.."',"..f..","..h..",'"..cn.."','"..m.."','"..d.."',"..p..","..a..")", function()
+    RP.SQL:Query("INSERT INTO garage (player_sid, carname, col_r, col_b, col_g, Skin, Tunings, Fuel, Health, car_number, Model, data, purchase_date, Armor) VALUES(%1%, %2%, %3%, %4%, %5%, %6%, %7%, %8%, %9%, %10%, %11%, %12%, %13%, %14%)", 
+    {sid, name, col, col, s, t, f, h, cn, m, d, p, a}, function()
         tbl.Sold = true
         ply:AddCash( -tbl.Cost )
         
@@ -136,7 +128,7 @@ function CARSHOP.SellCar( ply, index )
     if !(tbl[index]) then return end
     
     local price = CARSHOP.CalculateSellPrice( ply, index ) or 0
-    Query( "DELETE FROM garage WHERE player_sid='" .. tostring(ply:SteamID()) .. "' AND carname='" .. index .. "'", function() 
+    RP.SQL:Query( "DELETE FROM garage WHERE player_sid = %1% AND carname = %2%", {ply:SteamID(), index}, function() 
         ply:AddCash( price )
         tbl = table.RemoveByKey( tbl, index )
         ply:SetRPVar( "garage_table", tbl )
@@ -150,17 +142,15 @@ function CARSHOP.RepairGarageCar( ply, index )
     if !(ply:CanAfford( price )) then ply:RPNotify( "Du kannst dir keine Reparatur leisten!", 5 ) return end
     ply:AddCash( -price )
     
-	print("got")
     local tbl = ply:GetRPVar( "garage_table" )
     tbl[index].Health = CARSHOP.CARTABLE.CARS[index].Health
     tbl[index].Armor = CARSHOP.CARTABLE.CARS[index].Armor
     tbl[index].repair = 0
     ply:SetRPVar( "garage_table", tbl )
     
-    Query(string.format("UPDATE garage SET Health=%s,Armor=%s,repair=%s",
-    CARSHOP.CARTABLE.CARS[index].Health,
-    CARSHOP.CARTABLE.CARS[index].Armor,
-    0) .. " WHERE player_sid='"..tostring(ply:SteamID()).."' AND carname='"..index.."'", function()
+    RP.SQL:Query("UPDATE garage SET Health = %1%, Armor = %2%, repair = %3% WHERE player_sid = %4% AND carname = %5%",
+    {CARSHOP.CARTABLE.CARS[index].Health, CARSHOP.CARTABLE.CARS[index].Armor, 0, ply:SteamID(), index},
+    CARSHOP.CARTABLE.CARS[index].Armor, function()
         --CARSHOP.PlayerAuthed( ply )
     end)
 end
@@ -186,12 +176,11 @@ function CARSHOP.AdminRepairCar( ent )
     ent:SetColor( ent.col )
     ent:Fire( "turnon", 1 )
     
-    Query(string.format("UPDATE garage SET Health=%s,Armor=%s,repair=%s",
-    CARSHOP.CARTABLE.CARS[index].Health,
-    CARSHOP.CARTABLE.CARS[index].Armor,
-    0) .. " WHERE player_sid='"..tostring(ply:SteamID()).."' AND carname='"..index.."'", function()
-        ply:RPNotify( "Dein Auto wurde von ein Admin repariert!", 5 )
+    RP.SQL:Query("UPDATE garage SET Health = %1%, Armor = %2%, repair = %3% WHERE player_sid = %4% AND carname = %5%",
+    {CARSHOP.CARTABLE.CARS[index].Health, CARSHOP.CARTABLE.CARS[index].Armor, 0, ply:SteamID(), index}, function()
+        ply:RPNotify( "Dein Auto wurde von einem Admin repariert!", 5 )
     end)
+
     return true
 end
 

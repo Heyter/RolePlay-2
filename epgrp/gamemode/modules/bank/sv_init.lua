@@ -37,7 +37,7 @@ end )
 
 function NOSBank.initializePlayer( ply )
 	if IsValid( ply ) then
-		Query( "SELECT * FROM players WHERE sid = '" .. tostring(ply:SteamID()) .. "'", function( q )
+		RP.SQL:Query( "SELECT * FROM players WHERE sid = %1%", {ply:SteamID()}, function( q )
 			if not q[1] then return end
 			
 			ply:SetRPVar( "bank_cash", q[1].bank_cash )			
@@ -50,7 +50,7 @@ function NOSBank.addMoney( ply, amount )
 	if IsValid( ply ) then
 		local newamount = ply:GetRPVar( "bank_cash" ) + amount
 
-		Query( "UPDATE players SET bank_cash = " .. math.Round((newamount or 0)) .. " WHERE sid = '" .. tostring(ply:SteamID()) .. "'", function( q ) end )
+		RP.SQL:Query( "UPDATE players SET bank_cash = %1% WHERE sid = %2%", {math.Round((newamount or 0)), ply:SteamID()} )
 
 		ply:SetRPVar( "bank_cash", math.Round(newamount or 0) )
 	end
@@ -62,7 +62,7 @@ function NOSBank.takeMoney( ply, amount )
 		local newamount = bankcash - amount
 
 		if newamount >= 0 then
-			Query( "UPDATE players SET bank_cash = " .. math.Round(newamount) .. " WHERE sid = '" .. tostring(ply:SteamID()) .. "'", function( q ) end )
+			RP.SQL:Query( "UPDATE players SET bank_cash = %1% WHERE sid = %2%", {math.Round(newamount), ply:SteamID()} )
 
 			ply:SetRPVar( "bank_cash", math.Round(newamount) )
 		end

@@ -20,7 +20,7 @@ hook.Add( "PlayerDisconnected", "RemoveOwnedDoors", function( ply )
 end)
 
 function LoadDoors()
-	Query("SELECT * FROM Doors", function(q)
+	RP.SQL:Query("SELECT * FROM Doors", _, function(q)
         RP.Doors = {}
         
         for k, v in pairs( q ) do
@@ -120,7 +120,7 @@ function AddSubDoor( ply, cmd, args )
 	
 	door.door:SetRPVar( "doordata", door )
 	
-	Query("UPDATE Doors SET subdoors='" .. tostring(util.TableToJSON( door.subdoors )) .. "' WHERE position='" .. door.pos .. "'")
+	RP.SQL:Query("UPDATE Doors SET subdoors = %1% WHERE position = %2%", {util.TableToJSON( door.subdoors ), door.pos})
 	
 	LoadDoors()
 end
@@ -145,12 +145,11 @@ function CreateMasterDoor( ply, cmd, args )
     end
     teams = util.TableToJSON( teams )
 	
-	Query("SELECT * FROM Doors", function(q)
-        for k, v in pairs( q ) do
-            Query("DELETE FROM Doors WHERE position='" .. tostring( tr.Entity:GetPos() ) .. "'", function() end)
-        end
-		
-		Query("INSERT INTO Doors(title, cost, teams, position, subdoors, locked) VALUES('" .. tostring(args[1]) .. "'," .. tonumber(args[2]) .. ",'" .. teams .. "','" .. tostring(tr.Entity:GetPos()) .. "','" .. tostring("[]") .. "'," .. 0 .. ")", function() LoadDoors() end)
+    RP.SQL:Query("DELETE FROM Doors WHERE position = %1%", {tr.Entity:GetPos()}, function()
+		RP.SQL:Query("INSERT INTO Doors (title, cost, teams, position, subdoors, locked) VALUES()", 
+		{args[1], args[2], teams, tr.Entity:GetPos(), "[]", 0 }, function() 
+			LoadDoors() 
+		end)
     end)
 end
 concommand.Add( "RP_createmasterdoor", CreateMasterDoor )
@@ -252,7 +251,7 @@ function CM_AddDoorTeam( ply, cmd, args )
         sdoor:SetRPVar( "doordata", {owner=owner, title=doordata.title, cost=doordata.cost, teams=teams, pos=doordata.pos, subdoors=doordata.subdoors, locked=doordata.locked, masterdoor=tr.Entity, door=sdoor} )
     end
     
-    Query("UPDATE Doors SET teams='" .. tostring(util.TableToJSON( teams )) .. "' WHERE position='" .. data.pos .. "'")
+    RP.SQL:Query("UPDATE Doors SET teams = %1% WHERE position = %2%", {util.TableToJSON( teams ), data.pos})
 end
 concommand.Add( "RP_adddoorteam", CM_AddDoorTeam )
 

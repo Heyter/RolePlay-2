@@ -5,7 +5,7 @@ RP.PLUGINS.PLAYTIME.Players = {}
 --  PLAYER STUFF
 --------------------------------------------
 function PLAYER_META:LoadPlaytime()
-    Query( "SELECT * FROM players WHERE sid = '" .. self:SteamID() .. "'", function( q )
+    RP.SQL:Query( "SELECT * FROM players WHERE sid = %1%", {self:SteamID()}, function( q )
         if !(q[1]) then return end
         
         self:SetRPVar( "playtime", q[1].playtime )
@@ -22,7 +22,7 @@ function PLAYER_META:LoadPlaytime()
 end
 
 function PLAYER_META:SavePlaytime()
-    Query( "UPDATE players SET playtime = " .. (self:GetRPVar( "playtime" ) or 0) .. " WHERE sid = '" .. self:SteamID() .. "'", function( q ) end)
+    self:SteamID()( "UPDATE players SET playtime = %1% WHERE sid = %2%", {(self:GetRPVar( "playtime" ) or 0), self:SteamID()})
 end
 
 function PLAYER_META:HasPlaytime( time )

@@ -10,6 +10,8 @@ require("tmysql4")
    Desc: LCONFIG template
 -----------------------------------------------------------]]
 
+RP.SQL = RP.SQL or {}
+
 local LCONFIG = {}
 
 LCONFIG.DBName = "crp"
@@ -22,7 +24,7 @@ LCONFIG.DBPort = 3306
    Name: Escape
    Desc: Escapes string for SQL
 -----------------------------------------------------------]]
-function Escape(sqlstring)
+function RP.SQL:Escape(sqlstring)
     local allowedStrings = {}
 
     if table.HasValue(allowedStrings,sqlstring) then
@@ -36,7 +38,7 @@ end
    Name: InitializeDatabase
    Desc: Connects to database
 -----------------------------------------------------------]]
-function InitializeDatabase()
+function RP.SQL:InitializeDatabase()
     RP.db, error = db or tmysql.initialize(LCONFIG.DBHost, LCONFIG.DBUser, LCONFIG.DBPassword, LCONFIG.DBName, LCONFIG.DBPort)
     
     if not error then
@@ -55,18 +57,26 @@ end
         sql: Query string, don't forget to escape with variables
         callback: Function called on success; with data as parameter
 -----------------------------------------------------------]]
-function Query(sql, callback, errcallback)
+function RP.SQL:Query(sql, replacements, callback, errcallback)
     print("[RP][DEBUG] " .. sql)
+
+    if replacements and istable(replacements) then
+      for k, v in pairs(replacements) do
+        sql = string.Replace(sql, "%"..k.."%", self:Escape(v))
+      end
+    end
 
     RP.db:Query(sql, function(results)
       if results[1].status then
         if callback and isfunction(callback) then
           callback(results[1]["data"])
         end
+
       else
         print("[RP] Error while executing Query:\n"..results[1].error.."\n\nQuery:\n"..sql)
+
         if errcallback and isfunction(errcallback) then
-          errcallback(results[1]["error"])
+         errcallback(results[1]["error"])
         end
       end
     end)

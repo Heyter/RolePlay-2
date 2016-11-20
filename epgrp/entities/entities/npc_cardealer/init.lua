@@ -326,7 +326,8 @@ function meta:PurchaseCar( car )
 	local model = car.carinfo.model
     local data = util.TableToJSON({})
 	
-	Query("INSERT INTO player_garage(player_sid,carname,col_red,col_green,col_blue,skin,tunings,fuel,health,car_number,model,data) VALUES ( '" .. sid .. "','" .. carname .. "'," .. col_r .. "," .. col_g .. "," .. col_b .. "," .. skin .. ",'" .. tunings .. "'," .. fuel .. "," .. health .. ",'" .. number .. "','" .. model .. "','" .. data .. "')", function()
+	RP.SQL:Query("INSERT INTO garage (player_sid, carname, col_red, col_green, col_blue, skin, tunings, fuel, health, car_number, model,data) VALUES (%1%, %2%, %3%, %4%, %5%, %6%, %7%, %8%, %9%, %10%, %11%, %12%)", 
+	{sid, carname, col_r, col_g, col_b, skin, tunings, fuel, health, number, model, data}, function()
 		self:LoadGarageTable()
 		SpawnNewCar( car, self )
     end)
@@ -354,7 +355,7 @@ function meta:HasCarLimit()
 end
 
 function meta:LoadGarageTable()
-	Query("SELECT * FROM player_garage WHERE player_sid = '" .. tostring(self:SteamID()) .. "'", function(q)
+	RP.SQL:Query("SELECT * FROM garage WHERE player_sid = %1%", {tostring(self:SteamID())}, function(q)
 		if #q > 0 then
 			self.garage_table = q
             

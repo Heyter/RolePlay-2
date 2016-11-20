@@ -27,7 +27,7 @@ concommand.Add( "SaveBusStop", function( ply, cmd, args )
     local pos = tostring( ent:GetPos().x ) .. " " .. tostring( ent:GetPos().y ) .. " " .. tostring( ent:GetPos().z )
     local ang = tostring( ent:GetAngles().p ) .. " " .. tostring( ent:GetAngles().y ) .. " " .. tostring( ent:GetAngles().r )
     
-    Query( "INSERT INTO busstops( name, cost, pos, ang) VALUES('" .. args[1] .. "'," .. tonumber(args[2]) .. ",'" .. pos .. "','" .. ang .. "')" )
+    RP.SQL:Query("INSERT INTO busstops( name, cost, pos, ang) VALUES(%1%, %2%, %3%, %4%)", {args[1], tonumber(args[2]), pos , ang})
 end)
 
 function ENT:Think()

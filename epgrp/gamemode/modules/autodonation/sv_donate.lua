@@ -26,7 +26,7 @@ RP.PREMIUM.SETTINGS.PremiumDays = 30
 
 
 function RP.PREMIUM.LoadPremium( Player )
-    Query( "SELECT * FROM premium WHERE sid='" .. tostring( Player:SteamID() ) .. "'", function( tbl )
+    RP.SQL:Query( "SELECT * FROM premium WHERE sid = %1%", {Player:SteamID()}, function( tbl )
         if !(tbl) then Msg( "There was an error loading the Premium Table!" ) return end
         Player.premium_counts = #tbl
         if #tbl < 1 then return end
@@ -62,7 +62,7 @@ function RP.PREMIUM.CheckForPremium( Player )
         return
     end
     
-    Query( "SELECT * FROM premium WHERE sid='" .. tostring( Player:SteamID() ) .. "'", function( tbl )
+    RP.SQL:Query( "SELECT * FROM premium WHERE sid = %1%", {Player:SteamID()}, function( tbl )
         if !(tbl) then Msg( "There was an error loading the Premium Table!" ) return end
         if #tbl < 1 then return end
         
@@ -93,7 +93,8 @@ function RP.PREMIUM.AddPremium( Player, amount )
     
     local expires = os.time() + ( 86400 * RP.PREMIUM.SETTINGS.PremiumDays )
     
-    Query( "INSERT INTO premium( sid, amount, received, expires ) VALUES( '" .. tostring( Player:SteamID() ) .. "', " .. amount .. ", " .. os.time() .. ", " .. expires .. " )", function()
+    RP.SQL:Query( "INSERT INTO premium( sid, amount, received, expires ) VALUES( %1%, %2%, %3%, %4% )", 
+    {Player:SteamID(), amount, os.time(), expires}, function()
         Player:SetUserGroup( level )
         Player:ChatPrint( "Danke für deine Spende :)" )
         
