@@ -77,7 +77,7 @@ function meta:setOrgRank( rankid )
 end
 
 function meta:setLastSeen( time )
-	local setLastseenQuery = Query("UPDATE `orgs_players` SET `lastseen` = %1% WHERE `steamid` = %2%", {time, self:SteamID()})
+	local setLastseenQuery = RP.SQL:Query("UPDATE `orgs_players` SET `lastseen` = %1% WHERE `steamid` = %2%", {time, self:SteamID()})
 	return setLastseenQuery
 end
 
