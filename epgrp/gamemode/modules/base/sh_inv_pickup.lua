@@ -40,7 +40,7 @@ if SERVER then
         
         ply.pickup_registered = true
         
-        local e_t = trace.Entity:GetPhysicsObject():GetMass()/75
+        local e_t = trace.Entity:GetPhysicsObject():GetMass()/100
         table.insert( PLUGINS.PICKUP.Registered, {ply=ply,ent=trace.Entity,time=CurTime()+SETTINGS.PICKUP_TIME+e_t} )
         
         net.Start( "NOSRP_SendUseData" )
@@ -91,7 +91,8 @@ if CLIENT then
         if message_time < CurTime() then return end
         if !(IsValid( ent )) then return end
         
-        local pos = ent:GetPos():ToScreen()
+		local pos = {}
+        pos.x, pos.y = ScrW()/2, ScrH()/2
         local time = math.Round( message_time - CurTime() )
         
         if time < 1 then time = "jetzt!" end

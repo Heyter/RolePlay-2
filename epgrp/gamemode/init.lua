@@ -23,7 +23,7 @@ AddCSLuaFile("sh_pluginloader.lua")
 AddCSLuaFile("config.lua")
 AddCSLuaFile("color_config.lua")
 -- Translation
---AddCSLuaFile("translations.lua")
+AddCSLuaFile("translations.lua")
 
 -------------------- Include Server Side files
 include("shared.lua")
@@ -42,12 +42,13 @@ include("sh_pluginloader.lua")      // Muss ganz unten sein!
             Connects to database, adds network strings
 -----------------------------------------------------------]]
 function GM:Initialize()
-    RP.SQL:InitializeDatabase()
+    InitializeDatabase()
     --Load_Plugins()
     
     timer.Simple( 2, function() 
         LoadDoors()
         SpawnNPCs()
+		LoadCellPositions()
 		daylight:init( )
         --LoadOrganisations()
         --BUSSTOP.Load()
