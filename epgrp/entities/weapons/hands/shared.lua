@@ -214,8 +214,8 @@ function SWEP:Think()
 			mass = mass + 3
 		end
 		
-		if vec == Vector( 0, 0, 0 ) then
-			self.prop:SetPos( trace.endpos )
+		if vec:WithinAABox( Vector( -5, -5, -5 ), Vector( 5, 5, 5 ) )  then
+			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)))
 		else
 			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
 		end
