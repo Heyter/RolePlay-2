@@ -73,7 +73,7 @@ function ENT:Touch( ent )
     self.plant = leaf
     self:DeleteOnRemove( leaf )
     
-    timer.Create("growing_plant_timer" .. self:EntIndex(), 0.1, 0, function()
+    timer.Create("growing_plant_timer" .. self:EntIndex(), math.Rand( 6, 9 ), 0, function()
         self.plant.dt.status = self.plant.dt.status + 1
         if self.plant.dt.status >= 100 then
             self.done = true
