@@ -10,7 +10,7 @@ hook.Add("PlayerSpawnedProp", "PD_PlayerSpawnedProp", function( ply, model, ent 
 	ent.pmaxhealth = ent:GetPhysicsObject():GetMass()
 end)
 
-/*
+
 hook.Add("EntityTakeDamage", "PD_EntityTakeDamage", function( ent, info )
 	if ent:IsPlayer() then return end
     if !(IsValid( ent )) then return end
@@ -23,11 +23,12 @@ hook.Add("EntityTakeDamage", "PD_EntityTakeDamage", function( ent, info )
 	local rech = ent.pmaxhealth/255
 	local rech2 = ent.phealth/rech
 	
-	PropSetColor( ent, Color( rech2, rech2, rech2, 255 ) )
+	if not ent:IsVehicle() then
+		PropSetColor( ent, Color( rech2, rech2, rech2, 255 ) )
+	end
 	
 	ent.phealth = ent.phealth - (info:GetDamage()/50)
 	if ent.phealth <= 0 then
 		ent:Remove()
 	end
 end)
-*/
