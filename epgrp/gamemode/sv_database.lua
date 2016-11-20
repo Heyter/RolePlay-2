@@ -5,20 +5,13 @@
 
 require("tmysql4")
 
---[[---------------------------------------------------------
-   File: sv_LCONFIG-dist.lua
-   Desc: LCONFIG template
------------------------------------------------------------]]
-
 RP.SQL = RP.SQL or {}
 
-local LCONFIG = {}
-
-LCONFIG.DBName = "crp"
-LCONFIG.DBUser = "gmod"
-LCONFIG.DBHost = "62.75.253.86"
-LCONFIG.DBPassword = "lachen12"
-LCONFIG.DBPort = 3306
+RP.SQL.DBName = "crp"
+RP.SQL.DBUser = "gmod"
+RP.SQL.DBHost = "62.75.253.86"
+RP.SQL.DBPassword = "lachen12"
+RP.SQL.DBPort = 3306
 
 --[[---------------------------------------------------------
    Name: Escape
@@ -39,7 +32,7 @@ end
    Desc: Connects to database
 -----------------------------------------------------------]]
 function RP.SQL:InitializeDatabase()
-    RP.db, error = db or tmysql.initialize(LCONFIG.DBHost, LCONFIG.DBUser, LCONFIG.DBPassword, LCONFIG.DBName, LCONFIG.DBPort)
+    RP.SQL.db, error = db or tmysql.initialize(RP.SQL.DBHost, RP.SQL.DBUser, RP.SQL.DBPassword, RP.SQL.DBName, RP.SQL.DBPort)
     
     if not error then
         print("[RP] MySQL Connected")
@@ -66,7 +59,7 @@ function RP.SQL:Query(sql, replacements, callback, errcallback)
       end
     end
 
-    RP.db:Query(sql, function(results)
+    RP.SQL.db:Query(sql, function(results)
       if results[1].status then
         if callback and isfunction(callback) then
           callback(results[1]["data"])
