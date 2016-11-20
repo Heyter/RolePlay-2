@@ -26,7 +26,7 @@ net.Receive( "rphone_directory_update", function( len )
 		local ply = net.ReadEntity()
 
 		if IsValid( ply ) then
-			numbers[ply:Name()] = net.ReadString()
+			numbers[ply:GetRPVar( "rpname")] = net.ReadString()
 		end
 	end
 

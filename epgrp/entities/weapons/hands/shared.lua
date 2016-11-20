@@ -147,7 +147,11 @@ function SWEP:Think()
 		self.Owner:SetWalkSpeed( self.walkspeed )
 	end
 	
-	if CurTime() > self.lasthold + 0.1 then self:SetNWEntity( "grabed", NULL ) self.prop = nil end
+	if CurTime() > self.lasthold + 0.1 then 
+		if self.prop != nil or self.prop == NULL then self.prop:GetPhysicsObject():Wake() end
+		self:SetNWEntity( "grabed", NULL ) 
+		self.prop = nil 
+	end
 	if self.prop != nil then
 		if self.prop == nil or !(IsValid(self.prop)) then return end
 		
@@ -161,15 +165,7 @@ function SWEP:Think()
 		local tr = util.TraceLine( trace )
 		
 		local vec = trace.endpos - self.prop:GetPos();
-		local altitude = tr.HitPos:Distance(trace.start)
-		
-		if altitude < 150 then
-			if vec == Vector(0, 0, 0) then
-				--vec = Vector(0, 0, 100);
-			else
-				--vec = vec + Vector(0, 0, 1);
-			end
-		end
+		local altitude = tr.HitPos:Distance( self.prop:GetPos() - self:GetNWVector( "grabbed_vec" ))
 		
 		vec = vec + self:GetNWVector( "grabbed_vec" )
 		
@@ -186,7 +182,7 @@ function SWEP:Think()
 			
 			// Rotating
 		
-			if ( self.Owner:KeyDown( IN_WALK ) ) then 
+			if ( self.Owner:KeyDown( IN_RELOAD ) ) then 
 				self.rotating = true 
 				self.r_check = CurTime()
 				self.Owner:SetWalkSpeed( 0.000001 )
@@ -208,15 +204,17 @@ function SWEP:Think()
 				self.ang = Angle( 0, 0, 0 )
 			end
 			
+			if altitude < 5 then
+				self.prop:GetPhysicsObject():Sleep()
+			else
+				self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
+			end
 			self.prop:SetAngles( self.ang )
 		else
 			max = 200
 			mass = mass + 3
-		end
-		
-		if vec:WithinAABox( Vector( -5, -5, -5 ), Vector( 5, 5, 5 ) )  then
-			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)))
-		else
+			
+
 			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
 		end
 	end

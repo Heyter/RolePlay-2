@@ -196,9 +196,9 @@ function OS.CanUnlock()
 	local lp = LocalPlayer()
 
 	if lock_in_jail then
-		local isArrested = lp.isArrested or lp.IsArrested
+		local isArrested = lp:GetNWBool( "arrested" ) or false
 
-		if isArrested and isArrested( lp ) then
+		if isArrested then
 			return false
 		end
 	end

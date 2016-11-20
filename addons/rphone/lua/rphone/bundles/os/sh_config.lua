@@ -1,5 +1,5 @@
 
-rPhone.CLSetVariable( "OS_LOCK_KEY_DEFAULT", KEY_R )  --default unlock key, see gmod wiki for KEY_* and MOUSE_* enumerations
+rPhone.CLSetVariable( "OS_LOCK_KEY_DEFAULT", KEY_P )  --default unlock key, see gmod wiki for KEY_* and MOUSE_* enumerations
 rPhone.CLSetVariable( "OS_LOCK_KEY_MODE_DEFAULT", "hold" )  --default unlock type, 'hold' and 'doubletap' are valid values
 rPhone.CLSetVariable( "OS_LOCK_KEY_HOLD_LENGTH_DEFAULT", 0.75 )  --default unlock hold duration
 
