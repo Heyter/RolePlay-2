@@ -19,7 +19,8 @@ JOB.Weapons = { "hands",               // Was hat der Job für Waffen?
 				"weapon_arc_atmcard",
                 "weapon_fists",
                 "m9k_sig_p229r", 
-                "weapon_r_handcuffs", 
+                "weapon_r_handcuffs",
+				"police_band_placer",
                 "weapon_stick"
 }
 JOB.DemoteOnDeath = false
