@@ -214,7 +214,11 @@ function SWEP:Think()
 			mass = mass + 3
 		end
 		
-		self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
+		if vec = Vector( 0, 0, 0 ) then
+			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)))
+		else
+			self.prop:GetPhysicsObject():SetVelocity( (vec * math.Clamp((mass), 10, max)) + (speed/1.1))
+		end
 	end
 end
 
