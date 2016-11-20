@@ -10,7 +10,7 @@ hook.Add("PlayerSpawnedProp", "PD_PlayerSpawnedProp", function( ply, model, ent 
 	ent.pmaxhealth = ent:GetPhysicsObject():GetMass()
 end)
 
-
+/*
 hook.Add("EntityTakeDamage", "PD_EntityTakeDamage", function( ent, info )
 	if ent:IsPlayer() then return end
     if !(IsValid( ent )) then return end
@@ -32,3 +32,4 @@ hook.Add("EntityTakeDamage", "PD_EntityTakeDamage", function( ent, info )
 		ent:Remove()
 	end
 end)
+*/
