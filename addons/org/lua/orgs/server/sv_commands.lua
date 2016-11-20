@@ -34,7 +34,7 @@ concommand.Add("org_leave", org_leave)
 function org_new( pl, cmd, arg )
 	if !pl:hasOrg() then
 		if pl:CanAfford( ORGS_Config.createPrice ) then
-			Query("INSERT INTO `orgs_orgs` (`name`, `motd`, `bankbalance`) VALUES ('".. SQLStr( arg[1], true ) .."', 'Set a new MOTD!', '0')")
+			RP.SQL:Query("INSERT INTO `orgs_orgs` (`name`, `motd`, `bankbalance`) VALUES (%1%, 'Set a new MOTD!', '0')", {arg[1]})
 			QueryValue("SELECT `id` FROM `orgs_orgs` WHERE `name` = '".. SQLStr( arg[1], true ) .."'", function( r )
 				--print("wtf")
 				--print( r[1] )
@@ -94,7 +94,7 @@ function org_accept( pl, cmd )
 			Orgs.newMember(pl, pl.invitedata[2], "n")
 			sendNotify( pl, ORGS_Lang.accept, "NOTIFY_HINT" )
 			notifyOrg( pl:getOrgID(), pl:Nick() .. " " .. ORGS_Lang.joined)
-			Query("SELECT * FROM `orgs_players` WHERE `orgid` = '".. pl:getOrgID() .."'", function( r )
+			RP.SQL.Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {pl:getOrgID()}, function( r )
 				for k,v in pairs( player.GetAll() ) do
 					if v:getOrgID() == pl:getOrgID() then
 						net.Start("refreshclientplayerlist")
@@ -202,7 +202,7 @@ function org_kickmember( pl, cmd, args )
 	if pl:IsAdmin() or pl:IsSuperAdmin() or pl:IsUserGroup("admin") or pl:IsUserGroup("superadmin") or pl:IsUserGroup("owner") then
 		local orgid
 		if !player.GetBySteamID( args[1] ) then
-			Query("SELECT `name`, `orgid` FROM `orgs_players` WHERE `steamid` = '" .. args[1] .. "'", function( r )
+			RP.SQL:Query("SELECT `name`, `orgid` FROM `orgs_players` WHERE `steamid` = %1%", {args[1]}, function( r )
 				notifyOrg( r[1]["orgid"], "" .. r[1]["name"] .. " " ..ORGS_Lang.memberkicked)
 				orgid = r[1]["orgid"]
 				org.steamIDKick( args[1] )
@@ -214,7 +214,7 @@ function org_kickmember( pl, cmd, args )
 			orgid = ply:getOrgID()
 			ply:leaveOrg()
 		end
-		Query("SELECT * FROM `orgs_players` WHERE `orgid` = '" .. orgid .. "'", function(r)
+		RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {orgid}, function(r)
 			if r then
 				for k,v in pairs( player.GetAll() ) do
 					if v:getOrgID() == orgid then
@@ -229,7 +229,7 @@ function org_kickmember( pl, cmd, args )
 		QueryValue("SELECT * FROM `orgs_players` WHERE `orgid` = '".. pl:getOrgID() .."' AND `rank` = 'o' AND `steamid` = '" .. args[1] .. "'", function( r )
 			if !r then
 				if !player.GetBySteamID( args[1] ) then
-					Query("SELECT `name` FROM `orgs_players` WHERE `steamid` = '" .. args[1] .. "'", function( r )
+					RP.SQL:Query("SELECT `name` FROM `orgs_players` WHERE `steamid` = %1%", {args[1]}, function( r )
 						notifyOrg( r[1]["orgid"], "" .. r[1]["name"] .. " " ..ORGS_Lang.memberkicked)
 						org.steamIDKick( args[1] )
 					end)
@@ -243,7 +243,7 @@ function org_kickmember( pl, cmd, args )
 				sendNotify( pl, ORGS_Lang.cantkickowner, "NOTIFY_ERROR" )
 			end
 		end)
-		Query("SELECT * FROM `orgs_players` WHERE `orgid` = '" .. pl:getOrgID() .. "'", function(r)
+		RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {pl:getOrgID()}, function(r)
 			if r then
 				for k,v in pairs( player.GetAll() ) do
 					if v:getOrgID() == pl:getOrgID() then
@@ -270,7 +270,7 @@ function org_setrank( pl, cmd, args )
 						ply:setOrgRank( tostring(args[2]) )
 						sendNotify( ply, "You have been made a " .. r .. " !", "NOTIFY_HINT" )
 						notifyOrg( pl:getOrgID(), "".. ply:Nick() .. " has been made a " .. r .. " !")
-						Query("SELECT * FROM `orgs_players` WHERE `orgid` = '".. pl:getOrgID() .."'", function( r )
+						RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {pl:getOrgID()}, function( r )
 							for k,v in pairs( player.GetAll() ) do
 								if v:getOrgID() == pl:getOrgID() then
 									net.Start("refreshclientplayerlist")
@@ -315,7 +315,7 @@ concommand.Add("org_editrank", org_editrank)
 
 function org_delrank( pl, cmd, args )
 	if pl:havePermission( "g" ) then
-		Query("SELECT * FROM `orgs_players` WHERE `rank` = '" .. tostring(args[1]) .. "'", function( r )
+		RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `rank` = %1%", {args[1]}, function( r )
 			if r then
 				sendNotify( pl, "You cant delete this rank. Players are in this rank", "NOTIFY_HINT" )
 			else
@@ -336,8 +336,8 @@ function org_delete( pl, cmd, args )
 				v:leaveOrg()
 			end
 		end
-		Query("DELETE FROM `orgs_orgs` WHERE `id` = '".. args[1] .."'")
-		Query("DELETE * FROM `orgs_players` WHERE `orgid` = '".. args[1] .."'")
+		RP.SQL:Query("DELETE FROM `orgs_orgs` WHERE `id` = %1%", {args[1]})
+		RP.SQL:Query("DELETE * FROM `orgs_players` WHERE `orgid` = %1%", {args[1]})
 		sendNotify( pl, "The organisation has been deleted", "NOTIFY_HINT" )
 	else
 		pl:ChatPrint("Admins ONLY!")
@@ -366,7 +366,7 @@ function org_menu( pl )
 	if pl:hasOrg() then
 		sendNotify( pl, "Loading Menu...", "NOTIFY_HINT" )
 		local orgdata = {}
-		Query("SELECT * FROM `orgs_orgs` WHERE `id` = '" .. pl:getOrgID() .. "'", function(r)
+		RP.SQL:Query("SELECT * FROM `orgs_orgs` WHERE `id` = %1%", {pl:getOrgID()}, function(r)
 			table.insert(orgdata, r[1])
 			if pl.org["rank"] == "o" then
 				table.insert(orgdata, {"a","b","c","d","e","f","g","h"})
@@ -375,9 +375,9 @@ function org_menu( pl )
 			else
 				table.insert(orgdata, string.Explode(",", pl.org["rank"]["flags"]))
 			end
-			Query("SELECT * FROM `orgs_players` WHERE `orgid` = '" .. pl:getOrgID() .. "'", function(r)
+			RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {pl:getOrgID()}, function(r)
 				table.insert(orgdata, r)
-				Query("SELECT * FROM `orgs_ranks` WHERE `orgid` = '" .. pl:getOrgID() .. "'", function(r)
+				RP.SQL:Query("SELECT * FROM `orgs_ranks` WHERE `orgid` = %1%", {pl:getOrgID()}, function(r)
 					if r then
 						table.insert(orgdata, r)
 					end
@@ -397,9 +397,9 @@ net.Receive( "requestorg", function( l, pl )
 	if pl:IsAdmin() or pl:IsSuperAdmin() or pl:IsUserGroup("admin") or pl:IsUserGroup("superadmin") or pl:IsUserGroup("owner") then
 		local orgid = net.ReadString()
 		local orgdata = {}
-		Query("SELECT * FROM `orgs_orgs` WHERE `id` = '" .. SQLStr( orgid, true ) .. "'", function(r)
+		RP.SQL:Query("SELECT * FROM `orgs_orgs` WHERE `id` = %1%", {orgid}, function(r)
 			table.insert(orgdata, r[1])
-			Query("SELECT * FROM `orgs_players` WHERE `orgid` = '" .. SQLStr( orgid, true ) .. "'", function(r)
+			RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `orgid` = %1%", {orgid}, function(r)
 				table.insert(orgdata, r)
 				net.Start("requestorganswer")
 					net.WriteTable(orgdata)
@@ -412,7 +412,7 @@ end)
 net.Receive( "editorg", function( l, pl )
 	if pl:IsAdmin() or pl:IsSuperAdmin() or pl:IsUserGroup("admin") or pl:IsUserGroup("superadmin") or pl:IsUserGroup("owner") then
 		local org = net.ReadTable()
-		Query("UPDATE `orgs_orgs` SET `name` = '" .. org[2] .. "', `bankbalance` = '".. org[3]  .."', `motd` = '".. org[4] .."' WHERE `ID` = '" .. org[1] .. "'")
+		RP.SQL:Query("UPDATE `orgs_orgs` SET `name` = %1%, `bankbalance` = %2%, `motd` = %3% WHERE `ID` = %4%", {org[2], org[3], org[4] ,org[1]})
 		sendNotify( pl, "The organisation has been edited.", "NOTIFY_HINT" )
 	end
 end)

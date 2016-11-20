@@ -4,7 +4,7 @@ function meta:loadOrg()
 	Query("SELECT * FROM `orgs_players` WHERE `steamid` = '".. self:SteamID() .."'", function(r)
 		PrintTable( r )
 		if r then
-			Query("SELECT `name` FROM `orgs_orgs` WHERE `id` = '".. r[1]["orgid"] .."'", function(r)
+			RP.SQL:Query("SELECT `name` FROM `orgs_orgs` WHERE `id` = %1%", {r[1]["orgid"]}, function(r)
 				if r then
 					print( r[1] )
 					self:SetNWString("orgName", r[1]["name"])
@@ -13,7 +13,7 @@ function meta:loadOrg()
 			self.org = r[1]
 			if tostring(self.org["rank"]) != "o" then
 				if tostring(self.org["rank"]) != "n" then
-					Query("SELECT * FROM `orgs_ranks` where `id` = '".. self.org["rank"] .."'", function( r )
+					Query("SELECT * FROM `orgs_ranks` where `id` = %1%", {self.org["rank"]}, function( r )
 						self.org["rank"] = r[1]
 					end)
 				end
