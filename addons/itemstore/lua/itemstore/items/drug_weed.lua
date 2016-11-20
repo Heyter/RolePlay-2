@@ -14,8 +14,8 @@ function ITEM:LoadData( ent )		// Wenn gedroppt wird
 end
 
 function ITEM:SaveData( ent )	// Wenn aufgehoben wird
-	local q = ent.quality
-	local g = ent.gramm
+	local q = ent.Quality
+	local g = ent.Gramm
 	
     self:SetData( "Quality", q )
 	self:SetData( "Gramm", g )

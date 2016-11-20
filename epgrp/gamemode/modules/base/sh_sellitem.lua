@@ -24,6 +24,14 @@ if SERVER then
         o:SetSkill( "Handels Fähigkeit", 0.05, true )
         o:AddCash( ent:GetRPVar( "price" ) )
         o:RPNotify( ply:GetRPVar( "rpname" ) .. " hat einmal: " .. ent:GetRPVar( "name" ) .. " gekauft. Für: " .. math.Round(ent:GetRPVar( "price" )) .. ",-€", 5 )
+		
+		
+		ent.data = ent.data or nil
+		if ent.data != nil then				// Parameter übernehmen
+			for k, v in pairs( ent.data ) do
+				ent[k] = v
+			end
+		end
         
         local item = class == "itemstore_item" and ent:GetItem() or itemstore.Item( itemstore.items.Pickups[ ent.itemclass ] )
         item:Run( "CanPickup", ply, ent )
@@ -71,6 +79,7 @@ if SERVER then
 			ent:Spawn()
 
 			ent.data = item.Data
+			PrintTable( ent.data )
 			
 			timer.Simple( 1, function()
 				ent:SetRPVar( "name", item:GetName() )
