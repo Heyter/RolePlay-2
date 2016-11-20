@@ -28,7 +28,7 @@ function ENT:OnTakeDamage( info )
 		self.pmaxhealth = self:GetPhysicsObject():GetMass() * 4
 	end
     
-    info:ScaleDamage( 0.1 )
+    info:ScaleDamage( 0.5 )
     self.HP = self.HP - info:GetDamage()
     
 	local rech = self.pmaxhealth/255
