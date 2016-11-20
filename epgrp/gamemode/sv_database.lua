@@ -60,13 +60,13 @@ end
 -----------------------------------------------------------]]
 function RP.SQL:Query(sql, replacements, callback, errcallback)
     if RP.SQL.connected then
-      print("[RP][DEBUG] " .. sql)
-
       if replacements and istable(replacements) then
         for k, v in pairs(replacements) do
           sql = string.Replace(sql, "%"..k.."%", self:Escape(v))
         end
       end
+
+      print("[RP][DEBUG] " .. sql)
 
       RP.SQL.db:Query(sql, function(results)
         if results[1].status then
