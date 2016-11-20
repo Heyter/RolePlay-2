@@ -26,9 +26,8 @@ AddCSLuaFile("color_config.lua")
 --AddCSLuaFile("translations.lua")
 
 -------------------- Include Server Side files
-
-include("sv_database.lua")
 include("shared.lua")
+include("sv_database.lua")
 include("config.lua")
 include("sh_createteams.lua")
 
