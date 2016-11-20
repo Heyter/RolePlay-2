@@ -34,7 +34,7 @@ function ENT:OnTakeDamage( info )
 	local rech = self.pmaxhealth/255
 	local rech2 = self.HP/rech
 	
-	PropSetColor( self, Color( rech2, rech2, rech2, 255 ) )
+	--PropSetColor( self, Color( rech2, rech2, rech2, 255 ) )
     
     if self.HP < 1 then self:Remove() end
    
