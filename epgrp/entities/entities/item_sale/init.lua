@@ -60,6 +60,7 @@ function ENT:Use(activator,caller)
 			for k, v in pairs( self.data ) do
 				self[k] = v
 			end
+			PrintTable( self.data )
 		end
 		
         item:Run( "CanPickup", ply, self )
