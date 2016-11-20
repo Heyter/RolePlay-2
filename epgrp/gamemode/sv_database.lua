@@ -7,6 +7,8 @@ require("tmysql4")
 
 RP.SQL = RP.SQL or {}
 
+RP.SQL.connected = false
+
 RP.SQL.DBName = "crp"
 RP.SQL.DBUser = "gmod"
 RP.SQL.DBHost = "62.75.253.86"
@@ -36,9 +38,15 @@ function RP.SQL:InitializeDatabase()
     
     if not error then
         print("[RP] MySQL Connected")
+
+        RP.SQL.connected = true
+
         return true
     else
         print("[RP] MySQL Error: " .. error)
+
+        RP.SQL.connected = false
+
         return false
     end
 end
@@ -51,26 +59,30 @@ end
         callback: Function called on success; with data as parameter
 -----------------------------------------------------------]]
 function RP.SQL:Query(sql, replacements, callback, errcallback)
-    print("[RP][DEBUG] " .. sql)
+    if RP.SQL.connected then
+      print("[RP][DEBUG] " .. sql)
 
-    if replacements and istable(replacements) then
-      for k, v in pairs(replacements) do
-        sql = string.Replace(sql, "%"..k.."%", self:Escape(v))
+      if replacements and istable(replacements) then
+        for k, v in pairs(replacements) do
+          sql = string.Replace(sql, "%"..k.."%", self:Escape(v))
+        end
       end
+
+      RP.SQL.db:Query(sql, function(results)
+        if results[1].status then
+          if callback and isfunction(callback) then
+            callback(results[1]["data"])
+          end
+
+        else
+          print("[RP] Error while executing Query:\n"..results[1].error.."\n\nQuery:\n"..sql)
+
+          if errcallback and isfunction(errcallback) then
+           errcallback(results[1]["error"])
+          end
+        end
+      end)
+    else
+      print("[RP][ERROR] Tried to executed Query while not connected to database!")
     end
-
-    RP.SQL.db:Query(sql, function(results)
-      if results[1].status then
-        if callback and isfunction(callback) then
-          callback(results[1]["data"])
-        end
-
-      else
-        print("[RP] Error while executing Query:\n"..results[1].error.."\n\nQuery:\n"..sql)
-
-        if errcallback and isfunction(errcallback) then
-         errcallback(results[1]["error"])
-        end
-      end
-    end)
 end
