@@ -186,7 +186,7 @@ function SWEP:Think()
 			
 			// Rotating
 		
-			if ( self.Owner:KeyDown( IN_RELOAD ) ) then 
+			if ( self.Owner:KeyDown( IN_WALK ) ) then 
 				self.rotating = true 
 				self.r_check = CurTime()
 				self.Owner:SetWalkSpeed( 0.000001 )
