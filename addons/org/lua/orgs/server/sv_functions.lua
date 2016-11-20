@@ -117,7 +117,7 @@ function Orgs.setMotd( orgid, motd )
 end
 
 function Orgs.steamIDKick( steamid )
-	local checkquery = RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `steamid` = %1%", {steamid} function( r )
+	local checkquery = RP.SQL:Query("SELECT * FROM `orgs_players` WHERE `steamid` = %1%", {steamid}, function( r )
 		if r then
 			local query = RP.SQL:Query("DELETE FROM `orgs_players` WHERE `steamid` = %1%", {steamid})
 			local x = r[1]["orgid"]
