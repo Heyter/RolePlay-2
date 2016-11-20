@@ -78,7 +78,7 @@ function PLAYER_META:COP_ShotPlayer( ply )
 		ECONOMY.AddToLog( {self,ply,0} , "damage" )
 	end
 end
-hook.Add( "PlayerShouldTakeDamage", "COP_ShotPlayer", function( ply, cop ) cop:COP_ShotPlayer( ply ) end )
+--hook.Add( "PlayerShouldTakeDamage", "COP_ShotPlayer", function( ply, cop ) cop:COP_ShotPlayer( ply ) end )
 
 // Some Chat Commands ////////////////////////////////////////
 
