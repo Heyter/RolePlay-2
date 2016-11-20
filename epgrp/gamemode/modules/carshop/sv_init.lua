@@ -202,10 +202,10 @@ function CARSHOP.CreateGarageCar( ply, index, pos, angles )
         if !(v.VehicleTable) then continue end
         v.destructed = v.destructed or false
         if v.Owner == ply && !(v.destructed) then
-            ply:RPNotify( "Stelle erst dein Aktuelles Auto in die Garage, bevor du ein neues Spawnst", 5 )
+            ply:RPNotify( "Stelle erst dein aktuelles Auto in die Garage, bevor du ein neues anforderst!", 5 )
             return
         elseif v.Owner == ply && v.destructed then
-            ply:RPNotify( "Du musst dein Auto zuerst Reparieren lassen, bevor du ein neues Spawnen kannst", 5 )
+            ply:RPNotify( "Du musst dein Auto zuerst Reparieren lassen, bevor du ein neues anfordern kannst", 5 )
             return
         end
     end
@@ -301,7 +301,7 @@ function CARSHOP.CreateJOBCar( ply, vehname, pos, ang )
     CarCreate:SetRPVar( "Armor", cartbl.Armor or 0 )
 	CarCreate.Owner = ply 
 	
-	ply:RPNotify( "Dein Job-Auto wurde gespawn!", 6 )
+	ply:RPNotify( "Dein Job-Auto wurde vorgefahren!", 6 )
 	gamemode.Call("PlayerSpawnedVehicle", ply, CarCreate, false) -- VUMod compatability
 	CarCreate:Fire( "lock", 1 )
     return CarCreate
