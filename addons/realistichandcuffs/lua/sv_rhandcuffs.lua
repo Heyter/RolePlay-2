@@ -255,8 +255,8 @@ hook.Add("onLockpickCompleted", "OnSuccessPickCuffs", function(Player, Success, 
     if CuffedP:GetNWBool("rhc_cuffed", false) and Success then
         CuffedP:CleanUpRHC(true)
 		
-        CuffedP:RPNotify("You have been released by: " .. Player:Nick() .. ".", 3)
-        Player:RPNotify("You successfully released " .. CuffedP:Nick() .. ".", 3)
+        CuffedP:RPNotify("Du wurdest erfolgreich von " .. Player:Nick() .. " befreit.", 3)
+        Player:RPNotify("Du hast " .. CuffedP:Nick() .. " erfolgreich befreit.", 3)
         if CuffedP:isArrested() then
             CuffedP:unArrest(Player)
         end
@@ -265,7 +265,7 @@ end)
  
 hook.Add("CanPlayerEnterVehicle", "RestrictEnteringVCuffs", function(Player, Vehicle)
     if Player.Restrained and !Player.DraggedBy then
-		Player:RPNotify("You can't enter a vehicle while cuffed!", 3)
+		Player:RPNotify("Du kannst nicht fahren, während du in Handschellen bist!", 3)
         return false
 	elseif Player.Dragging then
 		return false
@@ -288,7 +288,7 @@ end)
  
 hook.Add("CanExitVehicle", "RestrictLeavingVCuffs", function(Vehicle, Player)
     if Player.Restrained then
-		Player:RPNotify("You can't leave the vehicle because you're cuffed!", 3)
+		Player:RPNotify("Du kannst das Fahrzeug mit Handschellen nicht verlassen!", 3)
         return false
     end
 end)
@@ -317,7 +317,7 @@ end)
  
 hook.Add("PlayerSpawnProp", "DisablePropSpawningCuffed", function(Player)
     if Player.Restrained then
-		Player:RPNotify("You can't spawn props while cuffed!", 3)
+		Player:RPNotify("Du kannst keine Props spawnen, während du in Handschellen bist!", 3)
         return false
     end
 end)
@@ -331,9 +331,9 @@ end)
 hook.Add("canArrest", "MustbeCuffedArrest", function(Player, ArrestedPlayer)
     if RHC_RestrainArrest then
         if !ArrestedPlayer.Restrained then
-            return false,"Player must be handcuffed in order to be arrested!"
+            return false,"Der Spieler muss in Handschellen sein, damit er weggesperrt werden kann!"
 		elseif ArrestedPlayer:isArrested() then
-			return false, "This player is already arrested!"
+			return false, "Der Spieler ist bereits eingesperrt!"
         end
     end
 end)
@@ -373,7 +373,7 @@ hook.Add("playerArrested", "SetTeamArrested", function(Player, time, Arrester)
 		if RHC_ArrestReward then
 			local RAmount = RHC_ArrestRewardAmount
 			Arrester:addMoney(RAmount)
-			Arrester:RPNotify("You were rewarded $" .. RAmount .. " for arresting " .. Player:Nick() .. ".", 3)
+			Arrester:RPNotify("Du hast " .. RAmount .. "€ als Belhnung für das Einsperren von " .. Player:Nick() .. " erhalten.", 5)
 		end	
 	end
 
@@ -405,7 +405,7 @@ end)
  
 hook.Add("canUnarrest", "RestrictUnArrestCuffed", function(Player, UnarrestPlayer)
     if RHC_UnarrestMustRemoveCuffs and UnarrestPlayer.Restrained and !Player:IsRHCWhitelisted() then
-        return false, "Lockpick the cuffs in order to unarrest this player!"
+        return false, "Verwende einen Dietrich um diesen Spieler zu befreien!"
     end
 end)
 
