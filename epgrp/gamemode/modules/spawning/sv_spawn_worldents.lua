@@ -176,7 +176,8 @@ if game.GetMap() == "rp_evocity_v33x" then
 		SpawnEnt( 'ent_gaspump', Vector(10042.737304688, 13268.529296875, 66.305557250977), Angle(0.000, 0.000, 0.000), 'models/props_wasteland/gaspump001a.mdl' )
 		SpawnEnt( 'ent_gaspump', Vector(10042.854492188, 13584.234375, 66.305557250977), Angle(0.000, 180.000, 0.000), 'models/props_wasteland/gaspump001a.mdl' )
 		SpawnEnt( 'ent_gaspump', Vector(9809.3349609375, 13279.049804688, 66.305541992188), Angle(0.000, 0.000, 0.000), 'models/props_wasteland/gaspump001a.mdl' )
-		SpawnEnt( 'ent_gaspump', Vector(9808.6435546875, 13584.049804688, 66.305541992188), Angle(0.000, 180.000, 0.000), 'models/props_wasteland/gaspump001a.mdl' )	
+		SpawnEnt( 'ent_gaspump', Vector(9808.6435546875, 13584.049804688, 66.305541992188), Angle(0.000, 180.000, 0.000), 'models/props_wasteland/gaspump001a.mdl' )
+		SpawnEnt( 'ent_npcorg', Vector(-6537, -9561, 75), Angle(0.000, 90, 0.000), "" )
         
         /*
         SpawnEnt( 'e_wall_plugholder', Vector(-807.44775390625, 4656.4580078125, -119.20896911621), Angle(0.000, 90.000, -0.000), "" )
