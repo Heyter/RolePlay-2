@@ -1,0 +1,38 @@
+"AddonInfo"
+{
+	"name" "Enhanced Citizens v4"
+	"author_name" "author"
+	"info" "[h1][B]THIS PACK IS NOT BACKWARDS COMPATIBLE WITH ENHANCED CITIZENS V3, PLEASE UNINSTALL THAT VERSION BEFORE INSTALLING THIS.[/B][/h1]
+
+[B]Overview[/B]
+After about a year I've finally got around to remastering my Enhanced Citizens v3 model pack, and it's pretty fucking good now. This is built upon Lt_C's Enhanced Citizens Redux, but it features many things I found lacking about it. All of the bodygroups are the same between male and female models, all models have a glasses bodygroup, and they're fully playermodel compatible. These models also use some fancy hands that I got from the GMod playermodel hands, and have updated flexes that I got from Bloocobalt (I think)
+
+[B]File System[/B]
+I've designed the files to make for easy editing and compilation, all of the main model qc files are in the root directory, and they use $include, $pushd, and $popd to make it easy to edit all of them at once. base_male and base_female contain all of the smd files that are used for bodygroups, and also contains subfolders for model-specific bodygroups such as beanies and glasses. The torso and legs are shared across all of the files, making it easy to make modifications.
+
+[B]Peace To:[/B]
+Bloocobalt: for helping me when I was originally starting this project.
+Lt_C: facemaps, general modelling help.
+Braxen: for forcing me to update this goddamned model pack.
+Navaro: facemaps
+Tons of other random people whose facemaps I stole.
+
+[h1]F.A.Q.[/h1]
+[b]Are these NPCs?[/b]
+No, these are playermodels and ragdolls.
+
+[b]Do they override the normal HL2 models?[/b]
+No, they are entirely seperate models and textures.
+
+[b]Why are they so floppy?[/b]
+Enhanced Citizens were originally made for posing, so the physics are intentionally slack to allow for easier posing. If you really want I can adjust them to be less floppy. Make a vote or something.
+
+[b]I'm confused about the difference between Enhanced Citizens and Extended Citizens! Help me![/b]
+Enhanced Citizens v4 is the 'base' model pack, it includes Half-Life themed bodygroups for the citizens. Extended Citizens v4 is a pack based on Enhanced Citizens, but it includes clothing not necessarily from Half-Life. Extended Citizens does not override Enhanced Citizens, but Enhanced Citizens is required for Extended Citizens to work, as it includes all of the base materials. Installing Extended citizens will add more playermodels to the playermodel selection screen, which may look identical at first, but if you hover over the icon you will see they have the ECX prefix instead of EC. If you are a server operator you'll want to use the (fe)male_**_extended.mdl models if you want the extra clothing. If you have any other concerns about this just leave a comment.
+
+[B]Downloads:[/B]
+Source SMD and QC: https://github.com/Zelpa/enhancedcitizens
+Mirrors for server admins:
+https://i.ggor.ca/f/enhancedcitizensv4.7z [AUS]
+http://rp.braxnet.org/zelpa/enhancedcitizensv4.7z [GER]"
+}

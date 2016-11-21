@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"name" "EBT"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "effects",
+	"tags": 
+	[
+		"fun",
+		"realism"
+	]
+}"
+}

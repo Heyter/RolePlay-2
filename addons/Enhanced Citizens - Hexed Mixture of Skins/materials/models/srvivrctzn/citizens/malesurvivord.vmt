@@ -1,0 +1,7 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models\srvivrctzn\citizens/MaleSurvivord"
+	"$halflambert" 1
+	"$nocull" 1
+}

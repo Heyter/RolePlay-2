@@ -1,0 +1,45 @@
+"AddonInfo"
+{
+	"name" "Gmod Weapon Holsters - 1.0v"
+	"author_name" "author"
+	"info" "[b][h1]:: Addon_Name ::[/h1]
+
+- Gmod Weapon Holsters
+- 현실적 무기 소유
+
+[h1]:: TEXT ::[/h1]
+
+- 고장난 에드온을 수정하여 업로드 하였음으로 창작물의 저작권은 하단의 링크에 있습니다.
+- B&R 그룹 개발진에 의해 수정된 에드온 입니다.
+- 좌표를 수정하여 추가적으로 총기를 추가하여도 저작권과는 무관합니다.
+- 관계자외 '수정된 에드온'을 재업로드 하는경우 법적 제재를 받으실 수 있습니다.
+
+[h1]:: Gmod.Game_Mod ::[/h1]
+
+- ALL Game Mod
+* Sand Box * DarkRP * H1Z1 * DayZ * Zombie *  <- Weapon Mod ALL!
+
+[h1]:: Weapon.Support ::[/h1]
+
+- Half Life
+- FA:S 2.0
+- ARC Bank Card
+- KeyPad Craker( SPY_Swep )
+- Door Break( HQ_Swep )
+- VCmod Repair
+- Medic Kit( DarkRP )
+
+[h1]:: Addon.Development.Old_Version ::[/h1]
+
+Gmod_Org Name : RikohZX
+Gmod_Org Web : garrysmods.org/download/12975/weapon-holsters
+
+[h1]:: Reload.Coustomer.New_Version ::[/h1]
+
+Steam Name : baguette12
+Steam Profiles : http://steamcommunity.com/id/baguette12/
+
+Steam Name : Fristet
+Steam Profiles : http://steamcommunity.com/profiles/76561198014359434/
+Development Group : http://steamcommunity.com/groups/breacherfa"
+}

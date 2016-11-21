@@ -1,0 +1,15 @@
+"AddonInfo"
+{
+	"name" "Enhanced Citizens - Hexed Mixture of Skins"
+	"author_name" "Author Name"
+	"info" "
+{
+	"description": "Description",
+	"type": "model",
+	"tags": 
+	[
+		"comic",
+		"movie"
+	]
+}"
+}

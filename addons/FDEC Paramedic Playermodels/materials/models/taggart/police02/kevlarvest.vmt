@@ -1,0 +1,4 @@
+VertexLitGeneric
+{
+$baseTexture "models\Taggart\police01/kevlar_vest"
+}

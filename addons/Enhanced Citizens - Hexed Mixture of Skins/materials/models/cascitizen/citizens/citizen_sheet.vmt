@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\cascitizen\citizens\citizen_sheet"
+	"$bumpmap" "models\cascitizen\citizens\citizen_sheet_normal"
+	"$phong" "1"
+	"$nocull" 1
+	"$pongexponent" 1.5
+	"$phongboost" "0.1"
+	"$phongfresnelranges"	"[.25 1.25 6.5]"
+	"$phongexponenttexture" "models\cascitizen\citizens\citizen_sheet_exp"
+	"$phongalbedotint" "1"
+}

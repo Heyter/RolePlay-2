@@ -1,0 +1,17 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/Taggart/police02/Securityguard"
+//	"$bumpmap" "models/Taggart/police02/Securityguard_n"
+
+	"$translucent" 1
+	"$model" 1
+	"$nocull" 0
+	"$alphatest" 1
+
+	"$phong" "1"
+//	"$phongexponent" 3
+	"$phongboost"	"1"
+	"$phongfresnelranges"	"[0.02 0.1 0.3]"
+	"$halflambert" 1
+}
