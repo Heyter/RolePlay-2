@@ -12,7 +12,7 @@ RP.SQL.connected = false
 RP.SQL.DBName = "crp"
 RP.SQL.DBUser = "gmod"
 RP.SQL.DBHost = "62.75.253.86"
-RP.SQL.DBPassword = "lachen12"
+RP.SQL.DBPassword = "PUTYOURPASSWORDHERE"
 RP.SQL.DBPort = 3306
 
 --[[---------------------------------------------------------
