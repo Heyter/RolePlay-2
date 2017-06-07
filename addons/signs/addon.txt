@@ -1,8 +1,0 @@
-"AddonInfo"
-{
-	"name"        "Signs"
-	"version"     "1.2"
-	"author_name" "Dan"
-	"info"        ""
-	"override"    "0"
-}
