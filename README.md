@@ -22,6 +22,9 @@ A new version will come with Gmod ported to Source 2... i promise!
 
 
 
+BIG THANKS TO IBOT FOR THE HELP FIXING SOME STUFF. Love you <3
+
+
 
 Have Fun
 ThaRealCamotrax
